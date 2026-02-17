@@ -1,5 +1,10 @@
 # Fernando Martínez Marco | Marine Engineering & Artificial Intelligence
 
+[![Verify Build](https://github.com/fmmarco29/fernandomartinezmarco/actions/workflows/verify-build.yml/badge.svg)](https://github.com/fmmarco29/fernandomartinezmarco/actions/workflows/verify-build.yml)
+[![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success?logo=vercel)](https://fernandomartinezmarco.vercel.app)
+[![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%7C%20TypeScript%20%7C%20Bayesian-blue)](https://nextjs.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This repository contains the source code for my professional portfolio, built with Next.js and TypeScript. The project serves as a technical showcase of high-integrity engineering systems integrated with probabilistic AI frameworks.
 
 ## Core Projects
