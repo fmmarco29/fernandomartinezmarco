@@ -15,6 +15,28 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: 'Fernando Martínez Marco | Engineering & AI Research',
     description: 'Professional portfolio bridging Naval Engineering and AI Research.',
+    openGraph: {
+        title: 'Fernando Martínez Marco | Engineering & AI Research',
+        description: 'Professional portfolio bridging Naval Engineering and AI Research.',
+        url: 'https://fernandomartinezmarco.vercel.app',
+        siteName: 'Fernando Martínez Marco Portfolio',
+        images: [
+            {
+                url: '/metadata/social-preview.png',
+                width: 1200,
+                height: 630,
+                alt: 'Fernando Martínez Marco - Engineering Intelligence'
+            }
+        ],
+        locale: 'en_US',
+        type: 'website'
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Fernando Martínez Marco | Engineering & AI Research',
+        description: 'Professional portfolio bridging Naval Engineering and AI Research.',
+        images: ['/metadata/social-preview.png']
+    }
 }
 
 export default function RootLayout({
