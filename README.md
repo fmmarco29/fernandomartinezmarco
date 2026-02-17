@@ -1,5 +1,7 @@
 # Fernando Martínez Marco | Marine Engineering & Artificial Intelligence
 
+![Project Banner](/public/metadata/social-preview.png)
+
 [![Verify Build](https://github.com/fmmarco29/fernandomartinezmarco/actions/workflows/verify-build.yml/badge.svg)](https://github.com/fmmarco29/fernandomartinezmarco/actions/workflows/verify-build.yml)
 [![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success?logo=vercel)](https://fernandomartinezmarco.vercel.app)
 [![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%7C%20TypeScript%20%7C%20Bayesian-blue)](https://nextjs.org)
