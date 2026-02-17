@@ -5,6 +5,8 @@
 [![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%7C%20TypeScript%20%7C%20Bayesian-blue)](https://nextjs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+**Live Demo:** [fernandomartinezmarco.vercel.app](https://fernandomartinezmarco.vercel.app)
+
 This repository contains the source code for my professional portfolio, built with Next.js and TypeScript. The project serves as a technical showcase of high-integrity engineering systems integrated with probabilistic AI frameworks.
 
 ## Core Projects
