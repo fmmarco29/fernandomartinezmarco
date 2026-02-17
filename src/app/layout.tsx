@@ -1,10 +1,10 @@
 import './globals.css'
-import './interactive-cards.css'
-import './grounding-simulator.css'
-import './bento-grid.css'
+import '../styles/interactive-cards.css'
+import '../styles/grounding-simulator.css'
+import '../styles/bento-grid.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Particles from '@/components/Particles'
+import Particles from '@/components/shared/Particles'
 
 const inter = Inter({
     subsets: ['latin'],

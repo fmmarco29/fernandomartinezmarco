@@ -1,14 +1,14 @@
 'use client'
 import dynamic from 'next/dynamic'
-import InteractiveProjectCard from './projects/InteractiveProjectCard'
+import InteractiveProjectCard from '@/components/common/InteractiveProjectCard'
 
 const BentoGridSimulator = dynamic(
-  () => import('./projects/grounding-simulator-v2/BentoGridSimulator'),
+  () => import('@/components/features/grounding/BentoGridSimulator'),
   { ssr: false }
 )
 
 const InteractiveSARDashboard = dynamic(
-  () => import('./projects/sar-simulator/InteractiveSARDashboard'),
+  () => import('@/components/features/sar/InteractiveSARDashboard'),
   { ssr: false }
 )
 
