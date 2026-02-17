@@ -1,0 +1,433 @@
+/* Bento Grid Maritime Dashboard - Industrial Slate Theme */
+
+.bento-grid-simulator {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    gap: 32px;
+    background: #0a0e14;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+    height: 100%;
+    padding: 24px;
+}
+
+.grid-column {
+    background: transparent;
+    border: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Scrollbar styling for Industrial Slate theme */
+.grid-column::-webkit-scrollbar {
+    width: 6px;
+}
+
+.grid-column::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.grid-column::-webkit-scrollbar-thumb {
+    background: rgba(100, 150, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* ========== COLUMN 1: SCENARIO CONTROLS ========== */
+
+.scenario-controls {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.control-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-label {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 6px;
+    border: none;
+    padding-bottom: 0;
+}
+
+.scenario-selector {
+    width: 100%;
+    padding: 8px 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: white;
+    font-size: 11px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: border 0.2s;
+}
+
+.scenario-selector:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.scenario-selector:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.scenario-description {
+    font-size: 10px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 6px;
+    font-weight: 300;
+}
+
+.parameter-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.parameter-slider label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.param-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.param-value {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.parameter-slider input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: rgba(100, 150, 255, 0.15);
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.parameter-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #4AA3FF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(74, 163, 255, 0.6);
+    transition: all 0.2s;
+}
+
+.parameter-slider input[type="range"]::-webkit-slider-thumb:hover {
+    background: #6BB8FF;
+    box-shadow: 0 0 12px rgba(74, 163, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.play-button {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: white;
+    font-weight: 400;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+    margin-top: auto;
+}
+
+.play-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.play-button:active {
+    transform: translateY(0);
+}
+
+/* ========== COLUMNS 2-3: BAYESIAN NETWORK DAG ========== */
+
+.network-column {
+    padding: 0;
+}
+
+.bayesian-network-dag {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dag-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 0;
+    border: none;
+}
+
+.dag-header h3 {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.legend {
+    display: flex;
+    gap: 12px;
+    font-size: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-dot.safe {
+    background: #00ff88;
+}
+
+.legend-dot.warning {
+    background: #ffa500;
+}
+
+.legend-dot.critical {
+    background: #ff4444;
+}
+
+.dag-canvas {
+    flex: 1;
+    min-height: 0;
+    background: linear-gradient(135deg, rgba(10, 18, 32, 0.3) 0%, rgba(20, 30, 50, 0.3) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(100, 150, 255, 0.1);
+}
+
+/* ========== COLUMN 4: DECISION PANEL ========== */
+
+.decision-column {
+    padding: 0;
+}
+
+.decision-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Captain's Insight */
+.captain-insight {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.captain-insight.severity-critical {
+    border-color: rgba(255, 68, 68, 0.5);
+    background: rgba(255, 68, 68, 0.05);
+}
+
+.captain-insight.severity-warning {
+    border-color: rgba(255, 165, 0, 0.5);
+    background: rgba(255, 165, 0, 0.05);
+}
+
+.insight-header h3 {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+}
+
+.top-inference {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.insight-icon {
+    flex-shrink: 0;
+}
+
+.insight-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.4;
+}
+
+.insight-recommendation {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 165, 0, 0.15);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #ffa500;
+    line-height: 1.5;
+    border-left: 3px solid #ffa500;
+}
+
+.rec-arrow {
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Event Log Ticker */
+.event-log-ticker {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+.ticker-header h4 {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.log-count {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.log-content {
+    flex: 1;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-size: 8px;
+    line-height: 1.3;
+}
+
+.log-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.log-content::-webkit-scrollbar-thumb {
+    background: rgba(100, 150, 255, 0.3);
+    border-radius: 2px;
+}
+
+.log-empty {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+    padding: 12px 0;
+}
+
+.log-entry {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.log-prefix {
+    color: #4AA3FF;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.log-text {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* GZ Curve Chart */
+.gz-curve-chart {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 12px;
+    flex-shrink: 0;
+    height: 160px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.chart-header h4 {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.stability-indicator {
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}

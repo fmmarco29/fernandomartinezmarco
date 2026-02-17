@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Fernando Martínez - Curriculum Vitae" />
+    <meta property="og:description" content="CV online de Fernando Martínez, Master en Inteligencia Artificial." />
+    <meta property="og:image" content="https://tuweb.com/imagen-preview-cv.jpg" />
+    <meta property="og:url" content="https://tuweb.com" />
+    <meta property="og:type" content="website" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Martínez Marco - Naval Architect & Marine Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 3rem);
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 20%, #60a5fa 40%, #1d4ed8 60%, #3b82f6 80%, #0a2540 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 60s ease infinite;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><path d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,200 L0,200 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            animation: wave 20s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(0); }
+            33% { transform: translateX(-10px); }
+            66% { transform: translateX(10px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .header-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            padding: 60px 0;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 2px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            transform: translateZ(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            flex: 1;
+        }
+
+        .card-date {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .card-subtitle {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-company {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .responsibilities {
+            list-style: none;
+            padding: 0;
+        }
+
+        .responsibilities li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .responsibilities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--bg-light), #e9ecef);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-2px); }
+            100% { transform: scale(1) translateY(-2px); }
+        }
+
+        .skill-tag.pulsing {
+            animation: pulse 0.6s ease;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-level {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background-color: var(--bg-light);
+            border-top: 1px solid #e0e0e0;
+            margin-top: auto;
+            color: var(--text-dark);
+        }
+
+        .footer-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            gap: 15px;
+        }
+
+        .footer-icons img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icons a:hover img {
+            opacity: 1;
+            transform: scale(1.15);
+        }
+
+        .footer-icons img[alt="GitHub Pages"] {
+            width: 35px;
+            height: 35px;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                gap: 20px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <header class="hero">
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-image">
+                    <a href="foto.jpg" target="_blank" style="width: 100%; height: 100%; display: block; border-radius: 80%; overflow: hidden;">
+    <img src="foto.jpg" alt="Foto de perfil" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20%;" />
+                    </a>
+                </div>
+                <h1>Fernando Martínez Marco</h1>
+                <p class="subtitle">Naval Architect & Marine Engineer</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>fmmarco29@hotmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+34 661732579</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Canary Islands, Spain</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="flag"></i>
+                        <span>Spanish Nationality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#education" class="nav-item">Education</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#languages" class="nav-item">Languages</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section id="experience" class="section">
+                <h2 class="section-title">Professional Experience</h2>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Senior Surveyor</h3>
+                            <p class="card-subtitle">American Bureau of Shipping</p>
+                            <p class="card-company">ABS Europe Ltd, Madrid</p>
+                        </div>
+                        <div class="card-date">2015 - Present</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Over 10 years conducting DP FMEA inspections on DP2 and DP3 units, aligned with IMO MSC/Circ.645 and ABS standards.</li>
+			<li>Extensive certification on Gas Carriers (Phases I–III), covering containment systems, gas trials, and pressure safety operations.</li>
+			<li>Qualified in Offshore Unit Surveys, including MODUs and drillships, with emphasis on propulsion, stability, and hazard systems.</li>
+			<li>Specialized in Drilling and Production Unit Approval, including automation systems, cargo handling, and safety integrity.</li>
+			<li>Certified in Nondestructive Testing (NDT/NDI) for structural and mechanical offshore components.</li>
+			<li>Completed advanced training in Piping Installation and Survey Requirements, for marine and offshore systems.</li>
+			<li>Qualified in Cargo Systems Inspection for LNG/LPG, including gas detection, control rooms, and compressors.</li>
+			<li>ISM and ISPS Auditor Certified, ensuring regulatory compliance for international safety and security management.</li>
+			<li>Proficient in Hazardous Area Equipment Verification, aligned with IEC and ABS protocols for offshore operations.</li>
+			<li>Strong focus on operational safety and classification compliance within oil & gas and maritime heavy-lift environments.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Stability and Tonnage Surveyor</h3>
+                            <p class="card-subtitle">Bureau Veritas Marine</p>
+                            <p class="card-company">Dutch Plan Approval Office, Rotterdam</p>
+                        </div>
+                        <div class="card-date">2013 - 2015</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Probabilistic Damage Stability calculation and approval according to SOLAS Chapter II-1</li>
+                        <li>Deterministic Damage Stability calculation and approval according to IGC code and SOLAS</li>
+                        <li>Intact Stability calculation and approval according to IS2008</li>
+                        <li>Longitudinal Strength calculation and approval</li>
+                        <li>International Tonnage Certificate and calculation</li>
+                        <li>Hydrostar calculations, RAO's and hydrodynamics wave loads</li>
+                        <li>Starspec calculations and short term response analysis</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Naval Architect and Marine Engineer</h3>
+                            <p class="card-subtitle">Technical Office</p>
+                        </div>
+                        <div class="card-date">2005 - 2013</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Executed 49 technical projects certified by Spanish Association of Naval Architects (COPITN)</li>
+                        <li>Performed structural calculations and scantlings</li>
+                        <li>Created general arrangement, main section and detail drawings</li>
+                        <li>Conducted inclining experiments and stability evaluations</li>
+                        <li>Prepared technical documentation for Maritime Authority</li>
+                        <li>Applied national and international rules (Bureau Veritas, GL, DNV, ISO)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Deputy Manager</h3>
+                            <p class="card-subtitle">Production Plant Manager</p>
+                            <p class="card-company">Grupo Santana Cazorla</p>
+                        </div>
+                        <div class="card-date">2007 - 2011</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Managed machinery needs and workshop operations</li>
+                        <li>Conducted economic studies and technical documentation</li>
+                        <li>Led large teams in mechanical engineering projects</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Project Manager</h3>
+                            <p class="card-subtitle">Shipyard Operations</p>
+                            <p class="card-company">ASTICAN (Astilleros Canarios)</p>
+                        </div>
+                        <div class="card-date">2007</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Managed vessel repair projects</li>
+                        <li>Ensured compliance with safety standards</li>
+                        <li>Maintained budget and timing requirements</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Project Manager</h3>
+                            <p class="card-subtitle">Ports Construction Projects</p>
+                            <p class="card-company">Dragados / Fomento de Construcciones y Contratas</p>
+                        </div>
+                        <div class="card-date">2001 - 2007</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Managed maritime operations and resources</li>
+                        <li>Negotiated with subcontractors</li>
+                        <li>Oversaw technical office operations</li>
+                        <li>Developed fleet maintenance programs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2 class="section-title">Education & Training</h2>
+
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Artificial Intelligence Research Master's Degree (in progress)</h3>
+                            <p class="card-subtitle">60 ECTS</p>
+                            <p class="card-company">Universidad Nacional de Educación a Distancia (UNED)</p>
+                        </div>
+                        <div class="card-date">2025 - expected 2027 (ongoing)</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Deep Learning</li>
+                        <li>Methodology of research on Intelligent Systems</li>
+                        <li>Machine Learning Methods</li>
+                        <li>Probabilistics Methods</li>
+                        <li>Semantic Web and Linked Data</li>
+			<li>Fundamentals of Linguistic Processing</li>
+                    </ul>
+                </div>
+
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Degree in Naval Architecture</h3>
+                            <p class="card-subtitle">240 ECTS</p>
+                            <p class="card-company">Universidad de Las Palmas de Gran Canaria (ULPGC)</p>
+                        </div>
+                        <div class="card-date">2013</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Ship Design and Electrical Engineering for Naval Architecture</li>
+                        <li>Hydrostatics and Hull Forms</li>
+                        <li>Finite Elements Analysis (FEA)</li>
+                        <li>Ship Structural Design and Production Technology</li>
+                        <li>Ship Dynamics</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Graduate in Coastal and Ports Engineering</h3>
+                            <p class="card-subtitle">22 ECTS</p>
+                            <p class="card-company">Universidad de Las Palmas de Gran Canaria (ULPGC)</p>
+                        </div>
+                        <div class="card-date">2009</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Intermodal Transport, Shipping, and Port Systems</li>
+                        <li>Marine Data Collection and Statistical Wave Analysis</li>
+                        <li>Coastal Project Design and Construction</li>
+                        <li>Coastal Dynamics and Water Quality Studies</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">BSc Naval Architect and Marine Engineer</h3>
+                            <p class="card-company">Universidad de Las Palmas de Gran Canaria (ULPGC)</p>
+                        </div>
+                        <div class="card-date">2005</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Stability Junior Training</h3>
+                            <p class="card-subtitle">Bureau Veritas Certification</p>
+                            <p class="card-company">Neuilly, France</p>
+                        </div>
+                        <div class="card-date">2014</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Intact, grain and deterministic damage stability programs</li>
+                        <li>Successfully passed written examination (70%+ score)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-ship"></i> Naval Architecture Software</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Veristar Stability</span>
+                            <span class="skill-tag">PIAS</span>
+                            <span class="skill-tag">Hydrostar</span>
+                            <span class="skill-tag">NAPA</span>
+                            <span class="skill-tag">Starspec</span>
+                        </div>
+                    </div>
+		
+                <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> AI & Data Science</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">pandas</span>
+                            <span class="skill-tag">scikit-learn</span>
+                            <span class="skill-tag">transformers</span>
+                            <span class="skill-tag">BERT</span>
+                            <span class="skill-tag">SentenceTransformers</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">Semantic Embeddings</span>
+                            <span class="skill-tag">Gradio</span>
+                            
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-drafting-compass"></i> Design & Engineering</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">FEMAP</span>
+                            <span class="skill-tag">Finite Elements Analysis</span>
+                            <span class="skill-tag">Structural Calculations</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Microsoft Project</span>
+                            <span class="skill-tag">Technical Documentation</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-certificate"></i> Certifications & Standards</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SOLAS</span>
+                            <span class="skill-tag">IGC Code</span>
+                            <span class="skill-tag">Bureau Veritas</span>
+                            <span class="skill-tag">DNV</span>
+                            <span class="skill-tag">ISO Standards</span>
+                            <span class="skill-tag">MCA MGN280(M)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-users"></i> Management Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Team Leadership</span>
+                            <span class="skill-tag">Budget Management</span>
+                            <span class="skill-tag">Quality Control</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="languages" class="section">
+                <h2 class="section-title">Languages</h2>
+                
+                <div class="card">
+                    <div class="language-item">
+                        <span><strong>Spanish</strong></span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-item">
+                        <span><strong>English</strong></span>
+                        <span class="language-level">B2 - Upper Intermediate</span>
+                    </div>
+                    <div class="language-item">
+                        <span><strong>Dutch</strong></span>
+                        <span class="language-level">A2 - Elementary</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-icons">
+            <a href="https://www.linkedin.com/in/fernando-mart%C3%ADnez-marco-a8127328/" target="_blank" aria-label="LinkedIn Profile">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/fmmarco29" target="_blank" aria-label="GitHub Profile">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
+            </a>
+            <a href="https://fmmarco29.github.io/UNED_AI_Lab2/" target="_blank" aria-label="GitHub Pages for AI Projects">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/githubpages.svg" alt="GitHub Pages">
+            </a>
+            <a href="https://huggingface.co/fmcsihe2929" target="_blank" aria-label="Hugging Face Profile">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="Hugging Face">
+            </a>
+            <a href="mailto:fmmarco29@outlook.com" target="_blank" aria-label="Send an email via Outlook">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftoutlook.svg" alt="Outlook">
+            </a>
+        </div>
+       
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset considering the sticky nav height
+                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                         top: targetPosition,
+                         behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Progress bar
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after animation
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        };
+        const sectionObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Active navigation highlighting
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-item');
+            const navHeight = document.querySelector('.nav').offsetHeight;
+            
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 20; // Adjusted offset
+                if (window.pageYOffset >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${currentSectionId}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            updateActiveNav();
+        });
+        // Call on load as well
+        window.addEventListener('load', () => {
+            updateProgressBar();
+            updateActiveNav();
+             // Trigger animations for sections already in view on load
+            document.querySelectorAll('.section').forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+
+
+        // Skill tag interactions - applying CSS class for animation
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.add('pulsing');
+                // Remove the class after the animation completes
+                tag.addEventListener('animationend', () => {
+                    tag.classList.remove('pulsing');
+                }, { once: true });
+            });
+        });
+
+    </script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

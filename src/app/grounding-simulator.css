@@ -1,0 +1,250 @@
+/* Grounding Simulator Styles */
+
+* {
+    box-sizing: border-box;
+}
+
+.grounding-simulator {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* Header */
+.simulator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 124, 240, 0.2);
+    flex-shrink: 0;
+}
+
+.scenario-info h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.scenario-info p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+.simulator-controls {
+    display: flex;
+    gap: 12px;
+}
+
+/* Main Content - 3 Column Layout */
+.simulator-content {
+    display: grid;
+    grid-template-columns: 300px 1fr 320px;
+    grid-template-rows: 1fr;
+    gap: 24px;
+    flex: 1;
+    min-height: 0;
+    /* Important for grid items in flex container */
+    overflow: hidden;
+}
+
+.simulator-column {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(0, 124, 240, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Sensor Ticker Column */
+.sensor-ticker {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ticker-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 124, 240, 0.2);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 4px 0;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: #4AA3FF;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4AA3FF;
+}
+
+.ticker-content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 4px;
+}
+
+/* Milestone styles */
+.milestone-item {
+    background: rgba(0, 124, 240, 0.1);
+    border: 1px solid rgba(0, 124, 240, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.milestone-item.critical {
+    border-color: rgba(255, 0, 0, 0.4);
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.milestone-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.milestone-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #4AA3FF;
+    text-transform: uppercase;
+}
+
+.milestone-time {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.milestone-desc {
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+/* Network Column */
+.network-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.network-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 124, 240, 0.2);
+}
+
+.bayesian-network-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+}
+
+.bayesian-network-graph {
+    flex: 3;
+    position: relative;
+    min-height: 200px;
+}
+
+.network-explanation {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 124, 240, 0.1);
+    overflow-y: auto;
+}
+
+.explanation-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4AA3FF;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Captain Panel */
+.insights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .simulator-content {
+        grid-template-columns: 260px 1fr 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .simulator-content {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        overflow: auto;
+    }
+
+    .network-column {
+        grid-column: span 2;
+        order: -1;
+        height: 600px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

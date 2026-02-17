@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Martínez Marco | CV Professional Executive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #0f2444;
+            --accent: #007CF0;
+            --text: #1d1d1f;
+            --text-muted: #6e6e73;
+            --bg: #ffffff;
+            --sidebar-bg: #f5f5f7;
+            --border: #d2d2d7;
+            --gradient: linear-gradient(135deg, #007CF0 0%, #00DFD8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Particles Layer */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .cv-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* --- Sidebar --- */
+        aside {
+            background: var(--sidebar-bg);
+            padding: 50px 35px;
+            border-right: 1px solid var(--border);
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: block;
+            object-fit: cover;
+            border: 4px solid var(--bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .name-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .name-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .name-header p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+
+        .sidebar-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            width: 16px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            color: var(--primary);
+        }
+
+        /* --- Main Content --- */
+        main {
+            padding: 60px 50px;
+            background: #fff;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-header .line {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .exp-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .exp-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .exp-company {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .exp-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #f5f5f7;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .exp-content {
+            list-style: none;
+        }
+
+        .exp-content li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .exp-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Navigation Floating Link */
+        .floating-nav {
+            position: fixed;
+            right: 30px;
+            top: 30px;
+            z-index: 1000;
+        }
+
+        .btn-top {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-top:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Printing */
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                grid-template-columns: 280px 1fr;
+                border: none;
+            }
+
+            #particles-canvas,
+            .floating-nav {
+                display: none;
+            }
+
+            aside {
+                background: #f5f5f7 !important;
+                print-color-adjust: exact;
+            }
+
+            .tag {
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="floating-nav">
+        <a href="/" class="btn-top"><i data-lucide="arrow-left"></i> Portfolio</a>
+    </div>
+
+    <div class="cv-container">
+        <!-- Sidebar -->
+        <aside>
+            <img src="foto.jpg" alt="Fernando Martínez Marco" class="profile-photo">
+
+            <div class="name-header">
+                <h1>Fernando Martínez</h1>
+                <p>Naval Architect & AI Research</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <ul class="contact-list">
+                    <li class="contact-item"><i data-lucide="mail"></i> fmmarco29@hotmail.com</li>
+                    <li class="contact-item"><i data-lucide="phone"></i> +34 661732579</li>
+                    <li class="contact-item"><i data-lucide="map-pin"></i> Canary Islands, Spain</li>
+                    <li class="contact-item"><i data-lucide="flag"></i> Spanish Nationality</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Education</h3>
+                <div style="margin-bottom:20px">
+                    <p style="font-size:0.85rem; font-weight:700">AI Research Master's</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted)">UNED (Ongoing 2025-27)</p>
+                </div>
+                <div style="margin-bottom:20px">
+                    <p style="font-size:0.85rem; font-weight:700">Naval Architecture Degree</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted)">ULPGC (2013)</p>
+                </div>
+                <div style="margin-bottom:20px">
+                    <p style="font-size:0.85rem; font-weight:700">Coastal & Ports Engineering</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted)">ULPGC (2009)</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Languages</h3>
+                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:8px">
+                    <span>Spanish</span><span style="font-weight:700">Native</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:8px">
+                    <span>English</span><span style="font-weight:700">B2 / Upper Int.</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:8px">
+                    <span>Dutch</span><span style="font-weight:700">A2 / Elementary</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Digital</h3>
+                <ul class="contact-list">
+                    <li class="contact-item"><i data-lucide="linkedin"></i> <a
+                            href="https://www.linkedin.com/in/fernando-mart%C3%ADnez-marco-a8127328/"
+                            style="color:inherit;text-decoration:none">LinkedIn</a></li>
+                    <li class="contact-item"><i data-lucide="github"></i> <a href="https://github.com/fmmarco29"
+                            style="color:inherit;text-decoration:none">GitHub</a></li>
+                    <li class="contact-item"><i data-lucide="external-link"></i> <a
+                            href="https://huggingface.co/fmcsihe2929" style="color:inherit;text-decoration:none">Hugging
+                            Face</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <section class="section">
+                <div class="section-header">
+                    <h2>Professional Experience</h2>
+                    <div class="line"></div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Senior Surveyor</h3>
+                            <p class="exp-company">American Bureau of Shipping (ABS)</p>
+                            <p class="exp-meta">ABS Europe Ltd, Madrid</p>
+                        </div>
+                        <span class="exp-date">2015 — Present</span>
+                    </div>
+                    <ul class="exp-content">
+                        <li>Over 10 years conducting DP FMEA inspections on DP2 and DP3 units (IMO MSC/645 and ABS
+                            standards).</li>
+                        <li>Extensive certification on Gas Carriers (Phases I–III): containment systems, gas trials,
+                            pressure safety.</li>
+                        <li>Qualified in Offshore Unit Surveys (MODUs, drillships), focusing on propulsion, stability,
+                            and hazard systems.</li>
+                        <li>Specialized in Drilling and Production Unit Approval: automation, cargo handling, and safety
+                            integrity.</li>
+                        <li>Certified in NDT/NDI for structural and mechanical offshore components.</li>
+                        <li>Advanced training in Piping Installation and Survey for marine and offshore systems.</li>
+                        <li>Cargo Systems Inspection for LNG/LPG: gas detection, control rooms, and compressors.</li>
+                        <li>ISM and ISPS Auditor Certified: international safety and security management compliance.
+                        </li>
+                        <li>Proficient in Hazardous Area Equipment Verification (IEC and ABS protocols).</li>
+                        <li>Focus on operational safety and classification compliance in maritime heavy-lift
+                            environments.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Stability and Tonnage Surveyor</h3>
+                            <p class="exp-company">Bureau Veritas Marine</p>
+                            <p class="exp-meta">Dutch Plan Approval Office, Rotterdam</p>
+                        </div>
+                        <span class="exp-date">2013 — 2015</span>
+                    </div>
+                    <ul class="exp-content">
+                        <li>Probabilistic Damage Stability calculation and approval (SOLAS Chapter II-1).</li>
+                        <li>Deterministic Damage Stability calculation (IGC code and SOLAS).</li>
+                        <li>Intact Stability calculation and approval (IS2008).</li>
+                        <li>Longitudinal Strength calculation and approval.</li>
+                        <li>International Tonnage Certificate and calculation.</li>
+                        <li>Hydrostar calculations, RAO's and hydrodynamics wave loads.</li>
+                        <li>Starspec calculations and short term response analysis.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Naval Architect and Marine Engineer</h3>
+                            <p class="exp-company">Independent Technical Office</p>
+                        </div>
+                        <span class="exp-date">2005 — 2013</span>
+                    </div>
+                    <ul class="exp-content">
+                        <li>Executed 49 technical projects certified by COPITN (Spanish Naval Architects Association).
+                        </li>
+                        <li>Structural calculations and scantlings; created general arrangements and detail drawings.
+                        </li>
+                        <li>Conducted inclining experiments and stability evaluations across diverse vessel types.</li>
+                        <li>Prepared regulatory documentation for Maritime Authority; applied BV, GL, DNV, and ISO
+                            rules.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Engineering Leadership Roles</h3>
+                            <p class="exp-company">Santana Cazorla | ASTICAN | Dragados / FCC</p>
+                        </div>
+                        <span class="exp-date">2001 — 2011</span>
+                    </div>
+                    <ul class="exp-content">
+                        <li>Production Plant Manager: Managed machinery, workshop operations, and large mechanical
+                            teams.</li>
+                        <li>Project Manager (Shipyard): Led vessel repair projects ensuring safety standards and budget
+                            compliance.</li>
+                        <li>Project Manager (Ports): Managed maritime operations, fleet maintenance, and subcontractor
+                            negotiations.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Technical Skills & Expertise</h2>
+                    <div class="line"></div>
+                </div>
+
+                <h4
+                    style="font-size:0.9rem; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.05em">
+                    AI & Software Engineering</h4>
+                <div class="tag-cloud" style="margin-bottom:25px">
+                    <span class="tag">Python</span><span class="tag">LLMs (BERT, GPT)</span><span
+                        class="tag">Transformers</span><span class="tag">NLP</span>
+                    <span class="tag">RAG Architecture</span><span class="tag">LangChain</span><span
+                        class="tag">Gradio</span><span class="tag">Pandas</span>
+                    <span class="tag">Scikit-learn</span><span class="tag">SentenceTransformers</span><span
+                        class="tag">Semantic Embeddings</span>
+                </div>
+
+                <h4
+                    style="font-size:0.9rem; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.05em">
+                    Naval Architecture & Engineering</h4>
+                <div class="tag-cloud">
+                    <span class="tag">Veristar Stability</span><span class="tag">PIAS</span><span
+                        class="tag">Hydrostar</span><span class="tag">NAPA</span>
+                    <span class="tag">Starspec</span><span class="tag">AutoCAD</span><span class="tag">FEMAP /
+                        FEA</span><span class="tag">Structural Scantlings</span>
+                    <span class="tag">SOLAS</span><span class="tag">IGC Code</span><span class="tag">ISM/ISPS
+                        Auditor</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // --- Subtle Floating Particles (SOTA) ---
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.velX = (Math.random() - 0.5) * 0.2;
+                this.velY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random() * 0.4;
+            }
+            update() {
+                this.x += this.velX;
+                this.y += this.velY;
+                if (this.x < 0 || this.x > canvas.width) this.velX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.velY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(0, 124, 240, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+
+</html>
