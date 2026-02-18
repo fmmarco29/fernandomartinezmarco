@@ -11,7 +11,7 @@ const Footer = () => {
         <a href="https://github.com/fmmarco29" className="footer-social-link" target="_blank" rel="noopener noreferrer" title="GitHub">
           <Github size={24} />
         </a>
-        <a href="https://fmmarco29.github.io/AI/" className="footer-social-link" target="_blank" rel="noopener noreferrer" title="AI Project Lab">
+        <a href="https://fmmarco29.github.io/#blog" className="footer-social-link" target="_blank" rel="noopener noreferrer" title="AI Project Lab">
           <Globe size={24} />
         </a>
         <a href="https://huggingface.co/fmcsihe2929" className="footer-social-link" target="_blank" rel="noopener noreferrer" title="Hugging Face">
