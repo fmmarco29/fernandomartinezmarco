@@ -8,7 +8,7 @@ const expertiseData = [
     },
     {
         title: "Naval Architecture",
-        skills: ["DP FMEA", "Gas Carriers", "SOLAS / IMO Rules", "Stability (ABS & BV)", "Maritime Operations", "Project Management"]
+        skills: ["DP FMEA", "Gas Carriers", "SOLAS / IMO Rules", "Stability", "Maritime Operations", "Project Management"]
     }
 ]
 
