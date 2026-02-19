@@ -59,17 +59,7 @@ const InteractiveProjectCard = ({
                         ))}
                     </div>
 
-                    {link && (
-                        <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="card-link"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            Ver código <ExternalLink size={16} />
-                        </a>
-                    )}
+
                 </div>
             </motion.div>
 
