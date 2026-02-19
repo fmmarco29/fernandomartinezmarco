@@ -12,7 +12,25 @@ const InteractiveSARDashboard = dynamic(
   { ssr: false }
 )
 
+const LNGEmissionsArticle = dynamic(
+  () => import('@/components/features/articles/LNGEmissionsArticle'),
+  { ssr: false }
+)
+
 const projects = [
+  {
+    title: "Emissions Reduction in LNG Shipping",
+    description: "Technical analysis of how predictive machine learning models for cargo tank pressure can reduce GHG emissions by up to 86% during rough sea voyages. This study demonstrates the power of data-driven 'proactive' strategies over traditional reactive operations.",
+    stack: ["Machine Learning", "Predictive Modeling", "Naval Architecture", "GHG Mitigation"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/lng_emissions_preview.png" alt="LNG Emissions Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <LNGEmissionsArticle />
+  },
   {
     title: "Ship Grounding Risk Assessment",
     description: "Advanced Quantitative Risk Assessment (QRA) platform leveraging Dynamic Bayesian Networks (DBNs) and Noisy-OR causal logic (Pearl 1988). The engine employs Kahn's topological sorting and BFS-based belief propagation to model the complex multi-physics interactions between structural breach, sequential compartment flooding, and non-linear stability (GZ) degradation under stochastic operational conditions.",
