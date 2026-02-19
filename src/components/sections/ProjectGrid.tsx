@@ -22,6 +22,11 @@ const ShipRegsArticle = dynamic(
   { ssr: false }
 )
 
+const ExplorationArticle = dynamic(
+  () => import('@/components/features/articles/ExplorationArticle'),
+  { ssr: false }
+)
+
 const projects = [
   {
     title: "AI Semantic Search for Maritime Regulations",
@@ -77,17 +82,23 @@ const projects = [
   },
   {
     title: "AI Research Lab",
-    description: "Experimental hub for interactive AI research, showcasing deep learning architectures and autonomous systems with live demonstrations.",
+    description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
     stack: ["Next.js", "React", "Deep Learning", "Research"],
     link: "https://fmmarco29.github.io/AI/",
-    status: "offline" as const
+    status: "offline" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/rl.png" alt="AI Research Lab Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <ExplorationArticle />
   }
 ]
 
 const ProjectGrid = () => {
   return (
     <section id="projects" className="section">
-      <h2 className="section-title">Portfolio</h2>
+      <h2 className="section-title">Insights</h2>
       <div className="project-grid">
         {projects.map((project, i) => (
           <InteractiveProjectCard
