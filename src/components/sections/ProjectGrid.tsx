@@ -17,7 +17,25 @@ const LNGEmissionsArticle = dynamic(
   { ssr: false }
 )
 
+const ShipRegsArticle = dynamic(
+  () => import('@/components/features/articles/ShipRegsArticle'),
+  { ssr: false }
+)
+
 const projects = [
+  {
+    title: "AI Semantic Search for Maritime Regulations",
+    description: "Development of a RAG-based Q&A system for international ship regulations. Using domain adaptation (GPL) and contrastive learning, the engine achieves 94% accuracy in retrieving complex maritime rules, equations, and tables while running entirely offline on consumer hardware.",
+    stack: ["RAG Systems", "Domain Adaptation", "LLM Quantization", "NLP", "Naval Engineering"],
+    link: "https://colab.research.google.com/github/fmmarco29/langchain-qa-rag/blob/main/demo.ipynb",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/naval_shipyard.png" alt="AI Maritime Regulations Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <ShipRegsArticle />
+  },
   {
     title: "Emissions Reduction in LNG Shipping",
     description: "Technical analysis of how predictive machine learning models for cargo tank pressure can reduce GHG emissions by up to 86% during rough sea voyages. This study demonstrates the power of data-driven 'proactive' strategies over traditional reactive operations.",
@@ -56,13 +74,6 @@ const projects = [
       </div>
     ),
     expandedContent: <InteractiveSARDashboard />
-  },
-  {
-    title: "Rules Semantic Graph-RAG agentic",
-    description: "Corporate-level Retrieval-Augmented Generation system designed for complex engineering documentation with semantic search and contextual understanding.",
-    stack: ["LangChain", "Python", "Vector Stores", "RAG Architecture", "Embeddings"],
-    link: "https://colab.research.google.com/github/fmmarco29/langchain-qa-rag/blob/main/demo.ipynb",
-    status: "offline" as const
   },
   {
     title: "AI Research Lab",
