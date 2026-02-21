@@ -17,8 +17,18 @@ const LNGEmissionsArticle = dynamic(
   { ssr: false }
 )
 
+const LNGSloshingArticle = dynamic(
+  () => import('@/components/features/articles/LNGSloshingArticle'),
+  { ssr: false }
+)
+
 const ShipRegsArticle = dynamic(
   () => import('@/components/features/articles/ShipRegsArticle'),
+  { ssr: false }
+)
+
+const OffshoreSafetyArticle = dynamic(
+  () => import('@/components/features/articles/OffshoreSafetyArticle'),
   { ssr: false }
 )
 
@@ -28,6 +38,32 @@ const ExplorationArticle = dynamic(
 )
 
 const projects = [
+  {
+    title: "Emissions Reduction in LNG Shipping",
+    description: "Technical analysis of how predictive machine learning models for cargo tank pressure can reduce GHG emissions by up to 86% during rough sea voyages. This study demonstrates the power of data-driven 'proactive' strategies over traditional reactive operations.",
+    stack: ["Machine Learning", "Predictive Modeling", "Naval Architecture", "GHG Mitigation"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/lng_emissions_preview.png" alt="LNG Emissions Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <LNGEmissionsArticle />
+  },
+  {
+    title: "Taming Sloshing with Neural Networks",
+    description: "An analysis of how deep Artificial Neural Networks (ANNs) and immense experimental databases can predict extreme sloshing loads in LNG carriers, revolutionizing preliminary ship design and replacing costly physical model tests.",
+    stack: ["Neural Networks", "Data Mining", "Naval Architecture", "LNG Carriers"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/slosh.png" alt="LNG Sloshing Neural Network Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <LNGSloshingArticle />
+  },
   {
     title: "AI Semantic Search for Maritime Regulations",
     description: "Development of a RAG-based Q&A system for international ship regulations. Using domain adaptation (GPL) and contrastive learning, the engine achieves 94% accuracy in retrieving complex maritime rules, equations, and tables while running entirely offline on consumer hardware.",
@@ -42,17 +78,17 @@ const projects = [
     expandedContent: <ShipRegsArticle />
   },
   {
-    title: "Emissions Reduction in LNG Shipping",
-    description: "Technical analysis of how predictive machine learning models for cargo tank pressure can reduce GHG emissions by up to 86% during rough sea voyages. This study demonstrates the power of data-driven 'proactive' strategies over traditional reactive operations.",
-    stack: ["Machine Learning", "Predictive Modeling", "Naval Architecture", "GHG Mitigation"],
+    title: "Dynamic Risk Assessment in Offshore Platforms",
+    description: "Technical study on DQRA using the DEMATEL-BN method to evaluate accidents induced by leakage. The framework transitions from static failure probabilities to dynamic updates, uncovering hidden organizational interdependencies and modeling safety barrier dependencies with high precision.",
+    stack: ["Dynamic QRA", "Bayesian Networks", "DEMATEL", "Offshore Safety", "System Dynamics"],
     link: "#",
     status: "online" as const,
     preview: (
       <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
-        <img src="/lng_emissions_preview.png" alt="LNG Emissions Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src="/bayes.png" alt="Dynamic Risk Assessment Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
     ),
-    expandedContent: <LNGEmissionsArticle />
+    expandedContent: <OffshoreSafetyArticle />
   },
   {
     title: "Ship Grounding Risk Assessment",

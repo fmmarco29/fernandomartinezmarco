@@ -74,7 +74,7 @@ const ShipRegsArticle = () => {
             <div className="article-highlight-box" style={{ textAlign: 'left', padding: '30px', background: 'rgba(255,255,255,0.03)', marginTop: '40px' }}>
                 <p className="label" style={{ fontSize: '12px', marginBottom: '10px' }}>Official Reference</p>
                 <p style={{ fontSize: '13px', textAlign: 'left', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
-                    Han, I.-S., Roh, M.-I., & Kong, M.-C. (2026). A RAG-based Q&A system for ship regulations applying domain adaptation. <em>International Journal of Naval Architecture and Ocean Engineering</em>, 18, 100735.
+                    Han, I.-S., Roh, M.-I., & Kong, M.-C. (2025). A RAG-based Q&A system for ship regulations applying domain adaptation. <em>International Journal of Naval Architecture and Ocean Engineering</em>, 18, 100735.
                 </p>
             </div>
 
