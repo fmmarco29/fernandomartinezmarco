@@ -2,6 +2,7 @@
 
 import React from 'react'
 import '@/styles/article.css'
+import HybridArchitectureVisual from '@/components/shared/HybridArchitectureVisual'
 
 const RiserFatigueArticle = () => {
     return (
@@ -41,7 +42,7 @@ const RiserFatigueArticle = () => {
                     </p>
                 </div>
             </div>
-
+            <HybridArchitectureVisual />
             <h2 className="article-subtitle">Proven Accuracy & Robustness</h2>
             <p className="article-text-content">
                 The model was rigorously validated against a "Full Field Model" simulating conditions in the Guyana Sea and extreme storms in the Gulf of Mexico.
