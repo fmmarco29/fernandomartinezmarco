@@ -23,9 +23,12 @@ const Footer = () => {
       </div>
       <div className="glossary-container">
         {[
+          { term: 'Neural Networks', def: 'Computing systems inspired by the biological neural networks that constitute animal brains.' },
+          { term: 'Deep Learning', def: 'A subset of machine learning based on artificial neural networks with multiple layers.' },
           { term: 'Bayesian Networks', def: 'Probabilistic models that represent variables and dependencies via a Directed Acyclic Graph (DAG).' },
           { term: 'Transformers', def: 'Deep learning architectures based on self-attention mechanisms for processing sequential data.' },
           { term: 'Digital Twins', def: 'Virtual replicas of physical systems, synchronized via real-time data for simulation and analysis.' },
+          { term: 'Ship Stability', def: "A vessel's ability to return to an upright position after being inclined by external forces like wind or waves." },
           { term: 'Structural Fatigue', def: 'Progressive structural damage occurring when a material is subjected to cyclic loading.' },
           { term: 'Naval Architecture', def: 'Engineering discipline dealing with the design, construction and operation of marine vessels.' }
         ].map((item, i) => (
