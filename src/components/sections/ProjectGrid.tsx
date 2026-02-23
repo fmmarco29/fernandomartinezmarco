@@ -37,6 +37,11 @@ const ExplorationArticle = dynamic(
   { ssr: false }
 )
 
+const RiserFatigueArticle = dynamic(
+  () => import('@/components/features/articles/RiserFatigueArticle'),
+  { ssr: false }
+)
+
 const projects = [
   {
     title: "Emissions Reduction in LNG Shipping",
@@ -89,6 +94,19 @@ const projects = [
       </div>
     ),
     expandedContent: <OffshoreSafetyArticle />
+  },
+  {
+    title: "Digital Twin for Riser Fatigue Monitoring",
+    description: "Novel Digital Twin methodology using minimal sensors and machine learning to estimate fatigue damage in deep-water risers. Validated against extreme conditions in the Guyana Sea and Gulf of Mexico, achieving high-fidelity results (5-10% error) while significantly reducing subsea instrumentation costs.",
+    stack: ["Digital Twin", "Machine Learning", "Fatigue Analysis", "Offshore Engineering", "Sensor Fusion"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/riser.png" alt="Riser Fatigue Monitoring Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <RiserFatigueArticle />
   },
   {
     title: "Ship Grounding Risk Assessment",
