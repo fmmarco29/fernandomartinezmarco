@@ -21,8 +21,22 @@ const Footer = () => {
           <Mail size={24} />
         </a>
       </div>
+      <div className="glossary-container">
+        {[
+          { term: 'Bayesian Networks', def: 'Probabilistic models that represent variables and dependencies via a Directed Acyclic Graph (DAG).' },
+          { term: 'Transformers', def: 'Deep learning architectures based on self-attention mechanisms for processing sequential data.' },
+          { term: 'Digital Twins', def: 'Virtual replicas of physical systems, synchronized via real-time data for simulation and analysis.' },
+          { term: 'Structural Fatigue', def: 'Progressive structural damage occurring when a material is subjected to cyclic loading.' },
+          { term: 'Naval Architecture', def: 'Engineering discipline dealing with the design, construction and operation of marine vessels.' }
+        ].map((item, i) => (
+          <div key={i} className="glossary-item">
+            {item.term}
+            <div className="glossary-tooltip">{item.def}</div>
+          </div>
+        ))}
+      </div>
       <p className="footer-text">
-        © 2026 Fernando Martínez Marco <br /> Engineering & Artifical Intelligence
+        © 2026 Fernando Martínez Marco <br /> Engineering & Artificial Intelligence
       </p>
     </footer>
   )

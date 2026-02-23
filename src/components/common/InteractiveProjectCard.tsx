@@ -24,11 +24,16 @@ const InteractiveProjectCard = ({
 }: ProjectCardProps) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
+    const handleExpand = (expanded: boolean) => {
+        setIsExpanded(expanded)
+        window.dispatchEvent(new CustomEvent('app-focus', { detail: { focused: expanded } }))
+    }
+
     return (
         <>
             <motion.div
                 layout
-                onClick={() => setIsExpanded(true)}
+                onClick={() => handleExpand(true)}
                 className="interactive-project-card"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
@@ -71,7 +76,7 @@ const InteractiveProjectCard = ({
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="project-modal-overlay"
-                        onClick={() => setIsExpanded(false)}
+                        onClick={() => handleExpand(false)}
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
@@ -83,7 +88,7 @@ const InteractiveProjectCard = ({
                         >
                             <button
                                 className="modal-close"
-                                onClick={() => setIsExpanded(false)}
+                                onClick={() => handleExpand(false)}
                             >
                                 <X size={24} />
                             </button>
