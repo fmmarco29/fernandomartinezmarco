@@ -38,27 +38,33 @@ const Particles = () => {
             y: number = 0
             anchorX: number
             anchorY: number
+            offsetX: number
+            offsetY: number
             size: number
             phase: number
             range: number
             op: number
             type: string
+            clusterId: number
             labelAlpha: number = 0
             dispX: number = 0
             dispY: number = 0
 
-            constructor(ax: number, ay: number) {
+            constructor(ax: number, ay: number, cid: number, ox: number, oy: number, tIdx: number) {
                 this.anchorX = ax
                 this.anchorY = ay
-                this.size = Math.random() * 1.5 + 0.5
+                this.clusterId = cid
+                this.offsetX = ox
+                this.offsetY = oy
+                this.size = 1.2
                 this.phase = Math.random() * Math.PI * 2
-                this.range = Math.random() * 20 + 20
-                this.op = Math.random() * 0.25 + 0.1
-                this.type = types[Math.floor(Math.random() * types.length)]
+                this.range = 10 + Math.random() * 10
+                this.op = Math.random() * 0.2 + 0.2
+                this.type = types[tIdx]
             }
 
             update() {
-                const time = (Date.now() - startTime) * 0.0006
+                const time = (Date.now() - startTime) * 0.0004
                 const driftX = Math.sin(time + this.phase) * this.range
                 const driftY = Math.cos(time * 0.7 + this.phase) * this.range
 
@@ -70,14 +76,14 @@ const Particles = () => {
                 const targetDispX = (dx / dist) * pull
                 const targetDispY = (dy / dist) * pull
 
-                // Smoothly interpolate displacement
+                // Smooth mouse interpolation (Inertia)
                 this.dispX += (targetDispX - this.dispX) * 0.05
                 this.dispY += (targetDispY - this.dispY) * 0.05
 
-                this.x = this.anchorX + this.dispX + driftX
-                this.y = this.anchorY + this.dispY + driftY
+                this.x = this.anchorX + this.dispX + driftX + this.offsetX
+                this.y = this.anchorY + this.dispY + driftY + this.offsetY
 
-                if (isFocused) {
+                if (isFocused && canvas) {
                     const centerX = canvas.width / 2
                     const centerY = canvas.height / 2
                     const offX = this.x - centerX
@@ -89,7 +95,7 @@ const Particles = () => {
                     }
                 }
 
-                this.labelAlpha = 0.15 + Math.abs(Math.sin(time * 1.2 * this.op)) * 0.25
+                this.labelAlpha = 0.25 + Math.abs(Math.sin(time * 1.5)) * 0.3
             }
 
             draw() {
@@ -124,16 +130,16 @@ const Particles = () => {
                 this.anchorX = ax
                 this.anchorY = ay
                 this.phase = Math.random() * Math.PI * 2
-                this.range = Math.random() * 15 + 15
+                this.range = 15 + Math.random() * 15
                 this.type = Math.random() > 0.5 ? 'transformer' : 'standard'
                 this.layers = this.type === 'transformer' ? [4, 6, 6, 4] : [3, 5, 3]
-                this.opacity = Math.random() * 0.1 + 0.05
+                this.opacity = Math.random() * 0.1 + 0.08
                 this.scale = Math.random() * 8 + 10
                 this.prob = 0.95 + Math.random() * 0.045
             }
 
             update() {
-                const time = (Date.now() - startTime) * 0.0004
+                const time = (Date.now() - startTime) * 0.0003
                 const driftX = Math.sin(time * 0.8 + this.phase) * this.range
                 const driftY = Math.cos(time + this.phase) * this.range
 
@@ -145,14 +151,13 @@ const Particles = () => {
                 const targetDispX = (dx / dist) * pull
                 const targetDispY = (dy / dist) * pull
 
-                // Smoothly interpolate displacement
                 this.dispX += (targetDispX - this.dispX) * 0.05
                 this.dispY += (targetDispY - this.dispY) * 0.05
 
                 this.x = this.anchorX + this.dispX + driftX
                 this.y = this.anchorY + this.dispY + driftY
 
-                if (isFocused) {
+                if (isFocused && canvas) {
                     const centerX = canvas.width / 2
                     const centerY = canvas.height / 2
                     const offX = this.x - centerX
@@ -170,19 +175,14 @@ const Particles = () => {
             draw() {
                 if (!ctx) return
                 const breathing = Math.abs(Math.sin(Date.now() * 0.0004)) * 0.08
-                const mDx = mouse.x - this.x
-                const mDy = mouse.y - this.y
-                const mDist = Math.sqrt(mDx * mDx + mDy * mDy)
-                const proximityEffect = mDist < 200 ? (1 - mDist / 200) * 0.3 : 0
-                const typeMultiplier = this.type === 'transformer' ? 1.4 : 1.0
-                let currentOpacity = (this.opacity + breathing + proximityEffect) * typeMultiplier
+                const proximityEffect = (Math.sqrt((mouse.x - this.x) ** 2 + (mouse.y - this.y) ** 2) < 200) ? 0.2 : 0
+                let currentOpacity = (this.opacity + breathing + proximityEffect)
                 const netColor = isFocused ? '0, 255, 136' : '0, 113, 227'
 
-                // Skip Connections
                 if (this.type === 'transformer') {
                     ctx.setLineDash([3, 5])
                     ctx.strokeStyle = `rgba(${netColor}, ${currentOpacity * 0.4})`
-                    ctx.lineWidth = 0.6 + proximityEffect
+                    ctx.lineWidth = 0.6
                     ctx.beginPath()
                     ctx.moveTo(this.x, this.y)
                     ctx.bezierCurveTo(this.x + this.scale * 2, this.y - this.scale * 4, this.x + this.scale * 4, this.y - this.scale * 4, this.x + this.scale * 4, this.y)
@@ -190,7 +190,6 @@ const Particles = () => {
                     ctx.setLineDash([])
                 }
 
-                // Connections
                 for (let l = 0; l < this.layers.length - 1; l++) {
                     const lc = this.layers[l]
                     const nlc = this.layers[l + 1]
@@ -198,7 +197,7 @@ const Particles = () => {
                         for (let n2 = 0; n2 < nlc; n2++) {
                             if ((n1 + n2) % 2 === 0 || this.type === 'standard') {
                                 ctx.strokeStyle = `rgba(${netColor}, ${currentOpacity * 0.35})`
-                                ctx.lineWidth = 0.5 + proximityEffect
+                                ctx.lineWidth = 0.5
                                 ctx.beginPath()
                                 ctx.moveTo(this.x + l * this.scale * 2.2, this.y + (n1 - lc / 2) * this.scale)
                                 ctx.lineTo(this.x + (l + 1) * this.scale * 2.2, this.y + (n2 - nlc / 2) * this.scale)
@@ -208,7 +207,6 @@ const Particles = () => {
                     }
                 }
 
-                // Nodes
                 for (let l = 0; l < this.layers.length; l++) {
                     const lc = this.layers[l]
                     for (let n = 0; n < lc; n++) {
@@ -216,7 +214,7 @@ const Particles = () => {
                         const ny = this.y + (n - lc / 2) * this.scale
                         ctx.fillStyle = `rgba(${netColor}, ${currentOpacity * 0.4})`
                         ctx.beginPath()
-                        ctx.arc(nx, ny, 3.5 + proximityEffect * 2, 0, Math.PI * 2)
+                        ctx.arc(nx, ny, 3.5, 0, Math.PI * 2)
                         ctx.fill()
                         ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.85})`
                         ctx.beginPath()
@@ -251,7 +249,9 @@ const Particles = () => {
                 [cells[i], cells[j]] = [cells[j], cells[i]];
             }
 
+            // Big Neural Nets
             for (let i = 0; i < 4; i++) {
+                if (cells.length === 0) break
                 const cell = cells.pop()!
                 neuralNets.push(new NeuralNet(
                     cell.c * cellW + cellW / 2,
@@ -259,12 +259,25 @@ const Particles = () => {
                 ))
             }
 
-            while (cells.length > 2 && particles.length < 22) {
+            // Bayesian Clusters (Spaced out for clarity)
+            let clusterId = 0
+            while (cells.length >= 1 && clusterId < 6) {
                 const cell = cells.pop()!
-                particles.push(new Particle(
-                    cell.c * cellW + cellW / 2 + (Math.random() - 0.5) * cellW * 0.4,
-                    cell.r * cellH + cellH / 2 + (Math.random() - 0.5) * cellH * 0.4
-                ))
+                const ax = cell.c * cellW + cellW / 2
+                const ay = cell.r * cellH + cellH / 2
+                const cid = clusterId++
+
+                // Diamond arrangement (Spaced out to avoid "superimposed" feeling)
+                const offsets = [
+                    { x: 0, y: -60 },   // Prior
+                    { x: -60, y: 0 },   // Evidence
+                    { x: 60, y: 0 },    // Likelihood
+                    { x: 0, y: 60 }     // Posteriori
+                ]
+
+                for (let i = 0; i < 4; i++) {
+                    particles.push(new Particle(ax, ay, cid, offsets[i].x, offsets[i].y, i))
+                }
             }
         }
 
@@ -274,21 +287,25 @@ const Particles = () => {
 
             neuralNets.forEach(net => { net.update(); net.draw() })
 
+            // Connect Bayesian nodes in a DAG pattern with clean lines (No arrows as they cluttered)
             for (let i = 0; i < particles.length; i++) {
                 const p1 = particles[i]
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j]
-                    const d2 = (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2
-                    if (d2 < 140 * 140) {
-                        const dist = Math.sqrt(d2)
-                        const opacity = (1 - dist / 140) * 0.12
-                        const color = isFocused ? '0, 255, 1 green' : '0, 113, 227'
-                        ctx.strokeStyle = `rgba(${color === '0, 255, 1 green' ? '0, 255, 136' : color}, ${opacity})`
-                        ctx.lineWidth = 0.5
-                        ctx.beginPath()
-                        ctx.moveTo(p1.x, p1.y)
-                        ctx.lineTo(p2.x, p2.y)
-                        ctx.stroke()
+                    if (p1.clusterId === p2.clusterId) {
+                        // Pattern: 0->2, 1->2, 2->3 (Prior->Like, Evidence->Like, Like->Post)
+                        const t1 = types.indexOf(p1.type)
+                        const t2 = types.indexOf(p2.type)
+                        if ((t1 === 0 && t2 === 2) || (t1 === 1 && t2 === 2) || (t1 === 2 && t2 === 3) ||
+                            (t1 === 2 && t2 === 0) || (t1 === 2 && t2 === 1) || (t1 === 3 && t2 === 2)) {
+                            const color = isFocused ? '0, 255, 136' : '0, 113, 227'
+                            ctx.strokeStyle = `rgba(${color}, 0.3)`
+                            ctx.lineWidth = 1.2
+                            ctx.beginPath()
+                            ctx.moveTo(p1.x, p1.y)
+                            ctx.lineTo(p2.x, p2.y)
+                            ctx.stroke()
+                        }
                     }
                 }
             }
@@ -311,20 +328,7 @@ const Particles = () => {
     }, [])
 
     return (
-        <canvas
-            id="particle-canvas"
-            ref={canvasRef}
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 1,
-                pointerEvents: 'none',
-                opacity: 0.6
-            }}
-        />
+        <canvas id="particle-canvas" ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none', opacity: 0.75 }} />
     )
 }
 
