@@ -113,8 +113,8 @@ const BayesianNetworkDAG = ({ nodes, edges, onSelectNode, selectedNodeId }: Baye
                 style={{ position: 'relative', zIndex: 1, marginTop: '40px' }}
             >
                 <defs>
-                    <marker id="arrowhead-tech" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto">
-                        <polygon points="0 0, 5 2, 0 4" fill="rgba(74, 163, 255, 0.7)" />
+                    <marker id="dot-tech" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <circle cx="4" cy="4" r="2.5" fill="rgba(74, 163, 255, 0.3)" />
                     </marker>
                 </defs>
 
@@ -155,9 +155,9 @@ const BayesianNetworkDAG = ({ nodes, edges, onSelectNode, selectedNodeId }: Baye
                                 key={`${edge.source}-${edge.target}`}
                                 x1={p1.x} y1={p1.y}
                                 x2={p2.x} y2={p2.y}
-                                stroke="rgba(74, 163, 255, 0.55)"
-                                strokeWidth={2}
-                                markerEnd="url(#arrowhead-tech)"
+                                stroke="rgba(74, 163, 255, 0.22)"
+                                strokeWidth={1.5}
+                                markerEnd="url(#dot-tech)"
                             />
                         )
                     })}

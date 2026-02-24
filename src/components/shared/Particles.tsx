@@ -31,7 +31,7 @@ const Particles = () => {
             init()
         }
 
-        const types = ['Prior', 'Evidence', 'Likelihood', 'Posteriori']
+        const types = ['Prior', 'Condition', 'Evidence', 'Likelihood', 'Parameters', 'Posteriori']
 
         class Particle {
             x: number = 0
@@ -267,15 +267,17 @@ const Particles = () => {
                 const ay = cell.r * cellH + cellH / 2
                 const cid = clusterId++
 
-                // Diamond arrangement (Spaced out to avoid "superimposed" feeling)
+                // Complex DAG arrangement (6 nodes)
                 const offsets = [
-                    { x: 0, y: -60 },   // Prior
-                    { x: -60, y: 0 },   // Evidence
-                    { x: 60, y: 0 },    // Likelihood
-                    { x: 0, y: 60 }     // Posteriori
+                    { x: -50, y: -50 },  // Prior
+                    { x: -80, y: -15 },  // Condition
+                    { x: -80, y: 15 },   // Evidence
+                    { x: 10, y: 0 },     // Likelihood
+                    { x: -50, y: 50 },   // Parameters
+                    { x: 70, y: 0 }      // Posteriori
                 ]
 
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 6; i++) {
                     particles.push(new Particle(ax, ay, cid, offsets[i].x, offsets[i].y, i))
                 }
             }
@@ -287,20 +289,33 @@ const Particles = () => {
 
             neuralNets.forEach(net => { net.update(); net.draw() })
 
-            // Connect Bayesian nodes in a DAG pattern with clean lines (No arrows as they cluttered)
+            // Connect Bayesian nodes in a richer DAG pattern
             for (let i = 0; i < particles.length; i++) {
                 const p1 = particles[i]
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j]
                     if (p1.clusterId === p2.clusterId) {
-                        // Pattern: 0->2, 1->2, 2->3 (Prior->Like, Evidence->Like, Like->Post)
                         const t1 = types.indexOf(p1.type)
                         const t2 = types.indexOf(p2.type)
-                        if ((t1 === 0 && t2 === 2) || (t1 === 1 && t2 === 2) || (t1 === 2 && t2 === 3) ||
-                            (t1 === 2 && t2 === 0) || (t1 === 2 && t2 === 1) || (t1 === 3 && t2 === 2)) {
+
+                        // Rich DAG Pattern: 
+                        // Inputs (0,1,2,4) -> Likelihood (3)
+                        // Likelihood (3) -> Posteriori (5)
+                        // Internal dependencies: 1->0, 4->0, 4->5
+                        const connections = [
+                            [0, 3], [1, 3], [2, 3], [4, 3], // Inputs to Likelihood
+                            [3, 5],                         // Likelihood to Posterior
+                            [1, 0], [4, 0], [4, 5]          // Extra context/parameter links
+                        ]
+
+                        const isConnected = connections.some(conn =>
+                            (conn[0] === t1 && conn[1] === t2) || (conn[0] === t2 && conn[1] === t1)
+                        )
+
+                        if (isConnected) {
                             const color = isFocused ? '0, 255, 136' : '0, 113, 227'
-                            ctx.strokeStyle = `rgba(${color}, 0.3)`
-                            ctx.lineWidth = 1.2
+                            ctx.strokeStyle = `rgba(${color}, 0.15)`
+                            ctx.lineWidth = 0.8
                             ctx.beginPath()
                             ctx.moveTo(p1.x, p1.y)
                             ctx.lineTo(p2.x, p2.y)
