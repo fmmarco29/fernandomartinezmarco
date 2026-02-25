@@ -42,7 +42,25 @@ const RiserFatigueArticle = dynamic(
   { ssr: false }
 )
 
+const LNGKnowledgeGraphArticle = dynamic(
+  () => import('@/components/features/articles/LNGKnowledgeGraphArticle'),
+  { ssr: false }
+)
+
 const projects = [
+  {
+    title: "Digital Twin for Riser Fatigue Monitoring",
+    description: "Novel Digital Twin methodology using minimal sensors and machine learning to estimate fatigue damage in deep-water risers. Validated against extreme conditions in the Guyana Sea and Gulf of Mexico, achieving high-fidelity results (5-10% error) while significantly reducing subsea instrumentation costs.",
+    stack: ["Digital Twin", "Machine Learning", "Fatigue Analysis", "Offshore Engineering", "Sensor Fusion"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/riser.png" alt="Riser Fatigue Monitoring Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <RiserFatigueArticle />
+  },
   {
     title: "Emissions Reduction in LNG Shipping",
     description: "Technical analysis of how predictive machine learning models for cargo tank pressure can reduce GHG emissions by up to 86% during rough sea voyages. This study demonstrates the power of data-driven 'proactive' strategies over traditional reactive operations.",
@@ -55,6 +73,19 @@ const projects = [
       </div>
     ),
     expandedContent: <LNGEmissionsArticle />
+  },
+  {
+    title: "Graph-Based LNG Inspection Intelligence",
+    description: "Implementation of a Knowledge Graph (KG) and PT-KGCN model for Port State Control (PSC) inspections. Using Graph Convolutional Networks and NLP (RoBERTa), the system achieves 87% accuracy in predicting ship deficiencies, transitioning inspections from static checklists to dynamic, risk-based intelligence.",
+    stack: ["Knowledge Graphs", "Graph Convolutional Networks", "RoBERTa", "Maritime Safety", "Predictive Analytics"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/lng_kg.png" alt="LNG Knowledge Graph Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <LNGKnowledgeGraphArticle />
   },
   {
     title: "Taming Sloshing with Neural Networks",
@@ -94,19 +125,6 @@ const projects = [
       </div>
     ),
     expandedContent: <OffshoreSafetyArticle />
-  },
-  {
-    title: "Digital Twin for Riser Fatigue Monitoring",
-    description: "Novel Digital Twin methodology using minimal sensors and machine learning to estimate fatigue damage in deep-water risers. Validated against extreme conditions in the Guyana Sea and Gulf of Mexico, achieving high-fidelity results (5-10% error) while significantly reducing subsea instrumentation costs.",
-    stack: ["Digital Twin", "Machine Learning", "Fatigue Analysis", "Offshore Engineering", "Sensor Fusion"],
-    link: "#",
-    status: "online" as const,
-    preview: (
-      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
-        <img src="/riser.png" alt="Riser Fatigue Monitoring Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-      </div>
-    ),
-    expandedContent: <RiserFatigueArticle />
   },
   {
     title: "Ship Grounding Risk Assessment",
