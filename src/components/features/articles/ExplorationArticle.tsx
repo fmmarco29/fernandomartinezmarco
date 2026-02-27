@@ -46,21 +46,59 @@ const subjects = [
         title: 'Foundations of NLP',
         description: 'Natural language analysis, morphology, syntax, and language models.',
         icon: MessageSquare,
-        files: []
+        files: [
+            {
+                name: 'Assignment 1',
+                path: '/master-materials/Tarea_1_NLP.pdf',
+                score: 'Pending'
+            },
+            {
+                name: 'Assignment 2',
+                path: '/master-materials/Tarea_2_NLP.pdf',
+                score: '9/10'
+            }
+        ]
     },
     {
         id: 'machine-learning',
         title: 'Machine Learning Methods',
         description: 'Supervised, unsupervised, and reinforcement learning algorithms.',
         icon: Network,
-        files: []
+        files: [
+            {
+                name: 'Regression, Bias & Variance',
+                path: '/master-materials/Regresión, Sesgo-Varianza, Selección de Modelos I_Martinez_Fernando.pdf',
+                score: 'Pending'
+            }
+        ]
     },
     {
         id: 'semantic-web',
         title: 'Semantic Web & Linked Data',
         description: 'Ontologies, knowledge graphs, RDF, and SPARQL.',
         icon: Database,
-        files: []
+        files: [
+            {
+                name: 'Knowledge Graphs (KG)',
+                path: '/master-materials/Memoria_KG_Opcional.pdf',
+                score: 'Pending'
+            },
+            {
+                name: 'OWL Ontologies',
+                path: '/master-materials/Memoria_OWL.pdf',
+                score: 'Pending'
+            },
+            {
+                name: 'Property Graphs',
+                path: '/master-materials/Memoria_Property_Graphs.pdf',
+                score: 'Pending'
+            },
+            {
+                name: 'RDF',
+                path: '/master-materials/Memoria_RDF.pdf',
+                score: 'Pending'
+            }
+        ]
     }
 ]
 
