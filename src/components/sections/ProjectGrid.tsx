@@ -49,6 +49,19 @@ const LNGKnowledgeGraphArticle = dynamic(
 
 const projects = [
   {
+    title: "AI Research Lab",
+    description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
+    stack: ["Next.js", "React", "Deep Learning", "Research"],
+    link: "https://fmmarco29.github.io/AI/",
+    status: "offline" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/rl.png" alt="AI Research Lab Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <ExplorationArticle />
+  },
+  {
     title: "Digital Twin for Riser Fatigue Monitoring",
     description: "Novel Digital Twin methodology using minimal sensors and machine learning to estimate fatigue damage in deep-water risers. Validated against extreme conditions in the Guyana Sea and Gulf of Mexico, achieving high-fidelity results (5-10% error) while significantly reducing subsea instrumentation costs.",
     stack: ["Digital Twin", "Machine Learning", "Fatigue Analysis", "Offshore Engineering", "Sensor Fusion"],
@@ -151,19 +164,6 @@ const projects = [
       </div>
     ),
     expandedContent: <InteractiveSARDashboard />
-  },
-  {
-    title: "AI Research Lab",
-    description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
-    stack: ["Next.js", "React", "Deep Learning", "Research"],
-    link: "https://fmmarco29.github.io/AI/",
-    status: "offline" as const,
-    preview: (
-      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
-        <img src="/rl.png" alt="AI Research Lab Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-      </div>
-    ),
-    expandedContent: <ExplorationArticle />
   }
 ]
 

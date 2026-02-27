@@ -1,74 +1,158 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import { Folder, FileText, CheckCircle2, ChevronRight, Binary, BrainCircuit, MessageSquare, Database, Network } from 'lucide-react'
 import '@/styles/article.css'
+
+const subjects = [
+    {
+        id: 'deep-learning',
+        title: 'Deep Learning',
+        description: 'Neural network architectures, optimization, and data representation.',
+        icon: BrainCircuit,
+        files: [
+            {
+                name: 'PEC 0: Intro to Statistical Learning & Deep Learning',
+                path: '/master-materials/20251124_PEC_0_MARTINEZ_FERNANDO.html',
+                score: '10/10'
+            },
+            {
+                name: 'PEC 0: Intro to VL & Deep Learning (EN)',
+                path: '/master-materials/20251124_PEC_0_MARTINEZ_FERNANDO_EN.html',
+                score: '10/10'
+            }
+        ]
+    },
+    {
+        id: 'probabilistic-methods',
+        title: 'Probabilistic Methods',
+        description: 'Uncertainty modeling, Bayesian Networks, and stochastic processes.',
+        icon: Binary,
+        files: [
+            {
+                name: 'PEC 1: Uncertainty & Bayesian Inference',
+                path: '/master-materials/TAREA_1_Martinez_Fernando.pdf',
+                score: 'Pending'
+            },
+            {
+                name: 'PEC 2: Bayesian Networks & Probabilistic Methods',
+                path: '/master-materials/TAREA_2_Martinez_Fernando.pdf',
+                score: 'Pending'
+            }
+        ]
+    },
+    {
+        id: 'nlp',
+        title: 'Foundations of NLP',
+        description: 'Natural language analysis, morphology, syntax, and language models.',
+        icon: MessageSquare,
+        files: []
+    },
+    {
+        id: 'machine-learning',
+        title: 'Machine Learning Methods',
+        description: 'Supervised, unsupervised, and reinforcement learning algorithms.',
+        icon: Network,
+        files: []
+    },
+    {
+        id: 'semantic-web',
+        title: 'Semantic Web & Linked Data',
+        description: 'Ontologies, knowledge graphs, RDF, and SPARQL.',
+        icon: Database,
+        files: []
+    }
+]
 
 const ExplorationArticle = () => {
     return (
         <div className="article-container">
             <header className="article-header">
                 <h1 className="article-title">
-                    The Intersection of Hull Design and Algorithms: A Technical Exploration
+                    The Research Roadmap (UNED)
                 </h1>
                 <div className="article-divider"></div>
             </header>
 
             <p className="article-lead">
-                The traditional focus of naval architecture remains centered on buoyancy, structural integrity, and physical constraints. However, there is a growing necessity to explore the digital structures offered by artificial intelligence as a complement to classical engineering principles.
+                An evolutionary journey through Artificial Intelligence research. This timeline tracks the progression of subjects and specialized findings during the University Master's program.
             </p>
 
-            <blockquote className="article-quote">
-                "This exploration is not an attempt to reinvent the industry, but rather a technical inquiry into whether data-driven solutions can optimize existing maritime processes."
-            </blockquote>
+            <div className="knowledge-map">
+                {subjects.map((subject) => (
+                    <div
+                        key={subject.id}
+                        className="timeline-item active"
+                    >
+                        <div className="timeline-dot" />
+                        <div className="timeline-content">
+                            <div className="timeline-header">
+                                <h2 className="timeline-title">{subject.title}</h2>
+                                <span className="timeline-tag">{subject.id.replace(/-/g, ' ')}</span>
+                            </div>
+                            <p className="timeline-desc">{subject.description}</p>
 
-            <p className="article-text-content">
-                This space serves as a technical laboratory rather than a commercial portfolio. It is dedicated to exploring how Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and Bayesian Networks can be integrated into the complex landscape of maritime engineering.
-            </p>
-
-            <div className="article-section-grid">
-                <div className="article-card">
-                    <h2>The Motivation</h2>
-                    <h3>Curiosity Over Commercialization</h3>
-                    <p>
-                        The maritime industry operates within high-stakes, traditional frameworks. Mountaintop-sized regulations and vast operational datasets are often handled reactively. This research investigates whether predictive algorithms can facilitate a transition toward proactive management without compromising safety-first standards.
-                    </p>
-                </div>
-                <div className="article-card">
-                    <h2>The Method</h2>
-                    <h3>Implementation-Led Research</h3>
-                    <p>
-                        The methodology is grounded in practical implementation, from decoding KR Rules via RAG to predicting LNG boil-off gas behavior. The objective is to evaluate the efficacy of AI prototypes in real-world scenarios, identifying both their potential advantages and their current limitations.
-                    </p>
-                </div>
+                            <div className="timeline-expansion" style={{ height: 'auto', opacity: 1, marginTop: '24px', paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                                <div className="timeline-file-box">
+                                    {subject.files.length > 0 ? (
+                                        subject.files.map((file, fIdx) => (
+                                            <a
+                                                key={fIdx}
+                                                href={file.path}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="timeline-file"
+                                            >
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
+                                                    <FileText size={16} color="#0071e3" />
+                                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', flex: 1 }}>
+                                                        <span style={{ fontWeight: 600 }}>{file.name}</span>
+                                                        <span style={{
+                                                            fontSize: '11px',
+                                                            padding: '2px 8px',
+                                                            background: 'rgba(0, 255, 136, 0.1)',
+                                                            color: '#00ff88',
+                                                            borderRadius: '4px',
+                                                            border: '1px solid rgba(0, 255, 136, 0.2)',
+                                                            fontWeight: 700
+                                                        }}>
+                                                            Grade: {file.score}
+                                                        </span>
+                                                    </div>
+                                                    <ChevronRight size={12} style={{ opacity: 0.3 }} />
+                                                </div>
+                                            </a>
+                                        ))
+                                    ) : (
+                                        <div className="timeline-empty">
+                                            <BrainCircuit size={16} />
+                                            <span>No publications released for this stage yet.</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <h2 className="article-subtitle">A Realistic Framework</h2>
-            <p className="article-text-content">
-                AI is not presented as a definitive solution for every engineering challenge. Shipping remains a complex and physical domain. The focus remains on how these technologies can assist technical experts—streamlining regulatory consultation, enhancing risk visualization, and improving operational efficiency.
-            </p>
-
-            <div className="article-highlight-box">
-                <h3>Systematic Development</h3>
-                <div className="label">Evolutionary Roadmap</div>
-                <p>
-                    Each project represents a stage in the process of translating specialized naval vernacular into machine-readable logic. This ensures that as the industry adopts new digital tools, the core principles of naval architecture remain the primary foundation.
+            <div className="article-highlight-box" style={{ padding: '40px' }}>
+                <h3 style={{ fontSize: '32px' }}>Research Evolution</h3>
+                <div className="label">Continuous Milestone Tracker</div>
+                <p style={{ maxWidth: '100%', textAlign: 'justify' }}>
+                    Each point in this roadmap represents a critical domain of AI. As the master progresses, new technical reports and implementation prototypes will be integrated into this interactive knowledge structure.
                 </p>
             </div>
 
-            <h2 className="article-subtitle">Moving Forward</h2>
-            <p className="article-text-content-large">
-                This ongoing exploration continues at the intersection of maritime physics and digital intelligence. The research projects presented here are an open invitation to examine how data-driven strategies can contribute to a more efficient and technologically integrated maritime industry.
-            </p>
-
             <div className="article-tags">
-                <span className="tag">Naval Architecture</span>
-                <span className="tag">AI Research</span>
-                <span className="tag">Technical Exploration</span>
-                <span className="tag">Maritime Tech</span>
-                <span className="tag">Data-Driven Engineering</span>
+                <span className="tag">Research Journey</span>
+                <span className="tag">Master's Timeline</span>
+                <span className="tag">AI Milestones</span>
+                <span className="tag">UNED Research</span>
             </div>
         </div>
     )
 }
 
 export default ExplorationArticle
+
