@@ -9,6 +9,7 @@ const Navbar = () => {
           FM
         </Link>
         <nav className="nav-links">
+          <a href="#lab" className="nav-link">Lab</a>
           <a href="#projects" className="nav-link">Insights</a>
           <a href="/cv_v3.html" className="nav-link">Résumé</a>
           <a href="#contact" className="nav-link">Contact</a>

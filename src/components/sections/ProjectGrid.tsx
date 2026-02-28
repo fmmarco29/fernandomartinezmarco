@@ -168,24 +168,49 @@ const projects = [
 ]
 
 const ProjectGrid = () => {
+  const labTitles = ["AI Research Lab", "Ship Grounding Risk Assessment", "Bayesian SAR Orchestrator"];
+
+  const labProjects = projects.filter(p => labTitles.includes(p.title));
+  const insightProjects = projects.filter(p => !labTitles.includes(p.title));
+
   return (
-    <section id="projects" className="section">
-      <h2 className="section-title">Insights</h2>
-      <div className="project-grid">
-        {projects.map((project, i) => (
-          <InteractiveProjectCard
-            key={i}
-            title={project.title}
-            description={project.description}
-            stack={project.stack}
-            link={project.link}
-            status={project.status}
-            preview={project.preview}
-            expandedContent={project.expandedContent}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      <section id="lab" className="section">
+        <h2 className="section-title">The Lab</h2>
+        <div className="project-grid">
+          {labProjects.map((project, i) => (
+            <InteractiveProjectCard
+              key={i}
+              title={project.title}
+              description={project.description}
+              stack={project.stack}
+              link={project.link}
+              status={project.status}
+              preview={project.preview}
+              expandedContent={project.expandedContent}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section id="projects" className="section">
+        <h2 className="section-title">Insights</h2>
+        <div className="project-grid">
+          {insightProjects.map((project, i) => (
+            <InteractiveProjectCard
+              key={i}
+              title={project.title}
+              description={project.description}
+              stack={project.stack}
+              link={project.link}
+              status={project.status}
+              preview={project.preview}
+              expandedContent={project.expandedContent}
+            />
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
 
