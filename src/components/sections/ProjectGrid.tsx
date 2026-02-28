@@ -42,12 +42,30 @@ const RiserFatigueArticle = dynamic(
   { ssr: false }
 )
 
+const ShipHullLoadArticle = dynamic(
+  () => import('@/components/features/articles/ShipHullLoadArticle'),
+  { ssr: false }
+)
+
 const LNGKnowledgeGraphArticle = dynamic(
   () => import('@/components/features/articles/LNGKnowledgeGraphArticle'),
   { ssr: false }
 )
 
 const projects = [
+  {
+    title: "Deep Learning for Ship Hull Load Prediction",
+    description: "Revolutionary implementation of RNNs (LSTM/GRU) and a novel Error Correction Strategy to predict wave-induced hull girder loads in real-time. By leveraging ship motion data instead of physical strain gauges, the system achieves up to 48% accuracy improvement in complex sea states.",
+    stack: ["LSTM", "GRU", "Deep Learning", "Naval Architecture", "Predictive Analytics"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/lng_2.png" alt="Ship Hull Load Prediction Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <ShipHullLoadArticle />
+  },
   {
     title: "AI Research Lab",
     description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
