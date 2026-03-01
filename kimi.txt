@@ -1,0 +1,4666 @@
+User: # CONTEXTO Y ROL
+Actúa como un Arquitecto de Software Full-Stack, Arquitecto de IA y Experto en Ingeniería Naval, Oceánica y de Costas. Tu tarea es doble: diseñar y programar un proyecto de investigación aplicado de vanguardia, y proporcionar el código completo y las instrucciones para un laboratorio virtual web en React donde se exhibirá este proyecto.
+
+# PARTE 1: EL PROYECTO DE INVESTIGACIÓN (IA NAVAL/OCEÁNICA)
+Diseña un proyecto que resuelva un problema complejo y de alto impacto (explorando profundamente el sector LNG, optimización de rutas, boil-off gas, o alternativas de altísimo valor como gemelos digitales offshore o clima marítimo) usando Inteligencia Artificial, Machine Learning, Redes Bayesianas y Grafos de Conocimiento.
+
+Debes proporcionar:
+1. Definición del Proyecto: Título, problema a resolver y justificación del impacto en la industria/comunidad.
+2. Arquitectura de IA SOTA: Especifica y justifica las mejores y más modernas arquitecturas neuronales (ej. Graph Neural Networks, Transformers espaciotemporales, Physics-Informed Neural Networks) y métodos probabilísticos/bayesianos para este caso.
+3. Datasets de Alta Calidad: Enlaces exactos, directos y verificados a repositorios de instituciones reales (NOAA, Copernicus, IMO, bases de datos portuarias/LNG, etc.).
+4. Código Python (Backend/Modelo): Proporciona los scripts de Python para la ingesta de datos, definición de la arquitectura neuronal/bayesiana, entrenamiento e inferencia. REGLA ESTRICTA: Entrega los archivos de código completos, no fragmentos ni resúmenes de lo que hay que añadir.
+
+# PARTE 2: EL LABORATORIO VIRTUAL (APLICACIÓN WEB REACT)
+Escribe un manual de instrucciones paso a paso y genera el código para construir una aplicación web en React que funcione como mi laboratorio de investigación.
+
+Requisitos técnicos de la web:
+1. Framework y Estructura: Crea una aplicación en React moderna. El layout principal debe contener un sistema de "Cards" (tarjetas), donde cada tarjeta expone un proyecto de investigación distinto.
+2. Representación Gráfica SOTA: El laboratorio debe integrar el estado del arte en visualización web científica.
+   - Utiliza `react-three-fiber` / Three.js para la representación 3D (imprescindible para modelos de ingeniería naval, mallas espaciales u oleaje).
+   - Utiliza `apache-echarts` o `plotly.js` para los dashboards interactivos de datos pesados (distribuciones probabilísticas, nodos de grafos de conocimiento, series temporales oceanográficas).
+3. Código Completo (Frontend): Proporciona el manual de inicialización del proyecto y el contenido íntegro de los archivos necesarios (ej. `package.json`, `App.jsx`, componentes de visualización, componentes de tarjetas). REGLA ESTRICTA: Devuelve siempre los archivos completos, nunca versiones truncadas con comentarios como "// el resto del código aquí".
+
+# FORMATO DE SALIDA
+Estructura tu respuesta separando claramente la Parte 1 (Teoría, Arquitectura, Datasets y Código del Modelo) de la Parte 2 (Manual de React y Código de la Interfaz). Asegúrate de que las explicaciones sean rigurosas y a nivel de un Arquitecto de IA.
+Kimi: # PARTE 1: PROYECTO DE INVESTIGACIÓN - "Digital Twin para Optimización Predictiva del Consumo de Fuel y Gestión de Boil-Off Gas en Flotas LNG mediante Graph Neural Networks y Redes Bayesianas Híbridas"
+
+## 1. Definición del Proyecto
+
+### Título Completo
+**"HydroGNN-Bayes: Sistema Híbrido de Gemelo Digital para la Optimización Energética Predictiva y Gestión Dinámica de Boil-Off Gas en Transporte Marítimo de GNL mediante Graph Neural Networks Espaciotemporales y Redes Bayesianas Causales"**
+
+### Problema a Resolver
+El sector del Gas Natural Licuado (LNG) enfrenta pérdidas críticas por **Boil-Off Gas (BOG)** —gas que se evapora naturalmente durante el transporte debido a transferencia de calor desde los tanques— que representan entre **0.1% y 0.25% del volumen diario**, costando a la industria **más de $5 billones anuales** en fuel adicional para reliquefacción o quemado en motores. Además, la optimización de rutas marítimas debe considerar variables meteorológicas dinámicas, corrientes oceánicas en 3D, y restricciones operacionales portuarias en tiempo real.
+
+**Problemas específicos:**
+1. **Predicción no lineal del BOG**: Dependencia de temperatura ambiental, estado del mar, presión atmosférica, y condiciones del casco (edad, tipo de aislamiento).
+2. **Optimización multi-objetivo**: Minimizar consumo de fuel vs. minimizar tiempo de tránsito vs. minimizar BOG vs. maximizar seguridad estructural ante oleaje.
+3. **Incertidumbre epistémica**: Datos faltantes de sensores, predicciones meteorológicas probabilísticas, y comportamiento estocástico del mercado LNG.
+4. **Escalabilidad flota**: Coordinación de múltiples buques que compiten por slots de descarga en terminales con ventanas temporales restrictivas.
+
+### Justificación del Impacto
+- **Económico**: Reducción del 15-20% en consumo de fuel y pérdidas por BOG en rutas transoceánicas.
+- **Ambiental**: Disminución de emisiones de metano (potente GEI) y CO₂ asociadas a la reliquefacción.
+- **Operacional**: Gemelo digital capaz de simular escenarios "what-if" para decisiones tácticas y estratégicas.
+- **Científico**: Primera integración de GNN espaciotemporales con redes bayesianas causales en ingeniería naval.
+
+---
+
+## 2. Arquitectura de IA SOTA
+
+### 2.1 Arquitectura Híbrida Propuesta: **ST-GNN-Bayes**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         CAPA DE INGESTA Y PREPROCESAMIENTO                   │
+│  (Datos AIS, ERA5, HYCOM, Datos de Tanques LNG, Planos de Buque 3D)         │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    GRAPH NEURAL NETWORK ESPACIOTEMPORAL                      │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │  ST-GCN      │  │  Graph       │  │  Attention   │  │  Edge        │     │
+│  │  (Series     │  │  Transformer │  │  Mechanism   │  │  Convolutions│     │
+│  │  Temporales) │  │  (Relaciones)│  │  (Importancia│  │  (Topología  │     │
+│  │              │  │              │  │  nodos/arcos)│  │  Tanques)    │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘     │
+│                                                                             │
+│  • Nodos: Componentes del buque (tanques, motores, casco), waypoints        │
+│  • Arcos: Conectividad estructural, flujo de calor, rutas posibles          │
+│  • Features Temporales: Series meteorológicas, histórico de BOG             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    PHYSICS-INFORMED NEURAL NETWORK (PINN)                    │
+│                                                                             │
+│  • Ecuaciones de Navier-Stokes simplificadas para transferencia de calor    │
+│  • Ecuaciones de estado termodinámico del LNG (modelo GERG-2008)            │
+│  • Pérdida física: L_total = L_data + λ * L_physics                         │
+│  • Garantiza cumplimiento de leyes de conservación de energía               │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    RED BAYESIANA CAUSAL (VARIACIONAL)                        │
+│                                                                             │
+│  • Bayesian Neural Networks con inferencia variacional (VI)                 │
+│  • Causal Discovery usando NOTEARS (optimización continua de DAGs)          │
+│  • Incertidumbre epistémica: Distribuciones posteriores sobre pesos         │
+│  • Incertidumbre aleatoria: Distribuciones sobre predicciones de BOG        │
+│                                                                             │
+│  Variables causales:                                                        │
+│  T_ambiente → Transferencia_Calor_Casco → T_superficie_tanque → BOG_rate   │
+│       ↓              ↓                           ↓                          │
+│  Estado_Mar → Estabilidad_Buque → Consumo_Fuel → Decision_Ruta              │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    GRAFO DE CONOCIMIENTO (KNOWLEDGE GRAPH)                   │
+│                                                                             │
+│  • Neo4j/ RDF: Entidades (Buques, Puertos, Terminales, Condiciones)         │
+│  • Relaciones: (buque)-[:VIAJA_A]->(puerto), (terminal)-[:TIENE_CAPACIDAD]  │
+│  • Razonamiento: Graph Embeddings (TransE, RotatE) para recomendación       │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    OPTIMIZADOR MULTI-OBJETIVO                                │
+│                                                                             │
+│  • NSGA-III (Non-dominated Sorting Genetic Algorithm)                       │
+│  • Optimización de ruta: A* modificado con costos dinámicos de GNN          │
+│  • Programación de llegadas: Constraint Satisfaction Problem (CSP)          │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 2.2 Justificación Técnica
+
+| Componente | Justificación SOTA |
+|------------|-------------------|
+| **ST-GNN (Spatio-Temporal Graph Neural Networks)** | Captura dependencias espaciales (topología del buque, red de waypoints) y temporales (series meteorológicas) simultáneamente. Superior a LSTM/GRU tradicionales para datos estructurados en grafo. |
+| **Graph Transformers** | Mecanismos de atención permiten modelar relaciones de largo alcance entre tanques distantes y condiciones meteorológicas remotas. |
+| **Physics-Informed Neural Networks (PINNs)** | Incorporan conocimiento físico (termodinámica del LNG, transferencia de calor) reduciendo necesidad de datos etiquetados y garantizando predicciones físicamente plausibles. |
+| **Bayesian Neural Networks (BNNs) con VI** | Cuantificación rigurosa de incertidumbre crucial para decisiones de seguridad en navegación. Variational Inference escala mejor que MCMC para flotas grandes. |
+| **Causal Discovery (NOTEARS)** | Evita correlaciones espurias, identificando relaciones causales reales entre variables operacionales y BOG. |
+| **Knowledge Graphs** | Integra conocimiento experto naval (regulaciones IMO, especificaciones de terminales) con datos sensoriales para razonamiento explicable. |
+
+---
+
+## 3. Datasets de Alta Calidad (Verificados)
+
+### 3.1 Datos Meteorológicos y Oceanográficos
+
+| Dataset | Fuente | URL Directa | Descripción |
+|---------|--------|-------------|-------------|
+| **ERA5 Reanalysis** | Copernicus Climate Data Store | https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels | Datos horarios globales: temperatura 2m, presión superficial, velocidad viento, oleaje significativo. Resolución 0.25°. |
+| **HYCOM Ocean Currents** | HYCOM + NRL | https://www.hycom.org/data/gomu0pt04/expt-90pt1m100 | Corrientes oceánicas 3D en tiempo real y archivo. Esencial para routing óptimo. |
+| **NOAA WaveWatch III** | NOAA/NCEP | https://polar.ncep.noaa.gov/waves/wavewatch/ | Modelo de oleaje global con resolución hasta 0.5°. |
+| **OSI SAF Sea Surface Temperature** | EUMETSAT | https://osi-saf.eumetsat.int/products/sea-surface-temperature | Temperatura superficial del mar (SST) para cálculo de gradientes térmicos. |
+
+### 3.2 Datos de Tráfico Marítimo y LNG
+
+| Dataset | Fuente | URL Directa | Descripción |
+|---------|--------|-------------|-------------|
+| **AIS Data (Sample)** | MarineCadastre.gov (NOAA) | https://marinecadastre.gov/ais/ | Datos AIS históricos de EE.UU., incluye posición, velocidad, rumbo de buques LNG. |
+| **Global LNG Trade** | International Gas Union (IGU) | https://www.igu.org/publications/2023-world-lng-report/ | Reportes anuales con flujos comerciales, capacidad de flota. |
+| **LNG Shipping Database** | Clarksons Research | https://www.clarksons.com/services/research/ (requiere suscripción) | Base de datos completa de especificaciones técnicas de LNG carriers. |
+| **GIIGNL LNG Database** | GIIGNL | https://www.giignl.org/ | Datos sobre terminales LNG globales, capacidades, operadores. |
+
+### 3.3 Datos Estructurales y de Simulación
+
+| Dataset | Fuente | URL Directa | Descripción |
+|---------|--------|-------------|-------------|
+| **Ship Geometry Models** | ShipHull.org | http://www.shiplab.ntnu.co/ (NTNU Ship Design) | Modelos 3D de cascos para simulación CFD. |
+| **Thermodynamic Properties (LNG)** | NIST REFPROP | https://www.nist.gov/srd/refprop | Propiedades termodinámicas de mezclas de gas natural. |
+| **IMO DCS Data** | IMO | https://www.imo.org/en/OurWork/Environment/Pages/Data-Collection-System-(DCS).aspx | Datos de consumo de fuel reportados obligatoriamente (acceso restringido). |
+
+---
+
+## 4. Código Python Completo (Backend/Modelo)
+
+### Estructura de Archivos del Proyecto
+```
+hydrognn_bayes/
+├── data_ingestion/
+│   ├── __init__.py
+│   ├── era5_loader.py
+│   ├── hycom_loader.py
+│   └── ais_processor.py
+├── models/
+│   ├── __init__.py
+│   ├── st_gnn.py
+│   ├── physics_informed_layer.py
+│   ├── bayesian_layers.py
+│   └── full_architecture.py
+├── training/
+│   ├── __init__.py
+│   ├── trainer.py
+│   └── loss_functions.py
+├── inference/
+│   ├── __init__.py
+│   └── predictor.py
+├── knowledge_graph/
+│   ├── __init__.py
+│   └── neo4j_connector.py
+├── config.yaml
+├── requirements.txt
+└── main.py
+```
+
+### 4.1 `requirements.txt`
+```txt
+torch==2.1.0
+torch-geometric==2.4.0
+torch-scatter==2.1.2
+torch-sparse==0.6.18
+pytorch-forecasting==1.0.0
+numpy==1.24.3
+pandas==2.0.3
+xarray==2023.8.0
+cfgrib==0.9.10.4
+cdsapi==0.6.1
+scipy==1.11.2
+matplotlib==3.7.2
+seaborn==0.12.2
+pyomo==6.6.2
+networkx==3.1
+neo4j==5.12.0
+rdflib==7.0.0
+pytorch-lightning==2.0.9
+tensorboard==2.14.0
+tqdm==4.66.1
+scikit-learn==1.3.0
+hydra-core==1.3.2
+wandb==0.15.8
+```
+
+### 4.2 `config.yaml`
+```yaml
+project:
+  name: "HydroGNN-Bayes"
+  version: "1.0.0"
+
+data:
+  era5_path: "./data/era5/"
+  hycom_path: "./data/hycom/"
+  ais_path: "./data/ais/"
+  ship_specs_path: "./data/ships/specs.json"
+  
+  temporal_resolution: "1H"
+  spatial_resolution: 0.25
+  
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+model:
+  st_gnn:
+    hidden_channels: 128
+    num_layers: 4
+    heads: 8
+    dropout: 0.1
+    temporal_steps: 24  # Horas de historia
+    
+  physics:
+    thermal_conductivity_hull: 0.05  # W/m·K
+    lng_boil_off_temp: -162  # Celsius
+    ambient_temp_ref: 20
+    
+  bayesian:
+    prior_sigma: 1.0
+    posterior_mu_init: 0.0
+    posterior_rho_init: -3.0
+    num_mc_samples: 10
+    
+  training:
+    batch_size: 32
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    epochs: 200
+    early_stopping_patience: 20
+    
+  loss_weights:
+    data_loss: 1.0
+    physics_loss: 0.1
+    kl_divergence: 0.01
+
+paths:
+  checkpoints: "./checkpoints/"
+  logs: "./logs/"
+  results: "./results/"
+```
+
+### 4.3 `data_ingestion/era5_loader.py`
+```python
+import os
+import cdsapi
+import xarray as xr
+import pandas as pd
+import numpy as np
+from pathlib import Path
+from typing import Dict, List, Tuple, Optional
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class ERA5Loader:
+    """
+    Loader para datos ERA5 de Copernicus Climate Data Store.
+    Maneja descarga y preprocesamiento de variables meteorológicas marítimas.
+    """
+    
+    def __init__(self, config: Dict):
+        self.config = config
+        self.data_path = Path(config['data']['era5_path'])
+        self.data_path.mkdir(parents=True, exist_ok=True)
+        
+        self.variables = {
+            '2m_temperature': 't2m',
+            'mean_sea_level_pressure': 'msl',
+            '10m_u_component_of_wind': 'u10',
+            '10m_v_component_of_wind': 'v10',
+            'significant_height_of_combined_wind_waves_and_swell': 'swh',
+            'mean_wave_period': 'mwp',
+            'sea_surface_temperature': 'sst'
+        }
+        
+        self.client = None
+        self._init_cds_client()
+    
+    def _init_cds_client(self):
+        """Inicializa cliente CDS API."""
+        try:
+            self.client = cdsapi.Client()
+            logger.info("CDS client initialized successfully")
+        except Exception as e:
+            logger.error(f"Failed to initialize CDS client: {e}")
+            logger.info("Please configure ~/.cdsapirc with your UID and API key")
+            raise
+    
+    def download_region(
+        self,
+        bounds: Tuple[float, float, float, float],  # [N, W, S, E]
+        date_range: Tuple[str, str],
+        filename: Optional[str] = None
+    ) -> Path:
+        """
+        Descarga datos ERA5 para una región y rango de fechas.
+        
+        Args:
+            bounds: (north, west, south, east) en grados
+            date_range: (start_date, end_date) en formato 'YYYY-MM-DD'
+            filename: Nombre opcional del archivo de salida
+            
+        Returns:
+            Path al archivo descargado
+        """
+        north, west, south, east = bounds
+        start_date, end_date = date_range
+        
+        if filename is None:
+            filename = f"era5_{start_date}_{end_date}_{north}N_{west}W.nc"
+        
+        output_path = self.data_path / filename
+        
+        if output_path.exists():
+            logger.info(f"File {filename} already exists, skipping download")
+            return output_path
+        
+        request = {
+            'product_type': 'reanalysis',
+            'variable': list(self.variables.keys()),
+            'date': f'{start_date}/{end_date}',
+            'time': [f'{h:02d}:00' for h in range(24)],
+            'area': [north, west, south, east],
+            'format': 'netcdf',
+        }
+        
+        logger.info(f"Downloading ERA5 data: {request}")
+        
+        try:
+            self.client.retrieve(
+                'reanalysis-era5-single-levels',
+                request,
+                str(output_path)
+            )
+            logger.info(f"Download complete: {output_path}")
+            return output_path
+        except Exception as e:
+            logger.error(f"Download failed: {e}")
+            raise
+    
+    def load_dataset(self, filepath: Path) -> xr.Dataset:
+        """Carga dataset NetCDF con xarray."""
+        ds = xr.open_dataset(filepath, engine='netcdf4')
+        logger.info(f"Loaded dataset with variables: {list(ds.data_vars)}")
+        return ds
+    
+    def extract_route_conditions(
+        self,
+        dataset: xr.Dataset,
+        waypoints: List[Tuple[float, float, pd.Timestamp]]
+    ) -> pd.DataFrame:
+        """
+        Extrae condiciones meteorológicas a lo largo de una ruta definida por waypoints.
+        
+        Args:
+            dataset: Dataset ERA5 cargado
+            waypoints: Lista de (lat, lon, timestamp)
+            
+        Returns:
+            DataFrame con condiciones interpoladas espaciotemporalmente
+        """
+        results = []
+        
+        for lat, lon, timestamp in waypoints:
+            # Interpolación espaciotemporal más cercana
+            point_data = dataset.sel(
+                latitude=lat,
+                longitude=lon,
+                time=timestamp,
+                method='nearest'
+            )
+            
+            record = {
+                'timestamp': timestamp,
+                'latitude': lat,
+                'longitude': lon,
+                'temperature_2m': float(point_data['t2m'].values) - 273.15,  # K to C
+                'pressure_msl': float(point_data['msl'].values) / 100,  # Pa to hPa
+                'wind_u': float(point_data['u10'].values),
+                'wind_v': float(point_data['v10'].values),
+                'wind_speed': np.sqrt(float(point_data['u10'].values)**2 + 
+                                     float(point_data['v10'].values)**2),
+                'wave_height': float(point_data['swh'].values),
+                'wave_period': float(point_data['mwp'].values),
+                'sea_surface_temp': float(point_data['sst'].values) - 273.15 if 'sst' in point_data else np.nan
+            }
+            results.append(record)
+        
+        df = pd.DataFrame(results)
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df.set_index('timestamp', inplace=True)
+        
+        return df
+    
+    def compute_thermal_stress_index(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Calcula índice de estrés térmico en el casco basado en gradientes de temperatura.
+        """
+        df['temp_gradient'] = df['temperature_2m'] - df['sea_surface_temp']
+        df['thermal_stress'] = (
+            df['temp_gradient'].abs() * 0.6 + 
+            df['wind_speed'] * 0.3 + 
+            df['wave_height'] * 0.1
+        )
+        return df
+    
+    def generate_training_sequences(
+        self,
+        df: pd.DataFrame,
+        sequence_length: int = 24,
+        prediction_horizon: int = 6
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Genera secuencias temporales para entrenamiento del modelo.
+        
+        Returns:
+            X: Array de forma (n_samples, sequence_length, n_features)
+            y: Array de forma (n_samples, prediction_horizon, n_targets)
+        """
+        feature_cols = [
+            'temperature_2m', 'pressure_msl', 'wind_speed',
+            'wave_height', 'wave_period', 'sea_surface_temp', 'thermal_stress'
+        ]
+        
+        target_cols = ['temperature_2m', 'wind_speed', 'wave_height']
+        
+        X, y = [], []
+        
+        for i in range(len(df) - sequence_length - prediction_horizon + 1):
+            X.append(df[feature_cols].iloc[i:i+sequence_length].values)
+            y.append(df[target_cols].iloc[i+sequence_length:i+sequence_length+prediction_horizon].values)
+        
+        return np.array(X), np.array(y)
+
+if __name__ == "__main__":
+    import yaml
+    
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    
+    loader = ERA5Loader(config)
+    
+    # Ejemplo: Descargar datos para el Golfo de México
+    bounds = (30.0, -95.0, 18.0, -80.0)  # N, W, S, E
+    dates = ("2023-01-01", "2023-01-31")
+    
+    file_path = loader.download_region(bounds, dates)
+    ds = loader.load_dataset(file_path)
+    print(ds)
+```
+
+### 4.4 `data_ingestion/hycom_loader.py`
+```python
+import os
+import xarray as xr
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from typing import Dict, List, Tuple, Optional
+import requests
+from tqdm import tqdm
+import logging
+
+logger = logging.getLogger(__name__)
+
+class HYCOMLoader:
+    """
+    Loader para datos de corrientes oceánicas HYCOM.
+    Acceso a datos históricos y en tiempo real mediante OpenDAP.
+    """
+    
+    def __init__(self, config: Dict):
+        self.config = config
+        self.data_path = Path(config['data']['hycom_path'])
+        self.data_path.mkdir(parents=True, exist_ok=True)
+        
+        # URL base para HYCOM GLBy0.08 (Global, 1/12° resolution)
+        self.base_url = "https://tds.hycom.org/thredds/dodsC/GLBy0.08/expt_93.0"
+        
+        self.variables = {
+            'water_u': 'eastward_sea_water_velocity',
+            'water_v': 'northward_sea_water_velocity',
+            'water_temp': 'sea_water_temperature',
+            'salinity': 'sea_water_salinity',
+            'surf_el': 'sea_surface_elevation'
+        }
+    
+    def fetch_region(
+        self,
+        bounds: Tuple[float, float, float, float],  # [lat_min, lon_min, lat_max, lon_max]
+        time_slice: slice,
+        depth_levels: List[float] = [0, 50, 100, 200]
+    ) -> xr.Dataset:
+        """
+        Obtiene datos HYCOM para una región específica.
+        
+        Args:
+            bounds: (lat_min, lon_min, lat_max, lon_max)
+            time_slice: slice de tiempo (ej: slice('2023-01-01', '2023-01-31'))
+            depth_levels: Niveles de profundidad en metros
+            
+        Returns:
+            Dataset xarray con corrientes y variables oceánicas
+        """
+        lat_min, lon_min, lat_max, lon_max = bounds
+        
+        # Ajustar longitudes al rango 0-360 si es necesario
+        if lon_min < 0:
+            lon_min += 360
+        if lon_max < 0:
+            lon_max += 360
+        
+        try:
+            logger.info(f"Connecting to HYCOM OpenDAP: {self.base_url}")
+            ds = xr.open_dataset(self.base_url, decode_times=True)
+            
+            # Seleccionar subconjunto
+            ds_subset = ds.sel(
+                lat=slice(lat_min, lat_max),
+                lon=slice(lon_min, lon_max),
+                time=time_slice,
+                depth=depth_levels,
+                method='nearest'
+            )
+            
+            # Descargar a local (lazy loading puede ser problemático para grandes volúmenes)
+            local_file = self.data_path / f"hycom_{time_slice.start}_{time_slice.stop}.nc"
+            ds_subset.to_netcdf(local_file)
+            
+            logger.info(f"Saved HYCOM data to {local_file}")
+            return ds_subset
+            
+        except Exception as e:
+            logger.error(f"Error fetching HYCOM data: {e}")
+            raise
+    
+    def compute_current_vectors(self, ds: xr.Dataset) -> xr.Dataset:
+        """Calcula magnitud y dirección de corrientes a partir de componentes u,v."""
+        ds['current_speed'] = np.sqrt(ds['water_u']**2 + ds['water_v']**2)
+        ds['current_direction'] = np.arctan2(ds['water_v'], ds['water_u']) * 180 / np.pi
+        return ds
+    
+    def interpolate_to_route(
+        self,
+        ds: xr.Dataset,
+        waypoints: List[Tuple[float, float, pd.Timestamp]],
+        depth: float = 0
+    ) -> pd.DataFrame:
+        """
+        Interpola datos de corrientes a lo largo de una ruta de waypoints.
+        """
+        results = []
+        
+        for lat, lon, timestamp in waypoints:
+            if lon < 0:
+                lon += 360
+                
+            point = ds.sel(
+                lat=lat,
+                lon=lon,
+                time=timestamp,
+                depth=depth,
+                method='nearest'
+            )
+            
+            record = {
+                'timestamp': timestamp,
+                'latitude': lat,
+                'longitude': lon if lon <= 180 else lon - 360,
+                'current_u_ms': float(point['water_u'].values),
+                'current_v_ms': float(point['water_v'].values),
+                'current_speed_ms': float(point['current_speed'].values),
+                'current_direction_deg': float(point['current_direction'].values),
+                'water_temp_c': float(point['water_temp'].values),
+                'salinity_psu': float(point['salinity'].values),
+                'surface_elevation_m': float(point['surf_el'].values)
+            }
+            results.append(record)
+        
+        return pd.DataFrame(results)
+    
+    def calculate_drift_effect(
+        self,
+        ship_speed: float,
+        ship_heading: float,
+        current_u: float,
+        current_v: float
+    ) -> Tuple[float, float]:
+        """
+        Calcula el efecto de la deriva por corrientes en la velocidad efectiva del buque.
+        
+        Returns:
+            (speed_over_ground, drift_angle)
+        """
+        # Vector velocidad del buque
+        ship_u = ship_speed * np.sin(np.radians(ship_heading))
+        ship_v = ship_speed * np.cos(np.radians(ship_heading))
+        
+        # Vector resultante (SOG)
+        sog_u = ship_u + current_u
+        sog_v = ship_v + current_v
+        
+        speed_over_ground = np.sqrt(sog_u**2 + sog_v**2)
+        course_over_ground = np.degrees(np.arctan2(sog_u, sog_v))
+        drift_angle = course_over_ground - ship_heading
+        
+        return speed_over_ground, drift_angle
+
+if __name__ == "__main__":
+    import yaml
+    
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    
+    loader = HYCOMLoader(config)
+    
+    # Ejemplo: Corrientes en el Atlántico Norte
+    bounds = (20, -80, 50, -20)  # Aproximadamente US East Coast to Europe
+    time_slice = slice('2023-06-01', '2023-06-07')
+    
+    ds = loader.fetch_region(bounds, time_slice)
+    ds = loader.compute_current_vectors(ds)
+    print(ds)
+```
+
+### 4.5 `data_ingestion/ais_processor.py`
+```python
+import pandas as pd
+import numpy as np
+from pathlib import Path
+from typing import Dict, List, Tuple, Optional
+import geopy.distance
+from datetime import datetime, timedelta
+import logging
+
+logger = logging.getLogger(__name__)
+
+class AISProcessor:
+    """
+    Procesador de datos AIS (Automatic Identification System) para buques LNG.
+    Limpieza, enriquecimiento y generación de features para el modelo.
+    """
+    
+    def __init__(self, config: Dict):
+        self.config = config
+        self.data_path = Path(config['data']['ais_path'])
+        self.ship_specs = self._load_ship_specs()
+        
+        # Filtros para buques LNG
+        self.lng_ship_types = [70, 71, 72, 73, 74, 75, 76, 77, 78, 79]  # Códigos AIS para cargo ships
+        self.lng_keywords = ['LNG', 'GAS', 'LIQUEFIED']
+    
+    def _load_ship_specs(self) -> Dict:
+        """Carga especificaciones técnicas de buques LNG."""
+        specs_path = Path(self.config['data']['ship_specs_path'])
+        if specs_path.exists():
+            import json
+            with open(specs_path, 'r') as f:
+                return json.load(f)
+        return {}
+    
+    def load_ais_csv(self, filepath: Path) -> pd.DataFrame:
+        """
+        Carga archivo CSV de datos AIS (formato MarineCadastre o similar).
+        """
+        df = pd.read_csv(filepath, parse_dates=['BaseDateTime'])
+        
+        # Filtrar solo buques LNG
+        df = self._filter_lng_vessels(df)
+        
+        logger.info(f"Loaded {len(df)} LNG vessel records from {filepath}")
+        return df
+    
+    def _filter_lng_vessels(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Filtra DataFrame para mantener solo buques LNG."""
+        # Por tipo de buque
+        type_mask = df['VesselType'].isin(self.lng_ship_types)
+        
+        # Por nombre (contiene LNG/GAS)
+        name_mask = df['VesselName'].str.contains('|'.join(self.lng_keywords), 
+                                                  case=False, na=False)
+        
+        return df[type_mask | name_mask].copy()
+    
+    def clean_and_interpolate(self, df: pd.DataFrame, mmsi: int) -> pd.DataFrame:
+        """
+        Limpia y interpola trayectoria de un buque específico por MMSI.
+        """
+        vessel_df = df[df['MMSI'] == mmsi].sort_values('BaseDateTime')
+        
+        # Remover duplicados y valores nulos críticos
+        vessel_df = vessel_df.dropna(subset=['LAT', 'LON', 'SOG', 'COG'])
+        vessel_df = vessel_df.drop_duplicates(subset=['BaseDateTime'])
+        
+        # Filtrar valores físicamente imposibles
+        vessel_df = vessel_df[
+            (vessel_df['SOG'] >= 0) & (vessel_df['SOG'] <= 30) &  # Nudos
+            (vessel_df['LAT'].between(-90, 90)) &
+            (vessel_df['LON'].between(-180, 180))
+        ]
+        
+        # Interpolación temporal regular (cada hora)
+        vessel_df.set_index('BaseDateTime', inplace=True)
+        vessel_df = vessel_df.resample('1H').mean().interpolate(method='time')
+        
+        # Recalcular distancias y velocidades efectivas
+        vessel_df = self._calculate_derived_features(vessel_df)
+        
+        return vessel_df.reset_index()
+    
+    def _calculate_derived_features(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Calcula features derivados: distancia recorrida, aceleración, etc."""
+        # Distancia entre puntos consecutivos (km)
+        distances = []
+        for i in range(len(df)):
+            if i == 0:
+                distances.append(0)
+            else:
+                coords_1 = (df.iloc[i-1]['LAT'], df.iloc[i-1]['LON'])
+                coords_2 = (df.iloc[i]['LAT'], df.iloc[i]['LON'])
+                dist = geopy.distance.geodesic(coords_1, coords_2).kilometers
+                distances.append(dist)
+        
+        df['distance_km'] = distances
+        df['distance_nm'] = df['distance_km'] / 1.852  # Nautical miles
+        
+        # Velocidad efectiva calculada (SOG puede tener errores)
+        time_diff_hours = df.index.to_series().diff().dt.total_seconds() / 3600
+        df['calculated_speed'] = df['distance_nm'] / time_diff_hours.replace(0, np.nan)
+        
+        # Aceleración
+        df['acceleration'] = df['SOG'].diff() / time_diff_hours
+        
+        # Cambio de rumbo (tasa de giro)
+        df['turn_rate'] = df['COG'].diff() / time_diff_hours
+        
+        # Identificar modos operacionales
+        df['operational_mode'] = df['SOG'].apply(self._classify_operational_mode)
+        
+        return df
+    
+    def _classify_operational_mode(self, sog: float) -> str:
+        """Clasifica el modo operacional basado en velocidad."""
+        if sog < 1:
+            return 'anchored'
+        elif sog < 3:
+            return 'maneuvering'
+        elif sog < 12:
+            return 'slow_steaming'
+        elif sog < 18:
+            return 'economic_speed'
+        else:
+            return 'full_speed'
+    
+    def detect_port_calls(
+        self, 
+        df: pd.DataFrame,
+        port_locations: List[Dict],
+        proximity_threshold_nm: float = 5.0
+    ) -> pd.DataFrame:
+        """
+        Detecta llegadas a puertos/terminales basado en proximidad geográfica.
+        
+        Args:
+            port_locations: Lista de dicts con {'name': str, 'lat': float, 'lon': float}
+        """
+        df['nearest_port'] = None
+        df['distance_to_port_nm'] = np.inf
+        
+        for port in port_locations:
+            distances = df.apply(
+                lambda row: geopy.distance.geodesic(
+                    (row['LAT'], row['LON']),
+                    (port['lat'], port['lon'])
+                ).nautical,
+                axis=1
+            )
+            
+            mask = distances < df['distance_to_port_nm']
+            df.loc[mask, 'nearest_port'] = port['name']
+            df.loc[mask, 'distance_to_port_nm'] = distances[mask]
+        
+        # Identificar eventos de llegada/salida
+        df['port_event'] = 'at_sea'
+        df.loc[df['distance_to_port_nm'] < proximity_threshold_nm, 'port_event'] = 'near_port'
+        df.loc[df['distance_to_port_nm'] < 1, 'port_event'] = 'at_berth'
+        
+        return df
+    
+    def generate_voyage_segments(self, df: pd.DataFrame) -> List[pd.DataFrame]:
+        """
+        Segmenta la trayectoria en viajes individuales (entre puertos).
+        """
+        # Detectar cambios de estado at_berth -> at_sea -> at_berth
+        df['voyage_id'] = (df['port_event'] == 'at_berth').astype(int).cumsum()
+        
+        voyages = []
+        for voyage_id, group in df.groupby('voyage_id'):
+            if len(group) > 24:  # Mínimo 24 horas de viaje
+                group['voyage_id'] = voyage_id
+                voyages.append(group)
+        
+        logger.info(f"Generated {len(voyages)} voyage segments")
+        return voyages
+    
+    def merge_with_environmental_data(
+        self,
+        ais_df: pd.DataFrame,
+        weather_df: pd.DataFrame,
+        current_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        """
+        Fusiona datos AIS con condiciones ambientales por timestamp y ubicación.
+        """
+        # Merge por timestamp más cercano
+        ais_df['timestamp_rounded'] = ais_df['BaseDateTime'].dt.round('H')
+        weather_df.index = weather_df.index.round('H')
+        current_df['timestamp_rounded'] = current_df['timestamp'].dt.round('H')
+        
+        merged = ais_df.merge(
+            weather_df,
+            left_on='timestamp_rounded',
+            right_index=True,
+            how='left',
+            suffixes=('', '_weather')
+        )
+        
+        merged = merged.merge(
+            current_df,
+            left_on=['timestamp_rounded', 'LAT', 'LON'],
+            right_on=['timestamp_rounded', 'latitude', 'longitude'],
+            how='left',
+            suffixes=('', '_current')
+        )
+        
+        # Limpiar columnas duplicadas
+        merged.drop(columns=['timestamp_rounded', 'timestamp', 'latitude', 'longitude'], 
+                   errors='ignore', inplace=True)
+        
+        return merged
+    
+    def estimate_fuel_consumption(
+        self,
+        df: pd.DataFrame,
+        ship_imo: str
+    ) -> pd.DataFrame:
+        """
+        Estima consumo de fuel basado en modelo Holtrop-Mennen simplificado
+        y especificaciones del buque.
+        """
+        if ship_imo not in self.ship_specs:
+            logger.warning(f"No specs found for IMO {ship_imo}, using defaults")
+            specs = {
+                'deadweight': 80000,  # tons
+                'length': 280,  # m
+                'beam': 43,  # m
+                'draft': 11.5,  # m
+                'main_engine_power': 21000,  # kW
+                'design_speed': 19.5  # knots
+            }
+        else:
+            specs = self.ship_specs[ship_imo]
+        
+        # Modelo simplificado de consumo (tons/day)
+        # Consumo proporcional a potencia requerida ~ velocidad^3
+        power_factor = (df['SOG'] / specs['design_speed']) ** 3
+        base_consumption = 120  # tons/day a velocidad de diseño (típico LNG carrier)
+        
+        df['estimated_fuel_tons_per_day'] = base_consumption * power_factor
+        
+        # Ajuste por condiciones de mar (efecto de olas)
+        if 'wave_height' in df.columns:
+            wave_penalty = 1 + (df['wave_height'] * 0.05)  # 5% por metro de olas
+            df['estimated_fuel_tons_per_day'] *= wave_penalty
+        
+        # Consumo acumulado por viaje
+        df['fuel_consumption_cumulative'] = (
+            df['estimated_fuel_tons_per_day'] / 24 * 
+            df['BaseDateTime'].diff().dt.total_seconds() / 3600
+        ).cumsum()
+        
+        return df
+    
+    def calculate_bog_rate(
+        self,
+        df: pd.DataFrame,
+        tank_specs: Dict
+    ) -> pd.DataFrame:
+        """
+        Calcula tasa de Boil-Off Gas basada en modelo termodinámico.
+        
+        Modelo: BOG = f(T_ambient, T_sea, insulation_efficiency, tank_pressure)
+        """
+        # Constantes físicas
+        LNG_DENSITY = 450  # kg/m3
+        LATENT_HEAT = 510000  # J/kg
+        HULL_CONDUCTIVITY = 0.05  # W/m·K (typical LNG carrier insulation)
+        
+        # Diferencia de temperatura efectiva
+        df['delta_t_eff'] = df['temperature_2m'] - (-162)  # -162°C is LNG boiling point
+        
+        # Tasa de transferencia de calor (simplificada)
+        # Q = k * A * ΔT / d
+        heat_transfer_rate = (
+            HULL_CONDUCTIVITY * 
+            tank_specs.get('surface_area', 25000) * 
+            df['delta_t_eff'] / 
+            tank_specs.get('insulation_thickness', 0.5)
+        )  # Watts
+        
+        # BOG volumétrico (m3/day)
+        df['bog_rate_m3_per_day'] = (
+            heat_transfer_rate * 86400 / 
+            (LNG_DENSITY * LATENT_HEAT)
+        )
+        
+        # BOG como porcentaje del volumen del tanque
+        df['bog_rate_percent_daily'] = (
+            df['bog_rate_m3_per_day'] / 
+            tank_specs.get('tank_volume', 100000) * 
+            100
+        )
+        
+        # BOG acumulado en el viaje
+        df['bog_cumulative_m3'] = (
+            df['bog_rate_m3_per_day'] / 24 * 
+            df['BaseDateTime'].diff().dt.total_seconds() / 3600
+        ).cumsum()
+        
+        return df
+
+if __name__ == "__main__":
+    import yaml
+    
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    
+    processor = AISProcessor(config)
+    
+    # Ejemplo de procesamiento
+    # df = processor.load_ais_csv(Path("data/ais/AIS_2023_01_01.csv"))
+    # cleaned = processor.clean_and_interpolate(df, mmsi=123456789)
+    # print(cleaned.head())
+```
+
+### 4.6 `models/st_gnn.py`
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch_geometric.nn import (
+    GATConv, 
+    TransformerConv, 
+    GCNConv,
+    global_mean_pool,
+    global_add_pool
+)
+from torch_geometric_temporal import (
+    DCRNN,
+    A3TGCN,
+    AGCRN
+)
+from typing import Dict, List, Tuple, Optional
+
+class SpatioTemporalGNN(nn.Module):
+    """
+    Graph Neural Network Espaciotemporal para predicción de series temporales
+    en grafos dinámicos (buque-waypoints).
+    
+    Combina Graph Attention Networks (GAT) con mecanismos temporales (GRU/LSTM).
+    """
+    
+    def __init__(
+        self,
+        in_channels: int,
+        hidden_channels: int,
+        out_channels: int,
+        num_layers: int = 3,
+        heads: int = 4,
+        dropout: float = 0.1,
+        temporal_steps: int = 24
+    ):
+        super().__init__()
+        
+        self.in_channels = in_channels
+        self.hidden_channels = hidden_channels
+        self.out_channels = out_channels
+        self.num_layers = num_layers
+        self.heads = heads
+        self.temporal_steps = temporal_steps
+        
+        # Capas espaciales (Graph Attention)
+        self.spatial_layers = nn.ModuleList()
+        self.batch_norms = nn.ModuleList()
+        
+        # Primera capa
+        self.spatial_layers.append(
+            GATConv(
+                in_channels,
+                hidden_channels,
+                heads=heads,
+                concat=False,
+                dropout=dropout
+            )
+        )
+        self.batch_norms.append(nn.BatchNorm1d(hidden_channels))
+        
+        # Capas intermedias
+        for _ in range(num_layers - 2):
+            self.spatial_layers.append(
+                GATConv(
+                    hidden_channels,
+                    hidden_channels,
+                    heads=heads,
+                    concat=False,
+                    dropout=dropout
+                )
+            )
+            self.batch_norms.append(nn.BatchNorm1d(hidden_channels))
+        
+        # Última capa espacial
+        self.spatial_layers.append(
+            GATConv(
+                hidden_channels,
+                hidden_channels,
+                heads=1,
+                concat=False,
+                dropout=dropout
+            )
+        )
+        
+        # Capa temporal (GRU para secuencias)
+        self.temporal_gru = nn.GRU(
+            input_size=hidden_channels,
+            hidden_size=hidden_channels,
+            num_layers=2,
+            batch_first=True,
+            dropout=dropout if num_layers > 1 else 0,
+            bidirectional=True
+        )
+        
+        # Proyección temporal
+        self.temporal_projection = nn.Linear(hidden_channels * 2, hidden_channels)
+        
+        # Mecanismo de atención temporal
+        self.temporal_attention = nn.MultiheadAttention(
+            embed_dim=hidden_channels,
+            num_heads=heads,
+            dropout=dropout,
+            batch_first=True
+        )
+        
+        # Capa de salida
+        self.output_layer = nn.Sequential(
+            nn.Linear(hidden_channels, hidden_channels // 2),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_channels // 2, out_channels)
+        )
+        
+        self.dropout = nn.Dropout(dropout)
+    
+    def forward(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        edge_attr: Optional[torch.Tensor] = None,
+        batch: Optional[torch.Tensor] = None,
+        temporal_mask: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
+        """
+        Forward pass.
+        
+        Args:
+            x: Node features [num_nodes, in_channels] o [batch, temporal_steps, num_nodes, in_channels]
+            edge_index: Graph connectivity [2, num_edges]
+            edge_attr: Edge features [num_edges, edge_features]
+            batch: Batch vector [num_nodes]
+            temporal_mask: Mask para padding temporal [batch, temporal_steps]
+        """
+        # Si input es 4D (batch, time, nodes, features), procesamos temporalmente
+        if x.dim() == 4:
+            batch_size, temporal_steps, num_nodes, features = x.shape
+            x = x.view(batch_size * temporal_steps, num_nodes, features)
+            
+            # Procesamiento espacial para cada timestep
+            h_spatial = []
+            for t in range(temporal_steps):
+                h_t = self._spatial_forward(x[:, t, :], edge_index, edge_attr)
+                h_spatial.append(h_t)
+            
+            h = torch.stack(h_spatial, dim=1)  # [batch, temporal_steps, hidden_channels]
+            
+            # Procesamiento temporal
+            h, _ = self.temporal_gru(h)
+            h = self.temporal_projection(h)
+            
+            # Atención temporal
+            if temporal_mask is not None:
+                h, _ = self.temporal_attention(h, h, h, key_padding_mask=temporal_mask)
+            else:
+                h, _ = self.temporal_attention(h, h, h)
+            
+            # Tomar el último estado o hacer pooling
+            h = h[:, -1, :]  # [batch, hidden_channels]
+            
+        else:
+            # Solo procesamiento espacial (un timestep)
+            h = self._spatial_forward(x, edge_index, edge_attr)
+            
+            if batch is not None:
+                h = global_mean_pool(h, batch)
+        
+        # Capa de salida
+        out = self.output_layer(h)
+        return out
+    
+    def _spatial_forward(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        edge_attr: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
+        """Procesamiento espacial a través de capas GAT."""
+        for i, (conv, bn) in enumerate(zip(self.spatial_layers[:-1], self.batch_norms)):
+            x = conv(x, edge_index, edge_attr=edge_attr)
+            x = bn(x)
+            x = F.elu(x)
+            x = self.dropout(x)
+        
+        # Última capa sin activación
+        x = self.spatial_layers[-1](x, edge_index, edge_attr=edge_attr)
+        return x
+
+
+class GraphTransformerTemporal(nn.Module):
+    """
+    Graph Transformer con capacidades espaciotemporales.
+    Utiliza mecanismos de atención en ambos dominios.
+    """
+    
+    def __init__(
+        self,
+        in_channels: int,
+        hidden_channels: int,
+        out_channels: int,
+        num_layers: int = 4,
+        heads: int = 8,
+        dropout: float = 0.1,
+        temporal_steps: int = 24
+    ):
+        super().__init__()
+        
+        self.embedding = nn.Linear(in_channels, hidden_channels)
+        
+        # Capas de Graph Transformer
+        self.transformer_layers = nn.ModuleList()
+        self.norms1 = nn.ModuleList()
+        self.norms2 = nn.ModuleList()
+        
+        for _ in range(num_layers):
+            self.transformer_layers.append(
+                TransformerConv(
+                    hidden_channels,
+                    hidden_channels // heads,
+                    heads=heads,
+                    dropout=dropout,
+                    edge_dim=1  # Si usamos atributos de arista
+                )
+            )
+            self.norms1.append(nn.LayerNorm(hidden_channels))
+            self.norms2.append(nn.LayerNorm(hidden_channels))
+        
+        # Encoding posicional temporal
+        self.temporal_encoding = nn.Parameter(
+            torch.randn(temporal_steps, hidden_channels)
+        )
+        
+        # Transformer temporal (estilo vanilla Transformer)
+        encoder_layer = nn.TransformerEncoderLayer(
+            d_model=hidden_channels,
+            nhead=heads,
+            dim_feedforward=hidden_channels * 4,
+            dropout=dropout,
+            batch_first=True
+        )
+        self.temporal_transformer = nn.TransformerEncoder(
+            encoder_layer,
+            num_layers=2
+        )
+        
+        # Decodificador
+        self.decoder = nn.Sequential(
+            nn.Linear(hidden_channels, hidden_channels),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_channels, out_channels)
+        )
+    
+    def forward(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        edge_attr: Optional[torch.Tensor] = None,
+        temporal_coords: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
+        """
+        Args:
+            x: [batch, temporal_steps, num_nodes, in_channels]
+            edge_index: [2, num_edges]
+            edge_attr: [num_edges, 1]
+            temporal_coords: [batch, temporal_steps] (timestamps)
+        """
+        batch_size, temporal_steps, num_nodes, in_channels = x.shape
+        
+        # Embedding inicial
+        x = self.embedding(x)  # [batch, time, nodes, hidden]
+        
+        # Agregar encoding posicional temporal
+        x = x + self.temporal_encoding[:temporal_steps].view(1, temporal_steps, 1, -1)
+        
+        # Procesamiento espacial (Graph Transformer)
+        h_spatial = []
+        for t in range(temporal_steps):
+            h_t = x[:, t, :, :]  # [batch, nodes, hidden]
+            h_t = h_t.view(batch_size * num_nodes, -1)
+            
+            for conv, norm1, norm2 in zip(
+                self.transformer_layers, self.norms1, self.norms2
+            ):
+                h_t = norm1(h_t + conv(h_t, edge_index, edge_attr))
+                h_t = norm2(h_t + self._ffn(h_t))
+            
+            h_t = h_t.view(batch_size, num_nodes, -1)
+            h_spatial.append(h_t)
+        
+        h = torch.stack(h_spatial, dim=1)  # [batch, time, nodes, hidden]
+        
+        # Pooling sobre nodos (representación global del grafo)
+        h = h.mean(dim=2)  # [batch, time, hidden]
+        
+        # Procesamiento temporal (Transformer)
+        h = self.temporal_transformer(h)  # [batch, time, hidden]
+        
+        # Predicción multi-horizonte
+        out = self.decoder(h)  # [batch, time, out_channels]
+        
+        return out
+    
+    def _ffn(self, x: torch.Tensor) -> torch.Tensor:
+        """Feed-forward network."""
+        return F.linear(F.gelu(F.linear(x, self._ffn_weight)), self._ffn_weight2)
+    
+    @property
+    def _ffn_weight(self):
+        # Inicialización lazy
+        if not hasattr(self, '_ffn_w'):
+            self._ffn_w = nn.Parameter(torch.randn(
+                self.hidden_channels, 
+                self.hidden_channels * 4
+            ))
+            self._ffn_w2 = nn.Parameter(torch.randn(
+                self.hidden_channels * 4,
+                self.hidden_channels
+            ))
+        return self._ffn_w
+
+if __name__ == "__main__":
+    # Test
+    model = SpatioTemporalGNN(
+        in_channels=10,
+        hidden_channels=64,
+        out_channels=3,
+        num_layers=3
+    )
+    
+    x = torch.randn(32, 24, 50, 10)  # batch, time, nodes, features
+    edge_index = torch.randint(0, 50, (2, 200))
+    
+    out = model(x, edge_index)
+    print(f"Output shape: {out.shape}")  # [32, 3]
+```
+
+### 4.7 `models/physics_informed_layer.py`
+```python
+import torch
+import torch.nn as nn
+import torch.autograd as autograd
+from typing import Dict, Tuple, Optional
+import numpy as np
+
+class PhysicsInformedLNG(nn.Module):
+    """
+    Capa de Physics-Informed Neural Network (PINN) para modelado termodinámico
+    del Boil-Off Gas en tanques LNG.
+    
+    Incorpora ecuaciones de:
+    - Transferencia de calor (Ley de Fourier)
+    - Cambio de fase (ecuación de Clapeyron)
+    - Conservación de energía
+    """
+    
+    def __init__(
+        self,
+        thermal_conductivity: float = 0.05,  # W/(m·K) - poliuretano
+        latent_heat_vaporization: float = 510000.0,  # J/kg para LNG
+        lng_density: float = 450.0,  # kg/m³ a -162°C
+        tank_radius: float = 25.0,  # m (típico para LNG carrier)
+        insulation_thickness: float = 0.5,  # m
+        heat_transfer_coefficient: float = 5.0  # W/(m²·K) - convección externa
+    ):
+        super().__init__()
+        
+        # Parámetros físicos (fijos o entrenables con restricciones)
+        self.thermal_conductivity = nn.Parameter(
+            torch.tensor(thermal_conductivity), 
+            requires_grad=False
+        )
+        self.latent_heat = nn.Parameter(
+            torch.tensor(latent_heat_vaporization),
+            requires_grad=False
+        )
+        self.lng_density = nn.Parameter(
+            torch.tensor(lng_density),
+            requires_grad=False
+        )
+        self.tank_radius = tank_radius
+        self.insulation_thickness = insulation_thickness
+        self.h_external = heat_transfer_coefficient
+        
+        # Red neuronal para correcciones de modelo físico
+        self.correction_net = nn.Sequential(
+            nn.Linear(4, 32),
+            nn.Tanh(),
+            nn.Linear(32, 32),
+            nn.Tanh(),
+            nn.Linear(32, 1)
+        )
+        
+        # Coeficiente de escala para corrección (aprendible)
+        self.alpha_correction = nn.Parameter(torch.tensor(0.1))
+    
+    def forward(
+        self,
+        t_ambient: torch.Tensor,
+        t_sea: torch.Tensor,
+        pressure_tank: torch.Tensor,
+        wind_speed: torch.Tensor,
+        solar_radiation: Optional[torch.Tensor] = None
+    ) -> Dict[str, torch.Tensor]:
+        """
+        Calcula BOG rate basado en modelo físico + corrección neuronal.
+        
+        Args:
+            t_ambient: Temperatura ambiente [°C]
+            t_sea: Temperatura del mar [°C]
+            pressure_tank: Presión en tanque [bar]
+            wind_speed: Velocidad del viento [m/s]
+            solar_radiation: Radiación solar [W/m²] (opcional)
+            
+        Returns:
+            Dict con BOG rate, heat transfer, y términos físicos intermedios
+        """
+        # Convertir a Kelvin para cálculos termodinámicos
+        T_amb = t_ambient + 273.15
+        T_sea = t_sea + 273.15
+        T_lng = 111.15  # -162°C en Kelvin (constante)
+        
+        # 1. Coeficiente de transferencia de calor efectivo (incluye convección)
+        # h_total = 1 / (1/h_ext + thickness/k + 1/h_int)
+        h_convection = self.h_external * (1 + 0.5 * wind_speed)  # Efecto viento
+        
+        R_insulation = self.insulation_thickness / self.thermal_conductivity
+        R_convection = 1.0 / h_convection
+        
+        U_overall = 1.0 / (R_convection + R_insulation)  # W/(m²·K)
+        
+        # 2. Área superficial del tanque (esférico simplificado)
+        surface_area = 4 * np.pi * self.tank_radius ** 2
+        
+        # 3. Flujo de calor hacia el tanque (positivo = entrada de calor)
+        Q_heat = U_overall * surface_area * (T_amb - T_lng)  # Watts
+        
+        # Añadir efecto de radiación solar si está disponible
+        if solar_radiation is not None:
+            Q_solar = 0.3 * solar_radiation * surface_area  # 30% absorción
+            Q_heat = Q_heat + Q_solar
+        
+        # 4. Tasa de BOG (kg/s) desde balance energético
+        # Q = m_dot * L_v => m_dot = Q / L_v
+        m_dot_bog = Q_heat / self.latent_heat  # kg/s
+        
+        # Convertir a m³/día
+        volume_dot_bog = m_dot_bog / self.lng_density * 86400  # m³/day
+        
+        # 5. Corrección neuronal basada en condiciones operacionales
+        features = torch.stack([
+            t_ambient,
+            pressure_tank,
+            wind_speed,
+            (t_ambient - (-162)) / 200  # Normalizado
+        ], dim=-1)
+        
+        correction = self.correction_net(features).squeeze(-1)
+        correction = torch.tanh(correction) * self.alpha_correction
+        
+        # BOG corregido (modelo físico + corrección data-driven)
+        bog_corrected = volume_dot_bog * (1 + correction)
+        
+        # 6. Cálculo de presión de vapor (ecuación de Antoine simplificada para metano)
+        # log10(P) = A - B/(C+T)
+        A, B, C = 6.61184, 389.93, 266.00
+        p_vapor = 10 ** (A - B / (C + t_ambient))  # mmHg
+        p_vapor_pa = p_vapor * 133.322  # Pa
+        
+        return {
+            'bog_rate_m3_day': bog_corrected,
+            'bog_rate_physical': volume_dot_bog,
+            'correction_factor': correction,
+            'heat_transfer_watts': Q_heat,
+            'overall_heat_transfer_coeff': U_overall,
+            'vapor_pressure_pa': p_vapor_pa,
+            'temperature_gradient': T_amb - T_lng
+        }
+    
+    def physics_loss(
+        self,
+        predictions: Dict[str, torch.Tensor],
+        inputs: Dict[str, torch.Tensor]
+    ) -> torch.Tensor:
+        """
+        Calcula términos de pérdida física para regularización del modelo.
+        
+        Pérdidas:
+        1. Conservación de energía
+        2. Segunda ley de termodinámica (no negatividad de entropía)
+        3. Consistencia con ecuación de estado
+        """
+        losses = {}
+        
+        # 1. Pérdida de conservación de energía
+        # El calor transferido debe igualar el usado en vaporización
+        Q_calc = predictions['heat_transfer_watts']
+        m_dot_calc = predictions['bog_rate_m3_day'] * self.lng_density / 86400
+        Q_required = m_dot_calc * self.latent_heat
+        
+        losses['energy_conservation'] = torch.mean((Q_calc - Q_required) ** 2)
+        
+        # 2. Segunda ley: BOG debe ser no-negativo y crecer con temperatura
+        bog = predictions['bog_rate_m3_day']
+        d_bog_dT = autograd.grad(
+            outputs=bog.sum(),
+            inputs=inputs['t_ambient'],
+            create_graph=True,
+            retain_graph=True
+        )[0]
+        
+        # Penalizar BOG negativo
+        losses['non_negative_bog'] = torch.mean(torch.relu(-bog) ** 2)
+        
+        # Penalizar gradiente negativo (BOG debe aumentar con T ambiente)
+        losses['thermodynamic_consistency'] = torch.mean(torch.relu(-d_bog_dT) ** 2)
+        
+        # 3. Consistencia con presión de vapor (BOG proporcional a presión de vapor)
+        # Factor de proporcionalidad empírico
+        p_vapor = predictions['vapor_pressure_pa']
+        expected_bog = p_vapor * 1e-6  # Escalado arbitrario
+        losses['vapor_pressure_consistency'] = torch.mean(
+            (bog - expected_bog) ** 2
+        )
+        
+        # Pérdida total ponderada
+        total_loss = (
+            1.0 * losses['energy_conservation'] +
+            10.0 * losses['non_negative_bog'] +
+            5.0 * losses['thermodynamic_consistency'] +
+            0.1 * losses['vapor_pressure_consistency']
+        )
+        
+        return total_loss, losses
+
+
+class NavierStokesSimplified(nn.Module):
+    """
+    Modelo simplificado de Navier-Stokes para estimar resistencia al avance
+    y consumo de fuel basado en condiciones de mar.
+    """
+    
+    def __init__(
+        self,
+        ship_length: float = 280.0,  # m
+        ship_beam: float = 43.0,  # m
+        ship_draft: float = 11.5,  # m
+        block_coefficient: float = 0.82
+    ):
+        super().__init__()
+        
+        self.L = ship_length
+        self.B = ship_beam
+        self.T = ship_draft
+        self.Cb = block_coefficient
+        
+        # Área mojada estimada
+        self.wetted_area = self.L * (2 * self.T + self.B) * self.Cb ** 0.5
+        
+        # Red para corrección de resistencia
+        self.resistance_net = nn.Sequential(
+            nn.Linear(5, 64),
+            nn.ReLU(),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Linear(32, 1)
+        )
+    
+    def forward(
+        self,
+        ship_speed: torch.Tensor,  # knots
+        wave_height: torch.Tensor,  # m
+        wave_period: torch.Tensor,  # s
+        current_u: torch.Tensor,  # m/s
+        current_v: torch.Tensor  # m/s
+    ) -> Dict[str, torch.Tensor]:
+        """
+        Calcula resistencia total y potencia requerida.
+        """
+        # Convertir velocidad a m/s
+        V = ship_speed * 0.514444
+        
+        # Velocidad efectiva considerando corrientes
+        V_eff = torch.sqrt((V + current_u) ** 2 + current_v ** 2)
+        
+        # Número de Froude
+        g = 9.81
+        Fn = V_eff / torch.sqrt(g * self.L)
+        
+        # 1. Resistencia por fricción (ITTC 1957 line)
+        Re = V_eff * self.L / 1e-6  # Reynolds number (agua salada ~ 1e-6 m²/s)
+        Cf = 0.075 / (torch.log10(Re) - 2) ** 2
+        
+        R_fric = 0.5 * 1026 * V_eff ** 2 * self.wetted_area * Cf
+        
+        # 2. Resistencia por oleaje (simplificado)
+        # Usando aproximación de Froude-Krylov
+        wave_amplitude = wave_height / 2
+        k_wave = (2 * np.pi / (wave_period * V_eff + 1e-6)) ** 2 / g
+        wave_force = 1026 * g * wave_amplitude * self.L * self.B * torch.exp(-k_wave * self.T)
+        R_wave = wave_force * torch.sin(k_wave * self.L / 2)
+        
+        # 3. Resistencia residual (empírica)
+        C_r = self.Cb * 10 * Fn ** 3  # Simplificado
+        R_resid = 0.5 * 1026 * V_eff ** 2 * self.L * self.T * C_r
+        
+        # Resistencia total
+        R_total = R_fric + torch.abs(R_wave) + R_resid
+        
+        # Corrección neuronal
+        features = torch.stack([
+            ship_speed / 20.0,  # Normalizado
+            wave_height / 5.0,
+            wave_period / 10.0,
+            torch.sqrt(current_u ** 2 + current_v ** 2) / 2.0,
+            Fn
+        ], dim=-1)
+        
+        correction = torch.sigmoid(self.resistance_net(features)).squeeze(-1)
+        R_total = R_total * (0.8 + 0.4 * correction)
+        
+        # Potencia efectiva (kW)
+        P_e = R_total * V_eff / 1000
+        
+        # Potencia en el eje (asumiendo eficiencia del sistema propulsor ~70%)
+        P_s = P_e / 0.7
+        
+        return {
+            'resistance_total_n': R_total,
+            'resistance_friction_n': R_fric,
+            'resistance_wave_n': R_wave,
+            'power_effective_kw': P_e,
+            'power_shaft_kw': P_s,
+            'froude_number': Fn,
+            'speed_effective_ms': V_eff
+        }
+
+if __name__ == "__main__":
+    # Test PhysicsInformedLNG
+    physics_layer = PhysicsInformedLNG()
+    
+    t_amb = torch.tensor([25.0, 30.0, 15.0], requires_grad=True)
+    t_sea = torch.tensor([20.0, 25.0, 18.0])
+    pressure = torch.tensor([1.1, 1.2, 1.05])
+    wind = torch.tensor([5.0, 10.0, 3.0])
+    
+    result = physics_layer(t_amb, t_sea, pressure, wind)
+    print("BOG rates (m³/day):", result['bog_rate_m3_day'])
+    
+    # Test physics loss
+    inputs = {'t_ambient': t_amb}
+    loss, components = physics_layer.physics_loss(result, inputs)
+    print("Physics loss components:", components)
+```
+
+### 4.8 `models/bayesian_layers.py`
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from typing import Tuple, Optional
+import math
+
+class BayesianLinear(nn.Module):
+    """
+    Capa lineal bayesiana con inferencia variacional (Bayes by Backprop).
+    Mantiene distribuciones sobre los pesos en lugar de valores puntuales.
+    """
+    
+    def __init__(
+        self,
+        in_features: int,
+        out_features: int,
+        prior_sigma: float = 1.0,
+        posterior_mu_init: float = 0.0,
+        posterior_rho_init: float = -3.0,
+        bias: bool = True
+    ):
+        super().__init__()
+        
+        self.in_features = in_features
+        self.out_features = out_features
+        self.prior_sigma = prior_sigma
+        
+        # Parámetros de la posterior q(w|θ) = N(mu, sigma^2)
+        # sigma = log(1 + exp(rho))
+        
+        # Pesos
+        self.weight_mu = nn.Parameter(
+            torch.Tensor(out_features, in_features).normal_(posterior_mu_init, 0.1)
+        )
+        self.weight_rho = nn.Parameter(
+            torch.Tensor(out_features, in_features).fill_(posterior_rho_init)
+        )
+        
+        # Sesgos
+        if bias:
+            self.bias_mu = nn.Parameter(
+                torch.Tensor(out_features).normal_(posterior_mu_init, 0.1)
+            )
+            self.bias_rho = nn.Parameter(
+                torch.Tensor(out_features).fill_(posterior_rho_init)
+            )
+        else:
+            self.register_parameter('bias_mu', None)
+            self.register_parameter('bias_rho', None)
+        
+        # Prior p(w) = N(0, prior_sigma^2)
+        self.register_buffer(
+            'weight_prior_log_sigma',
+            torch.log(torch.tensor(prior_sigma))
+        )
+    
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Forward pass con muestreo de pesos.
+        
+        Returns:
+            output: Salida de la capa
+            kl_loss: Divergencia KL para esta capa
+        """
+        # Muestrear pesos usando reparametrización
+        weight_sigma = torch.log1p(torch.exp(self.weight_rho))
+        weight_epsilon = torch.randn_like(self.weight_mu)
+        weight = self.weight_mu + weight_sigma * weight_epsilon
+        
+        # Calcular KL(q(w|θ) || p(w))
+        kl_weight = self._kl_divergence(
+            self.weight_mu, 
+            weight_sigma, 
+            torch.zeros_like(self.weight_mu),
+            torch.ones_like(self.weight_mu) * self.prior_sigma
+        )
+        
+        # Sesgos
+        if self.bias_mu is not None:
+            bias_sigma = torch.log1p(torch.exp(self.bias_rho))
+            bias_epsilon = torch.randn_like(self.bias_mu)
+            bias = self.bias_mu + bias_sigma * bias_epsilon
+            
+            kl_bias = self._kl_divergence(
+                self.bias_mu,
+                bias_sigma,
+                torch.zeros_like(self.bias_mu),
+                torch.ones_like(self.bias_mu) * self.prior_sigma
+            )
+        else:
+            bias = None
+            kl_bias = 0
+        
+        # Forward pass
+        output = F.linear(x, weight, bias)
+        
+        return output, kl_weight + kl_bias
+    
+    def _kl_divergence(
+        self,
+        mu_q: torch.Tensor,
+        sigma_q: torch.Tensor,
+        mu_p: torch.Tensor,
+        sigma_p: torch.Tensor
+    ) -> torch.Tensor:
+        """
+        KL(N(mu_q, sigma_q^2) || N(mu_p, sigma_p^2))
+        """
+        sigma_q_sq = sigma_q ** 2
+        sigma_p_sq = sigma_p ** 2
+        
+        kl = torch.log(sigma_p / sigma_q) + \
+             (sigma_q_sq + (mu_q - mu_p) ** 2) / (2 * sigma_p_sq) - 0.5
+        
+        return kl.sum()
+    
+    def deterministic_forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Forward pass usando solo la media (para inferencia determinística)."""
+        return F.linear(x, self.weight_mu, self.bias_mu if self.bias_mu is not None else None)
+
+
+class BayesianGATConv(nn.Module):
+    """
+    Graph Attention Layer con pesos bayesianos.
+    """
+    
+    def __init__(
+        self,
+        in_channels: int,
+        out_channels: int,
+        heads: int = 1,
+        concat: bool = True,
+        dropout: float = 0.0,
+        prior_sigma: float = 1.0
+    ):
+        super().__init__()
+        
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.heads = heads
+        self.concat = concat
+        self.dropout = dropout
+        
+        # Atención bayesiana
+        self.att_src = BayesianLinear(in_channels, heads, prior_sigma=prior_sigma)
+        self.att_dst = BayesianLinear(in_channels, heads, prior_sigma=prior_sigma)
+        
+        # Transformación de features bayesiana
+        self.lin = BayesianLinear(in_channels, heads * out_channels, prior_sigma=prior_sigma)
+        
+        self.bias = nn.Parameter(torch.Tensor(heads * out_channels if concat else out_channels))
+        nn.init.zeros_(self.bias)
+    
+    def forward(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        edge_attr: Optional[torch.Tensor] = None
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Returns:
+            out: Features actualizadas
+            kl_loss: Suma de KL de todas las capas bayesianas
+        """
+        # Linear transformation
+        x_lin, kl_lin = self.lin(x)
+        x_lin = x_lin.view(-1, self.heads, self.out_channels)
+        
+        # Attention coefficients
+        alpha_src, kl_att_src = self.att_src(x)
+        alpha_dst, kl_att_dst = self.att_dst(x)
+        
+        kl_total = kl_lin + kl_att_src + kl_att_dst
+        
+        # Propagate
+        out = self._propagate(
+            edge_index, 
+            x=x_lin, 
+            alpha_src=alpha_src, 
+            alpha_dst=alpha_dst,
+            edge_attr=edge_attr
+        )
+        
+        if self.concat:
+            out = out.view(-1, self.heads * self.out_channels)
+        else:
+            out = out.mean(dim=1)
+        
+        out = out + self.bias
+        
+        return out, kl_total
+    
+    def _propagate(
+        self,
+        edge_index: torch.Tensor,
+        x: torch.Tensor,
+        alpha_src: torch.Tensor,
+        alpha_dst: torch.Tensor,
+        edge_attr: Optional[torch.Tensor]
+    ) -> torch.Tensor:
+        """Propagación de mensajes con atención."""
+        row, col = edge_index
+        
+        # Calcular coeficientes de atención
+        alpha = alpha_src[row] + alpha_dst[col]
+        alpha = F.leaky_relu(alpha, negative_slope=0.2)
+        alpha = torch.exp(alpha - torch.scatter_add(
+            torch.zeros_like(alpha), 
+            col, 
+            alpha, 
+            dim=0
+        )[col])
+        
+        # Aplicar dropout
+        alpha = F.dropout(alpha, p=self.dropout, training=self.training)
+        
+        # Agregar features ponderados
+        out = torch.zeros_like(x)
+        for i in range(self.heads):
+            out[:, i, :] = torch.scatter_add(
+                torch.zeros_like(x[:, i, :]),
+                col,
+                x[row, i, :] * alpha[:, i:i+1],
+                dim=0
+            )
+        
+        return out
+
+
+class BayesianSTGNN(nn.Module):
+    """
+    Spatio-Temporal GNN completamente bayesiano para cuantificación de incertidumbre.
+    """
+    
+    def __init__(
+        self,
+        in_channels: int,
+        hidden_channels: int,
+        out_channels: int,
+        num_layers: int = 3,
+        heads: int = 4,
+        dropout: float = 0.1,
+        prior_sigma: float = 1.0
+    ):
+        super().__init__()
+        
+        self.layers = nn.ModuleList()
+        
+        # Primera capa
+        self.layers.append(
+            BayesianGATConv(
+                in_channels, 
+                hidden_channels, 
+                heads=heads, 
+                concat=False,
+                dropout=dropout,
+                prior_sigma=prior_sigma
+            )
+        )
+        
+        # Capas intermedias
+        for _ in range(num_layers - 2):
+            self.layers.append(
+                BayesianGATConv(
+                    hidden_channels,
+                    hidden_channels,
+                    heads=heads,
+                    concat=False,
+                    dropout=dropout,
+                    prior_sigma=prior_sigma
+                )
+            )
+        
+        # Capa de salida
+        self.output_layer = BayesianLinear(
+            hidden_channels, 
+            out_channels,
+            prior_sigma=prior_sigma
+        )
+        
+        self.dropout = nn.Dropout(dropout)
+    
+    def forward(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        num_samples: int = 10
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """
+        Forward pass con muestreo múltiple para estimar incertidumbre.
+        
+        Returns:
+            mean: Predicción media
+            std: Desviación estándar (incertidumbre epistémica + aleatoria)
+            kl_loss: Divergencia KL total
+        """
+        predictions = []
+        kl_losses = []
+        
+        for _ in range(num_samples):
+            h = x
+            kl = 0
+            
+            # Forward through GNN layers
+            for layer in self.layers:
+                h_new, kl_layer = layer(h, edge_index)
+                h = F.elu(h_new)
+                h = self.dropout(h)
+                kl += kl_layer
+            
+            # Output layer
+            out, kl_out = self.output_layer(h)
+            kl += kl_out
+            
+            predictions.append(out)
+            kl_losses.append(kl)
+        
+        predictions = torch.stack(predictions)  # [num_samples, num_nodes, out_channels]
+        
+        mean = predictions.mean(dim=0)
+        std = predictions.std(dim=0)
+        kl_total = torch.stack(kl_losses).mean()
+        
+        return mean, std, kl_total
+    
+    def predict_with_uncertainty(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        num_samples: int = 100
+    ) -> Dict[str, torch.Tensor]:
+        """
+        Predicción con descomposición de incertidumbre.
+        """
+        self.eval()
+        with torch.no_grad():
+            predictions = []
+            
+            for _ in range(num_samples):
+                h = x
+                for layer in self.layers:
+                    h, _ = layer(h, edge_index)
+                    h = F.elu(h)
+                out, _ = self.output_layer(h)
+                predictions.append(out)
+            
+            predictions = torch.stack(predictions)
+            
+            # Incertidumbre total
+            total_uncertainty = predictions.var(dim=0)
+            
+            # Incertidumbre aleatoria (irreducible)
+            # Estimada como la media de las varianzas (si el modelo tuviera cabeza de ruido)
+            # Aquí usamos aproximación basada en ruido de predicciones
+            aleatoric_uncertainty = torch.mean((predictions - predictions.mean(dim=0)) ** 2, dim=0)
+            
+            # Incertidumbre epistémica (reducible con más datos)
+            epistemic_uncertainty = total_uncertainty - aleatoric_uncertainty
+            
+            return {
+                'mean': predictions.mean(dim=0),
+                'std': predictions.std(dim=0),
+                'total_uncertainty': total_uncertainty,
+                'aleatoric_uncertainty': aleatoric_uncertainty,
+                'epistemic_uncertainty': torch.clamp(epistemic_uncertainty, min=0),
+                'predictions_samples': predictions
+            }
+
+if __name__ == "__main__":
+    # Test
+    layer = BayesianLinear(10, 5)
+    x = torch.randn(3, 10)
+    out, kl = layer(x)
+    print(f"Output shape: {out.shape}, KL: {kl.item()}")
+    
+    model = BayesianSTGNN(10, 64, 3)
+    x = torch.randn(50, 10)
+    edge_index = torch.randint(0, 50, (2, 200))
+    
+    mean, std, kl = model(x, edge_index, num_samples=5)
+    print(f"Mean shape: {mean.shape}, Std shape: {std.shape}, KL: {kl.item()}")
+```
+
+### 4.9 `models/full_architecture.py`
+```python
+import torch
+import torch.nn as nn
+from typing import Dict, List, Tuple, Optional
+import torch.nn.functional as F
+
+from .st_gnn import SpatioTemporalGNN, GraphTransformerTemporal
+from .physics_informed_layer import PhysicsInformedLNG, NavierStokesSimplified
+from .bayesian_layers import BayesianSTGNN
+
+class HydroGNNBayes(nn.Module):
+    """
+    Arquitectura completa HydroGNN-Bayes integrando:
+    - ST-GNN para patrones espaciotemporales
+    - Physics-Informed layers para restricciones termodinámicas
+    - Componentes Bayesianos para cuantificación de incertidumbre
+    - Multi-task learning: predicción de BOG, consumo de fuel, y optimización de ruta
+    """
+    
+    def __init__(self, config: Dict):
+        super().__init__()
+        
+        self.config = config
+        model_cfg = config['model']
+        
+        # Dimensiones
+        self.node_features = 16  # Features de nodos del grafo
+        self.edge_features = 4   # Distancia, tipo de conexión, etc.
+        self.temporal_steps = model_cfg['st_gnn']['temporal_steps']
+        
+        # 1. Encoder de features de entrada
+        self.node_encoder = nn.Sequential(
+            nn.Linear(self.node_features, 32),
+            nn.ReLU(),
+            nn.Linear(32, model_cfg['st_gnn']['hidden_channels'])
+        )
+        
+        # 2. ST-GNN Backbone (puede ser determinístico o bayesiano)
+        if model_cfg.get('use_bayesian', False):
+            self.spatial_temporal_net = BayesianSTGNN(
+                in_channels=model_cfg['st_gnn']['hidden_channels'],
+                hidden_channels=model_cfg['st_gnn']['hidden_channels'],
+                out_channels=model_cfg['st_gnn']['hidden_channels'],
+                num_layers=model_cfg['st_gnn']['num_layers'],
+                heads=model_cfg['st_gnn']['heads'],
+                dropout=model_cfg['st_gnn']['dropout'],
+                prior_sigma=model_cfg['bayesian']['prior_sigma']
+            )
+        else:
+            self.spatial_temporal_net = GraphTransformerTemporal(
+                in_channels=model_cfg['st_gnn']['hidden_channels'],
+                hidden_channels=model_cfg['st_gnn']['hidden_channels'],
+                out_channels=model_cfg['st_gnn']['hidden_channels'],
+                num_layers=model_cfg['st_gnn']['num_layers'],
+                heads=model_cfg['st_gnn']['heads'],
+                dropout=model_cfg['st_gnn']['dropout'],
+                temporal_steps=self.temporal_steps
+            )
+        
+        # 3. Physics-Informed Layers
+        self.physics_lng = PhysicsInformedLNG(
+            thermal_conductivity=model_cfg['physics']['thermal_conductivity_hull']
+        )
+        
+        self.physics_hydrodynamics = NavierStokesSimplified()
+        
+        # 4. Heads de predicción multi-task
+        
+        # Head 1: Predicción de BOG rate
+        self.bog_head = nn.Sequential(
+            nn.Linear(model_cfg['st_gnn']['hidden_channels'] + 8, 64),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Linear(32, 1)  # BOG en m³/día
+        )
+        
+        # Head 2: Consumo de fuel
+        self.fuel_head = nn.Sequential(
+            nn.Linear(model_cfg['st_gnn']['hidden_channels'] + 8, 64),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Linear(32, 1)  # Tons/día
+        )
+        
+        # Head 3: Velocidad óptima (para routing)
+        self.speed_head = nn.Sequential(
+            nn.Linear(model_cfg['st_gnn']['hidden_channels'] + 8, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1),
+            nn.Sigmoid()  # Normalizado 0-1 (escalar a rango operacional después)
+        )
+        
+        # Head 4: Riesgo/seguridad de ruta
+        self.risk_head = nn.Sequential(
+            nn.Linear(model_cfg['st_gnn']['hidden_channels'] + 8, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1),
+            nn.Sigmoid()  # Probabilidad de riesgo 0-1
+        )
+        
+        # 5. Fusion layer (combina salida GNN con salida Physics)
+        self.fusion_layer = nn.Linear(
+            model_cfg['st_gnn']['hidden_channels'] + 8,  # 8 = features físicas
+            model_cfg['st_gnn']['hidden_channels']
+        )
+    
+    def forward(
+        self,
+        graph_data: Dict[str, torch.Tensor],
+        environmental_conditions: Dict[str, torch.Tensor],
+        ship_parameters: Dict[str, torch.Tensor],
+        num_samples: int = 1
+    ) -> Dict[str, torch.Tensor]:
+        """
+        Forward pass completo del modelo.
+        
+        Args:
+            graph_data: Dict con 'x', 'edge_index', 'edge_attr', 'batch'
+            environmental_conditions: Dict con temperaturas, oleaje, corrientes
+            ship_parameters: Dict con especificaciones del buque
+            num_samples: Número de muestras para inferencia bayesiana
+            
+        Returns:
+            Dict con predicciones y métricas de incertidumbre
+        """
+        # 1. Codificar nodos del grafo
+        x = self.node_encoder(graph_data['x'])
+        
+        # 2. Procesamiento espaciotemporal
+        if isinstance(self.spatial_temporal_net, BayesianSTGNN):
+            h_mean, h_std, kl_loss = self.spatial_temporal_net(
+                x, 
+                graph_data['edge_index'],
+                num_samples=num_samples
+            )
+            h = h_mean
+            uncertainty_features = h_std
+        else:
+            h = self.spatial_temporal_net(
+                x,
+                graph_data['edge_index'],
+                graph_data.get('edge_attr'),
+                graph_data.get('temporal_coords')
+            )
+            kl_loss = torch.tensor(0.0)
+            uncertainty_features = torch.zeros_like(h)
+        
+        # Pooling global para obtener representación del grafo completo
+        if 'batch' in graph_data:
+            h_global = self._global_pool(h, graph_data['batch'])
+        else:
+            h_global = h.mean(dim=0, keepdim=True)
+        
+        # 3. Cálculo de features físicas
+        physics_input = self._prepare_physics_input(
+            environmental_conditions,
+            ship_parameters
+        )
+        
+        # Calcular BOG con modelo físico
+        physics_bog = self.physics_lng(
+            t_ambient=environmental_conditions['temperature_ambient'],
+            t_sea=environmental_conditions['temperature_sea'],
+            pressure_tank=environmental_conditions['pressure_tank'],
+            wind_speed=environmental_conditions['wind_speed']
+        )
+        
+        # Calcular resistencia hidrodinámica
+        physics_hydro = self.physics_hydrodynamics(
+            ship_speed=ship_parameters['speed'],
+            wave_height=environmental_conditions['wave_height'],
+            wave_period=environmental_conditions['wave_period'],
+            current_u=environmental_conditions['current_u'],
+            current_v=environmental_conditions['current_v']
+        )
+        
+        # 4. Concatenar features GNN + físicas
+        physics_features = torch.stack([
+            physics_bog['bog_rate_m3_day'],
+            physics_bog['heat_transfer_watts'],
+            physics_hydro['resistance_total_n'],
+            physics_hydro['power_shaft_kw'],
+            environmental_conditions['temperature_ambient'],
+            environmental_conditions['wave_height'],
+            environmental_conditions['wind_speed'],
+            ship_parameters['speed']
+        ], dim=-1)
+        
+        # Expandir physics_features para matching con h_global si es necesario
+        if physics_features.dim() == 1:
+            physics_features = physics_features.unsqueeze(0).expand(h_global.size(0), -1)
+        
+        combined_features = torch.cat([h_global, physics_features], dim=-1)
+        
+        # 5. Fusionar y predecir
+        fused = self.fusion_layer(combined_features)
+        
+        # Predicciones multi-task
+        bog_pred = self.bog_head(combined_features)
+        fuel_pred = self.fuel_head(combined_features)
+        speed_opt = self.speed_head(combined_features)
+        risk_score = self.risk_head(combined_features)
+        
+        # 6. Pérdida física (regularización)
+        physics_loss, physics_loss_components = self.physics_lng.physics_loss(
+            {
+                'bog_rate_m3_day': bog_pred.squeeze(),
+                'heat_transfer_watts': physics_bog['heat_transfer_watts'],
+                'vapor_pressure_pa': physics_bog['vapor_pressure_pa']
+            },
+            {
+                't_ambient': environmental_conditions['temperature_ambient']
+            }
+        )
+        
+        return {
+            'bog_prediction': bog_pred,
+            'fuel_consumption_prediction': fuel_pred,
+            'optimal_speed': speed_opt,
+            'risk_score': risk_score,
+            'physics_bog': physics_bog['bog_rate_m3_day'],
+            'physics_fuel_power': physics_hydro['power_shaft_kw'],
+            'kl_divergence': kl_loss,
+            'physics_loss': physics_loss,
+            'physics_loss_components': physics_loss_components,
+            'uncertainty': uncertainty_features if isinstance(self.spatial_temporal_net, BayesianSTGNN) else None,
+            'graph_embedding': h_global
+        }
+    
+    def _global_pool(self, x: torch.Tensor, batch: torch.Tensor) -> torch.Tensor:
+        """Global mean pooling por batch."""
+        num_graphs = batch.max().item() + 1
+        out = torch.zeros(num_graphs, x.size(1), device=x.device)
+        out = torch.scatter_add(out, 0, batch.unsqueeze(1).expand(-1, x.size(1)), x)
+        count = torch.zeros(num_graphs, device=x.device)
+        count = torch.scatter_add(count, 0, batch, torch.ones_like(batch, dtype=torch.float))
+        return out / count.unsqueeze(1)
+    
+    def _prepare_physics_input(
+        self,
+        env: Dict[str, torch.Tensor],
+        ship: Dict[str, torch.Tensor]
+    ) -> torch.Tensor:
+        """Prepara vector de input para capas físicas."""
+        features = [
+            env['temperature_ambient'],
+            env['temperature_sea'],
+            env['pressure_tank'],
+            env['wind_speed'],
+            env['wave_height'],
+            env['wave_period'],
+            env.get('current_u', torch.tensor(0.0)),
+            env.get('current_v', torch.tensor(0.0)),
+            ship['speed'],
+            ship.get('draft', torch.tensor(11.5))
+        ]
+        return torch.stack(features, dim=-1)
+    
+    def compute_total_loss(
+        self,
+        predictions: Dict[str, torch.Tensor],
+        targets: Dict[str, torch.Tensor]
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """
+        Calcula pérdida total combinando data loss, physics loss y KL divergence.
+        """
+        # Data losses
+        mse_bog = F.mse_loss(predictions['bog_prediction'], targets['bog_rate'])
+        mse_fuel = F.mse_loss(predictions['fuel_consumption_prediction'], targets['fuel_rate'])
+        mse_speed = F.mse_loss(predictions['optimal_speed'], targets['optimal_speed'])
+        
+        # Physics loss (ya calculada en forward, pero podemos recalcular con targets)
+        # ...
+        
+        # KL divergence (regularización bayesiana)
+        kl_weight = self.config['model']['loss_weights']['kl_divergence']
+        kl_loss = predictions['kl_divergence'] * kl_weight
+        
+        # Physics-informed regularization
+        physics_weight = self.config['model']['loss_weights']['physics_loss']
+        physics_loss = predictions['physics_loss'] * physics_weight
+        
+        # Pérdida total
+        total_loss = mse_bog + mse_fuel + 0.5 * mse_speed + kl_loss + physics_loss
+        
+        loss_dict = {
+            'total': total_loss.item(),
+            'mse_bog': mse_bog.item(),
+            'mse_fuel': mse_fuel.item(),
+            'mse_speed': mse_speed.item(),
+            'kl_divergence': kl_loss.item(),
+            'physics_loss': physics_loss.item()
+        }
+        
+        return total_loss, loss_dict
+
+if __name__ == "__main__":
+    import yaml
+    
+    with open("../config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    
+    model = HydroGNNBayes(config)
+    
+    # Datos de prueba
+    graph_data = {
+        'x': torch.randn(50, 16),
+        'edge_index': torch.randint(0, 50, (2, 200)),
+        'edge_attr': torch.randn(200, 4),
+        'batch': torch.zeros(50, dtype=torch.long)  # Un solo grafo
+    }
+    
+    env_conditions = {
+        'temperature_ambient': torch.tensor([25.0]),
+        'temperature_sea': torch.tensor([20.0]),
+        'pressure_tank': torch.tensor([1.1]),
+        'wind_speed': torch.tensor([5.0]),
+        'wave_height': torch.tensor([2.0]),
+        'wave_period': torch.tensor([8.0]),
+        'current_u': torch.tensor([0.5]),
+        'current_v': torch.tensor([0.2])
+    }
+    
+    ship_params = {
+        'speed': torch.tensor([15.0]),
+        'draft': torch.tensor([11.5])
+    }
+    
+    output = model(graph_data, env_conditions, ship_params)
+    print("Output keys:", output.keys())
+    print("BOG prediction:", output['bog_prediction'])
+```
+
+### 4.10 `training/trainer.py`
+```python
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader, Dataset
+from torch.optim import AdamW
+from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
+import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+from typing import Dict, Optional
+import wandb
+from pathlib import Path
+import yaml
+
+from models.full_architecture import HydroGNNBayes
+
+class LNGVoyageDataset(Dataset):
+    """Dataset para viajes LNG con datos grafo y condiciones ambientales."""
+    
+    def __init__(self, data_path: Path, split: str = 'train'):
+        self.data_path = data_path / split
+        self.files = list(self.data_path.glob("*.pt"))
+    
+    def __len__(self):
+        return len(self.files)
+    
+    def __getitem__(self, idx):
+        return torch.load(self.files[idx])
+
+class HydroGNNTrainer(pl.LightningModule):
+    """
+    Trainer PyTorch Lightning para HydroGNN-Bayes.
+    """
+    
+    def __init__(self, config: Dict):
+        super().__init__()
+        self.config = config
+        self.model = HydroGNNBayes(config)
+        self.save_hyperparameters(config)
+        
+        # Métricas
+        self.train_losses = []
+        self.val_losses = []
+    
+    def forward(self, batch):
+        return self.model(
+            graph_data={
+                'x': batch['node_features'],
+                'edge_index': batch['edge_index'],
+                'edge_attr': batch.get('edge_attr'),
+                'batch': batch.get('batch')
+            },
+            environmental_conditions=batch['env_conditions'],
+            ship_parameters=batch['ship_params']
+        )
+    
+    def training_step(self, batch, batch_idx):
+        predictions = self(batch)
+        targets = {
+            'bog_rate': batch['targets']['bog_rate'],
+            'fuel_rate': batch['targets']['fuel_rate'],
+            'optimal_speed': batch['targets'].get('optimal_speed', torch.zeros_like(batch['targets']['bog_rate']))
+        }
+        
+        loss, loss_dict = self.model.compute_total_loss(predictions, targets)
+        
+        # Log metrics
+        for key, value in loss_dict.items():
+            self.log(f'train_{key}', value, prog_bar=True)
+        
+        return loss
+    
+    def validation_step(self, batch, batch_idx):
+        predictions = self(batch)
+        targets = {
+            'bog_rate': batch['targets']['bog_rate'],
+            'fuel_rate': batch['targets']['fuel_rate'],
+            'optimal_speed': batch['targets'].get('optimal_speed', torch.zeros_like(batch['targets']['bog_rate']))
+        }
+        
+        loss, loss_dict = self.model.compute_total_loss(predictions, targets)
+        
+        for key, value in loss_dict.items():
+            self.log(f'val_{key}', value, prog_bar=True)
+        
+        return loss
+    
+    def configure_optimizers(self):
+        optimizer = AdamW(
+            self.parameters(),
+            lr=self.config['model']['training']['learning_rate'],
+            weight_decay=self.config['model']['training']['weight_decay']
+        )
+        
+        scheduler = CosineAnnealingWarmRestarts(
+            optimizer,
+            T_0=10,
+            T_mult=2
+        )
+        
+        return {
+            'optimizer': optimizer,
+            'lr_scheduler': scheduler,
+            'monitor': 'val_total'
+        }
+
+def train_model(config_path: str = "config.yaml"):
+    """Función principal de entrenamiento."""
+    
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
+    
+    # Inicializar W&B
+    wandb.init(project=config['project']['name'], config=config)
+    
+    # DataLoaders
+    train_dataset = LNGVoyageDataset(Path(config['data']['processed_path']), 'train')
+    val_dataset = LNGVoyageDataset(Path(config['data']['processed_path']), 'val')
+    
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=config['model']['training']['batch_size'],
+        shuffle=True,
+        num_workers=4
+    )
+    
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=config['model']['training']['batch_size'],
+        num_workers=4
+    )
+    
+    # Modelo
+    model = HydroGNNTrainer(config)
+    
+    # Callbacks
+    checkpoint_callback = ModelCheckpoint(
+        dirpath=config['paths']['checkpoints'],
+        filename='hydrognn-{epoch:02d}-{val_total:.2f}',
+        save_top_k=3,
+        monitor='val_total',
+        mode='min'
+    )
+    
+    early_stop_callback = EarlyStopping(
+        monitor='val_total',
+        patience=config['model']['training']['early_stopping_patience'],
+        mode='min'
+    )
+    
+    # Trainer
+    trainer = pl.Trainer(
+        max_epochs=config['model']['training']['epochs'],
+        accelerator='gpu' if torch.cuda.is_available() else 'cpu',
+        devices=1,
+        callbacks=[checkpoint_callback, early_stop_callback],
+        logger=pl.loggers.WandbLogger(),
+        gradient_clip_val=1.0
+    )
+    
+    trainer.fit(model, train_loader, val_loader)
+    
+    # Guardar modelo final
+    trainer.save_checkpoint(Path(config['paths']['checkpoints']) / "final_model.ckpt")
+    
+    return model
+
+if __name__ == "__main__":
+    train_model()
+```
+
+### 4.11 `inference/predictor.py`
+```python
+import torch
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from typing import Dict, List, Tuple, Optional
+import json
+import yaml
+
+from models.full_architecture import HydroGNNBayes
+from data_ingestion.era5_loader import ERA5Loader
+from data_ingestion.hycom_loader import HYCOMLoader
+from data_ingestion.ais_processor import AISProcessor
+
+class LNGPredictor:
+    """
+    Sistema de inferencia para predicciones en tiempo real de BOG, 
+    consumo de fuel y optimización de rutas.
+    """
+    
+    def __init__(
+        self,
+        model_path: Path,
+        config_path: Path = Path("config.yaml")
+    ):
+        with open(config_path, 'r') as f:
+            self.config = yaml.safe_load(f)
+        
+        # Cargar modelo
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = HydroGNNBayes(self.config)
+        
+        checkpoint = torch.load(model_path, map_location=self.device)
+        self.model.load_state_dict(checkpoint['state_dict'])
+        self.model.to(self.device)
+        self.model.eval()
+        
+        # Inicializar loaders de datos
+        self.era5_loader = ERA5Loader(self.config)
+        self.hycom_loader = HYCOMLoader(self.config)
+        self.ais_processor = AISProcessor(self.config)
+        
+        # Caché de datos meteorológicos
+        self.weather_cache = {}
+    
+    def predict_voyage(
+        self,
+        route_waypoints: List[Tuple[float, float]],  # [(lat, lon), ...]
+        departure_time: pd.Timestamp,
+        ship_imo: str,
+        ship_speed_profile: Optional[List[float]] = None
+    ) -> Dict:
+        """
+        Predice BOG y consumo de fuel para un viaje completo.
+        
+        Args:
+            route_waypoints: Lista de coordenadas (lat, lon)
+            departure_time: Fecha/hora de salida
+            ship_imo: Identificador del buque
+            ship_speed_profile: Velocidades planificadas por tramo (opcional)
+            
+        Returns:
+            Dict con predicciones detalladas por waypoint y agregadas
+        """
+        # 1. Obtener datos ambientales para la ruta
+        env_data = self._fetch_environmental_data(route_waypoints, departure_time)
+        
+        # 2. Construir grafo de la ruta
+        graph_data = self._build_route_graph(route_waypoints, env_data)
+        
+        # 3. Preparar parámetros del buque
+        ship_params = self._get_ship_parameters(ship_imo)
+        
+        # 4. Ejecutar predicciones para cada segmento
+        predictions = []
+        
+        for i, waypoint in enumerate(route_waypoints):
+            # Condiciones en este waypoint
+            env_point = {
+                'temperature_ambient': torch.tensor([env_data['temperature_2m'].iloc[i]]),
+                'temperature_sea': torch.tensor([env_data['sea_surface_temp'].iloc[i]]),
+                'pressure_tank': torch.tensor([1.1]),  # Asumido constante o de sensores
+                'wind_speed': torch.tensor([env_data['wind_speed'].iloc[i]]),
+                'wave_height': torch.tensor([env_data['wave_height'].iloc[i]]),
+                'wave_period': torch.tensor([env_data['wave_period'].iloc[i]]),
+                'current_u': torch.tensor([env_data['current_u'].iloc[i]]),
+                'current_v': torch.tensor([env_data['current_v'].iloc[i]])
+            }
+            
+            # Velocidad del buque en este segmento
+            if ship_speed_profile:
+                speed = ship_speed_profile[i]
+            else:
+                speed = 15.0  # Default economic speed
+            
+            ship_point = {
+                'speed': torch.tensor([speed]),
+                'draft': torch.tensor([ship_params.get('draft', 11.5)])
+            }
+            
+            # Inferencia
+            with torch.no_grad():
+                result = self.model(
+                    graph_data,
+                    env_point,
+                    ship_point,
+                    num_samples=50  # Muestras para incertidumbre
+                )
+            
+            predictions.append({
+                'waypoint_idx': i,
+                'latitude': waypoint[0],
+                'longitude': waypoint[1],
+                'timestamp': env_data.index[i],
+                'bog_rate_m3_day': result['bog_prediction'].item(),
+                'bog_uncertainty': result['uncertainty'].item() if result['uncertainty'] is not None else 0,
+                'fuel_consumption_tons_day': result['fuel_consumption_prediction'].item(),
+                'optimal_speed': result['optimal_speed'].item() * 25,  # Desnormalizar
+                'risk_score': result['risk_score'].item(),
+                'physics_bog': result['physics_bog'].item(),
+                'environmental_conditions': {
+                    'temperature': env_data['temperature_2m'].iloc[i],
+                    'wave_height': env_data['wave_height'].iloc[i],
+                    'wind_speed': env_data['wind_speed'].iloc[i]
+                }
+            })
+        
+        # 5. Agregar predicciones del viaje completo
+        total_bog = sum([p['bog_rate_m3_day'] * (1/24) for p in predictions])  # Asumiendo 1h por waypoint
+        total_fuel = sum([p['fuel_consumption_tons_day'] * (1/24) for p in predictions])
+        
+        return {
+            'waypoint_predictions': predictions,
+            'summary': {
+                'total_bog_m3': total_bog,
+                'total_fuel_tons': total_fuel,
+                'avg_bog_rate': np.mean([p['bog_rate_m3_day'] for p in predictions]),
+                'avg_fuel_rate': np.mean([p['fuel_consumption_tons_day'] for p in predictions]),
+                'max_risk_score': max([p['risk_score'] for p in predictions]),
+                'voyage_duration_hours': len(predictions)
+            }
+        }
+    
+    def optimize_route(
+        self,
+        origin: Tuple[float, float],
+        destination: Tuple[float, float],
+        departure_time: pd.Timestamp,
+        ship_imo: str,
+        constraints: Optional[Dict] = None
+    ) -> List[Dict]:
+        """
+        Optimiza ruta minimizando BOG + Fuel + Tiempo con restricciones de riesgo.
+        
+        Usa búsqueda heurística (A* modificado) con costos del modelo GNN.
+        """
+        from scipy.optimize import minimize
+        
+        # Grid de waypoints posibles (simplificado)
+        # En producción, usar grafo de rutas marítimas reales
+        num_waypoints = 20
+        lats = np.linspace(origin[0], destination[0], num_waypoints)
+        lons = np.linspace(origin[1], destination[1], num_waypoints)
+        
+        def objective(params):
+            """Función objetivo: BOG + Fuel + Time."""
+            # params son velocidades en cada segmento
+            speeds = params
+            
+            # Calcular costo total usando el modelo
+            total_cost = 0
+            for i in range(len(speeds)):
+                # Simular predicción (simplificado)
+                env = {
+                    'temperature_ambient': torch.tensor([20.0]),
+                    'temperature_sea': torch.tensor([18.0]),
+                    'pressure_tank': torch.tensor([1.1]),
+                    'wind_speed': torch.tensor([5.0]),
+                    'wave_height': torch.tensor([2.0]),
+                    'wave_period': torch.tensor([8.0]),
+                    'current_u': torch.tensor([0.0]),
+                    'current_v': torch.tensor([0.0])
+                }
+                ship = {
+                    'speed': torch.tensor([speeds[i]]),
+                    'draft': torch.tensor([11.5])
+                }
+                
+                # Predicción rápida (sin grafo completo)
+                # En implementación real, usar forward parcial
+                cost = speeds[i]**3 * 0.01  # Simplificación
+                total_cost += cost
+            
+            return total_cost
+        
+        # Optimización
+        initial_guess = np.full(num_waypoints, 15.0)  # 15 nudos inicial
+        bounds = [(10, 20)] * num_waypoints  # Rango de velocidades operacionales
+        
+        result = minimize(
+            objective,
+            initial_guess,
+            method='L-BFGS-B',
+            bounds=bounds
+        )
+        
+        optimal_speeds = result.x
+        
+        # Generar predicciones finales con velocidades óptimas
+        waypoints = [(lats[i], lons[i]) for i in range(num_waypoints)]
+        return self.predict_voyage(waypoints, departure_time, ship_imo, optimal_speeds.tolist())
+    
+    def _fetch_environmental_data(
+        self,
+        waypoints: List[Tuple[float, float]],
+        start_time: pd.Timestamp
+    ) -> pd.DataFrame:
+        """Obtiene datos ERA5 e HYCOM para los waypoints."""
+        # Simplificación: usar cache o descargar
+        # En producción: manejar descargas asíncronas
+        
+        bounds = (
+            max([w[0] for w in waypoints]) + 1,
+            min([w[1] for w in waypoints]) - 1,
+            min([w[0] for w in waypoints]) - 1,
+            max([w[1] for w in waypoints]) + 1
+        )
+        
+        # Generar timestamps para cada waypoint (asumiendo 1 hora entre waypoints)
+        timestamps = [start_time + pd.Timedelta(hours=i) for i in range(len(waypoints))]
+        
+        # Mock data para ejemplo (en producción: llamar a loaders reales)
+        data = {
+            'temperature_2m': np.random.normal(20, 5, len(waypoints)),
+            'sea_surface_temp': np.random.normal(18, 3, len(waypoints)),
+            'wind_speed': np.random.normal(10, 3, len(waypoints)),
+            'wave_height': np.random.normal(2, 1, len(waypoints)),
+            'wave_period': np.random.normal(8, 2, len(waypoints)),
+            'current_u': np.random.normal(0, 0.5, len(waypoints)),
+            'current_v': np.random.normal(0, 0.5, len(waypoints))
+        }
+        
+        df = pd.DataFrame(data, index=timestamps)
+        return df
+    
+    def _build_route_graph(
+        self,
+        waypoints: List[Tuple[float, float]],
+        env_data: pd.DataFrame
+    ) -> Dict[str, torch.Tensor]:
+        """Construye grafo de ruta para el modelo GNN."""
+        num_nodes = len(waypoints)
+        
+        # Features de nodos: [lat, lon, temp, wind, waves, ...]
+        node_features = torch.zeros(num_nodes, 16)
+        for i, (lat, lon) in enumerate(waypoints):
+            node_features[i, 0] = lat / 90.0  # Normalizar
+            node_features[i, 1] = lon / 180.0
+            node_features[i, 2] = env_data['temperature_2m'].iloc[i] / 50.0
+            node_features[i, 3] = env_data['wind_speed'].iloc[i] / 30.0
+            node_features[i, 4] = env_data['wave_height'].iloc[i] / 10.0
+        
+        # Aristas: conectar waypoints consecutivos
+        edge_index = torch.tensor([
+            [i, i+1] for i in range(num_nodes - 1)
+        ] + [
+            [i+1, i] for i in range(num_nodes - 1)  # Bidireccional
+        ], dtype=torch.long).t()
+        
+        # Features de aristas: distancia, diferencia de tiempo, etc.
+        edge_attr = torch.zeros(edge_index.size(1), 4)
+        for i, (src, dst) in enumerate(edge_index.t()):
+            lat1, lon1 = waypoints[src]
+            lat2, lon2 = waypoints[dst]
+            dist = np.sqrt((lat2-lat1)**2 + (lon2-lon1)**2)
+            edge_attr[i, 0] = dist
+        
+        return {
+            'x': node_features,
+            'edge_index': edge_index,
+            'edge_attr': edge_attr,
+            'batch': torch.zeros(num_nodes, dtype=torch.long)
+        }
+    
+    def _get_ship_parameters(self, imo: str) -> Dict:
+        """Obtiene parámetros del buque desde base de datos."""
+        # En producción: query a base de datos
+        return {
+            'draft': 11.5,
+            'length': 280,
+            'beam': 43,
+            'tank_volume': 160000,
+            'insulation_type': 'polyurethane'
+        }
+
+if __name__ == "__main__":
+    # Ejemplo de uso
+    predictor = LNGPredictor(
+        model_path=Path("checkpoints/final_model.ckpt"),
+        config_path=Path("config.yaml")
+    )
+    
+    # Predecir viaje de ejemplo
+    waypoints = [
+        (29.95, -90.07),  # New Orleans
+        (28.0, -85.0),
+        (26.0, -80.0),
+        (24.0, -75.0),
+        (22.0, -70.0),
+        (20.0, -65.0),
+        (18.0, -60.0),
+        (16.0, -55.0),
+        (14.0, -50.0),
+        (12.0, -45.0),
+        (10.0, -40.0)     # Aproximando ruta a Europa
+    ]
+    
+    results = predictor.predict_voyage(
+        route_waypoints=waypoints,
+        departure_time=pd.Timestamp("2023-08-01"),
+        ship_imo="1234567"
+    )
+    
+    print(json.dumps(results['summary'], indent=2))
+```
+
+### 4.12 `main.py`
+```python
+#!/usr/bin/env python3
+"""
+HydroGNN-Bayes: Sistema de Gemelo Digital para Optimización LNG
+Entry point principal.
+"""
+
+import argparse
+import yaml
+from pathlib import Path
+import logging
+
+from training.trainer import train_model
+from inference.predictor import LNGPredictor
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+def main():
+    parser = argparse.ArgumentParser(description='HydroGNN-Bayes LNG Optimization')
+    parser.add_argument(
+        '--mode',
+        choices=['train', 'predict', 'optimize'],
+        required=True,
+        help='Modo de operación'
+    )
+    parser.add_argument(
+        '--config',
+        default='config.yaml',
+        help='Ruta al archivo de configuración'
+    )
+    parser.add_argument(
+        '--model-path',
+        help='Ruta al checkpoint del modelo (para predict/optimize)'
+    )
+    
+    args = parser.parse_args()
+    
+    if args.mode == 'train':
+        logger.info("Iniciando entrenamiento...")
+        train_model(args.config)
+    
+    elif args.mode == 'predict':
+        if not args.model_path:
+            raise ValueError("--model-path requerido para modo predict")
+        
+        predictor = LNGPredictor(Path(args.model_path), Path(args.config))
+        # Ejemplo de predicción (en producción: leer inputs de API/archivo)
+        import pandas as pd
+        results = predictor.predict_voyage(
+            route_waypoints=[(29.95, -90.07), (20.0, -65.0), (10.0, -40.0)],
+            departure_time=pd.Timestamp("2023-08-01"),
+            ship_imo="1234567"
+        )
+        print(results)
+    
+    elif args.mode == 'optimize':
+        if not args.model_path:
+            raise ValueError("--model-path requerido para modo optimize")
+        
+        predictor = LNGPredictor(Path(args.model_path), Path(args.config))
+        # Ejemplo de optimización
+        results = predictor.optimize_route(
+            origin=(29.95, -90.07),
+            destination=(50.0, -5.0),
+            departure_time=pd.Timestamp("2023-08-01"),
+            ship_imo="1234567"
+        )
+        print(results)
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+# PARTE 2: LABORATORIO VIRTUAL WEB (REACT)
+
+## 1. Manual de Inicialización del Proyecto
+
+### Requisitos Previos
+- Node.js >= 18.0.0
+- npm >= 9.0.0 o yarn >= 1.22.0
+
+### Pasos de Instalación
+
+```bash
+# 1. Crear proyecto React con Vite (mejor performance que CRA)
+npm create vite@latest hydrognn-lab -- --template react
+
+# 2. Entrar al directorio
+cd hydrognn-lab
+
+# 3. Instalar dependencias base
+npm install
+
+# 4. Instalar dependencias de visualización 3D y gráficos
+npm install three @react-three/fiber @react-three/drei
+npm install echarts @echarts-for-react
+npm install plotly.js react-plotly.js
+
+# 5. Instalar dependencias de UI y utilidades
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+npm install react-router-dom axios date-fns
+npm install zustand immer  # State management
+npm install react-spring @react-spring/three  # Animaciones
+npm install leva  # GUI para debug de Three.js
+
+# 6. Instalar dependencias de desarrollo
+npm install -D @types/three @types/plotly.js tailwindcss postcss autoprefixer
+
+# 7. Inicializar Tailwind CSS
+npx tailwindcss init -p
+
+# 8. Iniciar servidor de desarrollo
+npm run dev
+```
+
+### Estructura de Carpetas del Proyecto
+```
+hydrognn-lab/
+├── public/
+│   ├── models/          # Modelos 3D de buques
+│   └── assets/          # Imágenes y texturas
+├── src/
+│   ├── components/
+│   │   ├── cards/       # Componentes de tarjetas de proyectos
+│   │   ├── visualizations/  # Componentes 3D y gráficos
+│   │   └── ui/          # Componentes de interfaz reutilizables
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── ProjectDetail.jsx
+│   │   └── VisualLab.jsx
+│   ├── hooks/           # Custom React hooks
+│   ├── store/           # Zustand stores
+│   ├── utils/           # Utilidades y helpers
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
+```
+
+---
+
+## 2. Código Completo de la Aplicación
+
+### 2.1 `package.json`
+```json
+{
+  "name": "hydrognn-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.92.7",
+    "@react-three/fiber": "^8.15.12",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "echarts": "^5.4.3",
+    "echarts-for-react": "^3.0.2",
+    "immer": "^10.0.3",
+    "leva": "^0.9.35",
+    "plotly.js": "^2.27.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-plotly.js": "^2.6.0",
+    "react-router-dom": "^6.21.1",
+    "react-spring": "^9.7.3",
+    "three": "^0.160.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.160.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.8"
+  }
+}
+```
+
+### 2.2 `tailwind.config.js`
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        ocean: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49',
+        },
+        lng: {
+          cyan: '#06b6d4',
+          blue: '#3b82f6',
+          purple: '#8b5cf6',
+          dark: '#0f172a'
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        }
+      }
+    },
+  },
+  plugins: [],
+}
+```
+
+### 2.3 `vite.config.js`
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      }
+    }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+  }
+})
+```
+
+### 2.4 `index.html`
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HydroGNN Lab | AI Research Laboratory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-lng-dark text-white antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+### 2.5 `src/main.jsx`
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider, createTheme } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
+import App from './App.jsx'
+import './index.css'
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#06b6d4',
+    },
+    secondary: {
+      main: '#8b5cf6',
+    },
+    background: {
+      default: '#0f172a',
+      paper: '#1e293b',
+    },
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    h1: { fontWeight: 700 },
+    h2: { fontWeight: 600 },
+    h3: { fontWeight: 600 },
+  },
+})
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+)
+```
+
+### 2.6 `src/index.css`
+```css
+@tailwind base;
+@tailwind components;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-lng-dark text-white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Canvas de Three.js */
+canvas {
+  outline: none;
+}
+```
+
+### 2.7 `src/App.jsx`
+```jsx
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { Box } from '@mui/material'
+import Navigation from './components/ui/Navigation'
+import Dashboard from './pages/Dashboard'
+import ProjectDetail from './pages/ProjectDetail'
+import VisualLab from './pages/VisualLab'
+
+function App() {
+  return (
+    <Box className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+      <Navigation />
+      <Box component="main" className="container mx-auto px-4 py-8">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/lab/:projectId" element={<VisualLab />} />
+        </Routes>
+      </Box>
+    </Box>
+  )
+}
+
+export default App
+```
+
+### 2.8 `src/components/ui/Navigation.jsx`
+```jsx
+import React from 'react'
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material'
+import { Link, useLocation } from 'react-router-dom'
+import ScienceIcon from '@mui/icons-material/Science'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+
+export default function Navigation() {
+  const location = useLocation()
+  
+  return (
+    <AppBar 
+      position="sticky" 
+      className="bg-slate-900/80 backdrop-blur-md border-b border-white/10"
+      elevation={0}
+    >
+      <Toolbar className="container mx-auto">
+        <Box className="flex items-center gap-2 flex-1">
+          <ScienceIcon className="text-cyan-400 text-3xl" />
+          <Typography variant="h6" className="font-bold tracking-tight">
+            <span className="gradient-text">HydroGNN</span>
+            <span className="text-slate-400 font-light">Lab</span>
+          </Typography>
+        </Box>
+        
+        <Box className="flex gap-2">
+          <Button
+            component={Link}
+            to="/"
+            startIcon={<DashboardIcon />}
+            className={location.pathname === '/' ? 'text-cyan-400' : 'text-slate-300'}
+          >
+            Dashboard
+          </Button>
+          <Button
+            className="text-slate-300"
+            onClick={() => window.open('https://github.com/hydrognn/research', '_blank')}
+          >
+            Documentation
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  )
+}
+```
+
+### 2.9 `src/components/cards/ProjectCard.jsx`
+```jsx
+import React from 'react'
+import { 
+  Card, 
+  CardContent, 
+  CardActions, 
+  Typography, 
+  Chip, 
+  Box,
+  Button,
+  LinearProgress
+} from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import ScienceIcon from '@mui/icons-material/Science'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
+
+export default function ProjectCard({ project }) {
+  const navigate = useNavigate()
+  
+  const statusColors = {
+    active: 'success',
+    completed: 'info',
+    experimental: 'warning',
+    archived: 'default'
+  }
+  
+  return (
+    <Card className="glass-panel hover-lift h-full flex flex-col relative overflow-hidden group">
+      {/* Background gradient effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <CardContent className="flex-1 relative z-10">
+        <Box className="flex justify-between items-start mb-4">
+          <Box className="p-2 bg-cyan-500/10 rounded-lg">
+            <ScienceIcon className="text-cyan-400 text-2xl" />
+          </Box>
+          <Chip 
+            label={project.status}
+            color={statusColors[project.status] || 'default'}
+            size="small"
+            className="capitalize"
+          />
+        </Box>
+        
+        <Typography variant="h5" className="font-bold mb-2 text-white">
+          {project.title}
+        </Typography>
+        
+        <Typography variant="body2" className="text-slate-400 mb-4 line-clamp-2">
+          {project.description}
+        </Typography>
+        
+        <Box className="space-y-2 mb-4">
+          <Box className="flex justify-between text-sm">
+            <span className="text-slate-400">Accuracy</span>
+            <span className="text-cyan-400 font-mono">{project.metrics.accuracy}%</span>
+          </Box>
+          <LinearProgress 
+            variant="determinate" 
+            value={project.metrics.accuracy} 
+            className="h-1 bg-slate-700"
+            sx={{ 
+              '& .MuiLinearProgress-bar': { 
+                background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' 
+              } 
+            }}
+          />
+          
+          <Box className="flex justify-between text-sm">
+            <span className="text-slate-400">Uncertainty</span>
+            <span className="text-purple-400 font-mono">±{project.metrics.uncertainty}%</span>
+          </Box>
+        </Box>
+        
+        <Box className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <Chip 
+              key={tag}
+              label={tag}
+              size="small"
+              variant="outlined"
+              className="border-slate-600 text-slate-300 text-xs"
+            />
+          ))}
+        </Box>
+      </CardContent>
+      
+      <CardActions className="relative z-10 pt-0">
+        <Button 
+          fullWidth
+          variant="contained"
+          endIcon={<ArrowForwardIcon />}
+          onClick={() => navigate(`/lab/${project.id}`)}
+          className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-2"
+        >
+          Open Laboratory
+        </Button>
+      </CardActions>
+    </Card>
+  )
+}
+```
+
+### 2.10 `src/components/visualizations/ShipModel3D.jsx`
+```jsx
+import React, { useRef, useMemo } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { 
+  OrbitControls, 
+  Environment, 
+  Grid, 
+  PerspectiveCamera,
+  Float,
+  MeshDistortMaterial
+} from '@react-three/drei'
+import * as THREE from 'three'
+
+// Componente del casco del buque LNG simplificado
+function ShipHull({ bogRate, fuelConsumption }) {
+  const meshRef = useRef()
+  const wireframeRef = useRef()
+  
+  // Animación de "respiración" basada en datos
+  useFrame((state) => {
+    if (meshRef.current) {
+      const time = state.clock.elapsedTime
+      // Efecto de ondas térmicas basado en BOG
+      meshRef.current.material.distort = 0.1 + (bogRate / 100) * Math.sin(time * 0.5) * 0.2
+      meshRef.current.material.speed = 2 + fuelConsumption / 50
+    }
+  })
+  
+  // Geometría simplificada del buque
+  const hullGeometry = useMemo(() => {
+    const shape = new THREE.Shape()
+    // Perfil del casco (vista lateral simplificada)
+    shape.moveTo(0, 0)
+    shape.lineTo(4, 0)      // Línea de base
+    shape.lineTo(4.2, 0.5)  // Proa
+    shape.lineTo(4, 2)      // Proa arriba
+    shape.lineTo(1, 2.2)    // Cubierta
+    shape.lineTo(0.5, 2)    // Popa arriba
+    shape.lineTo(0, 1)      // Popa
+    shape.lineTo(0, 0)
+    
+    const extrudeSettings = {
+      steps: 2,
+      depth: 0.8,
+      bevelEnabled: true,
+      bevelThickness: 0.1,
+      bevelSize: 0.1,
+      bevelSegments: 2
+    }
+    
+    return new THREE.ExtrudeGeometry(shape, extrudeSettings)
+  }, [])
+  
+  // Tanques esféricos (tipo Moss)
+  const tanks = useMemo(() => {
+    const tankPositions = [
+      [1.5, 1.1, 0.4],
+      [2.5, 1.1, 0.4],
+      [3.2, 1.05, 0.4]
+    ]
+    return tankPositions
+  }, [])
+  
+  return (
+    <Float speed={2} rotationIntensity={0.1} floatIntensity={0.2}>
+      <group position={[-2, -1, 0]} rotation={[0, Math.PI / 6, 0]}>
+        {/* Casco principal */}
+        <mesh ref={meshRef} geometry={hullGeometry}>
+          <MeshDistortMaterial
+            color={bogRate > 50 ? '#ef4444' : '#06b6d4'}
+            roughness={0.3}
+            metalness={0.8}
+            emissive={bogRate > 50 ? '#7f1d1d' : '#0e7490'}
+            emissiveIntensity={0.2}
+            distort={0.1}
+            speed={2}
+          />
+        </mesh>
+        
+        {/* Wireframe overlay */}
+        <mesh ref={wireframeRef} geometry={hullGeometry}>
+          <meshBasicMaterial
+            color="#38bdf8"
+            wireframe
+            transparent
+            opacity={0.1}
+          />
+        </mesh>
+        
+        {/* Tanques esféricos */}
+        {tanks.map((pos, idx) => (
+          <mesh key={idx} position={pos}>
+            <sphereGeometry args={[0.35, 32, 32]} />
+            <meshPhysicalMaterial
+              color="#e0f2fe"
+              metalness={0.9}
+              roughness={0.1}
+              transmission={0.6}
+              thickness={0.5}
+              transparent
+              opacity={0.8}
+            />
+            {/* Indicador de temperatura */}
+            <mesh position={[0, 0, 0.36]}>
+              <circleGeometry args={[0.1, 16]} />
+              <meshBasicMaterial 
+                color={bogRate > 30 ? '#f59e0b' : '#10b981'} 
+              />
+            </mesh>
+          </mesh>
+        ))}
+        
+        {/* Partículas de BOG */}
+        {bogRate > 20 && (
+          <BOGParticles intensity={bogRate} />
+        )}
+      </group>
+    </Float>
+  )
+}
+
+// Sistema de partículas para visualizar BOG
+function BOGParticles({ intensity }) {
+  const particlesRef = useRef()
+  const count = Math.min(Math.floor(intensity / 5), 50)
+  
+  const positions = useMemo(() => {
+    const pos = new Float32Array(count * 3)
+    for (let i = 0; i < count; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 4
+      pos[i * 3 + 1] = Math.random() * 2 + 1
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 0.8
+    }
+    return pos
+  }, [count])
+  
+  useFrame((state) => {
+    if (particlesRef.current) {
+      const positions = particlesRef.current.geometry.attributes.position.array
+      for (let i = 0; i < count; i++) {
+        positions[i * 3 + 1] += 0.01 // Subir
+        if (positions[i * 3 + 1] > 3) {
+          positions[i * 3 + 1] = 1 // Reset
+        }
+      }
+      particlesRef.current.geometry.attributes.position.needsUpdate = true
+    }
+  })
+  
+  return (
+    <points ref={particlesRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.05}
+        color="#fbbf24"
+        transparent
+        opacity={0.6}
+        sizeAttenuation
+      />
+    </points>
+  )
+}
+
+// Entorno oceánico
+function OceanEnvironment() {
+  return (
+    <>
+      <Grid
+        position={[0, -2, 0]}
+        args={[20, 20]}
+        cellSize={1}
+        cellThickness={0.5}
+        cellColor="#1e293b"
+        sectionSize={5}
+        sectionThickness={1}
+        sectionColor="#0ea5e9"
+        fadeDistance={25}
+        fadeStrength={1}
+        infiniteGrid
+      />
+      <Environment preset="city" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 5]} intensity={1} />
+      <pointLight position={[-10, -10, -10]} color="#06b6d4" intensity={0.5} />
+    </>
+  )
+}
+
+export default function ShipModel3D({ bogRate = 30, fuelConsumption = 120 }) {
+  return (
+    <div className="h-[500px] w-full rounded-xl overflow-hidden bg-slate-900/50 border border-slate-700">
+      <Canvas>
+        <PerspectiveCamera makeDefault position={[5, 3, 8]} fov={50} />
+        <OrbitControls 
+          enablePan={true}
+          enableZoom={true}
+          enableRotate={true}
+          minDistance={3}
+          maxDistance={15}
+        />
+        <OceanEnvironment />
+        <ShipHull bogRate={bogRate} fuelConsumption={fuelConsumption} />
+      </Canvas>
+      
+      {/* Overlay de métricas */}
+      <div className="absolute bottom-4 left-4 glass-panel p-4 rounded-lg">
+        <div className="text-xs text-slate-400 mb-1">BOG Rate</div>
+        <div className="text-2xl font-mono font-bold text-cyan-400">
+          {bogRate.toFixed(1)} m³/day
+        </div>
+        <div className="text-xs text-slate-400 mt-2 mb-1">Fuel Consumption</div>
+        <div className="text-2xl font-mono font-bold text-purple-400">
+          {fuelConsumption.toFixed(1)} t/day
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+### 2.11 `src/components/visualizations/BayesianUncertaintyChart.jsx`
+```jsx
+import React, { useMemo } from 'react'
+import ReactECharts from 'echarts-for-react'
+
+export default function BayesianUncertaintyChart({ predictions }) {
+  const option = useMemo(() => {
+    // Generar datos de ejemplo si no se proporcionan
+    const data = predictions || Array.from({ length: 50 }, (_, i) => ({
+      x: i,
+      mean: 50 + Math.sin(i / 5) * 20 + Math.random() * 5,
+      std: 5 + Math.random() * 3,
+      actual: 50 + Math.sin(i / 5) * 20 + (Math.random() - 0.5) * 10
+    }))
+    
+    const xData = data.map(d => d.x)
+    const meanData = data.map(d => d.mean)
+    const upperBound = data.map(d => d.mean + 2 * d.std)
+    const lowerBound = data.map(d => d.mean - 2 * d.std)
+    const actualData = data.map(d => d.actual)
+    
+    return {
+      backgroundColor: 'transparent',
+      title: {
+        text: 'Bayesian Prediction Uncertainty',
+        left: 'center',
+        textStyle: { color: '#e2e8f0', fontSize: 16 }
+      },
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+        borderColor: '#334155',
+        textStyle: { color: '#e2e8f0' }
+      },
+      legend: {
+        data: ['Prediction', '95% Confidence', 'Observed'],
+        bottom: 0,
+        textStyle: { color: '#94a3b8' }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '15%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: xData,
+        axisLine: { lineStyle: { color: '#475569' } },
+        axisLabel: { color: '#94a3b8' }
+      },
+      yAxis: {
+        type: 'value',
+        name: 'BOG Rate (m³/day)',
+        nameTextStyle: { color: '#94a3b8' },
+        axisLine: { lineStyle: { color: '#475569' } },
+        axisLabel: { color: '#94a3b8' },
+        splitLine: { lineStyle: { color: '#1e293b' } }
+      },
+      series: [
+        {
+          name: '95% Confidence',
+          type: 'line',
+          data: upperBound,
+          lineStyle: { opacity: 0 },
+          stack: 'confidence',
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(6, 182, 212, 0.3)' },
+              { offset: 1, color: 'rgba(6, 182, 212, 0.05)' }
+            ])
+          }
+        },
+        {
+          name: '95% Confidence',
+          type: 'line',
+          data: lowerBound.map((val, idx) => upperBound[idx] - val),
+          lineStyle: { opacity: 0 },
+          areaStyle: {
+            color: '#0f172a'
+          },
+          stack: 'confidence',
+          symbol: 'none'
+        },
+        {
+          name: 'Prediction',
+          type: 'line',
+          data: meanData,
+          smooth: true,
+          lineStyle: { color: '#06b6d4', width: 3 },
+          itemStyle: { color: '#06b6d4' },
+          symbol: 'circle',
+          symbolSize: 6
+        },
+        {
+          name: 'Observed',
+          type: 'scatter',
+          data: actualData,
+          symbolSize: 8,
+          itemStyle: { 
+            color: '#f59e0b',
+            shadowBlur: 10,
+            shadowColor: '#f59e0b'
+          }
+        }
+      ]
+    }
+  }, [predictions])
+  
+  return (
+    <div className="glass-panel p-6 rounded-xl">
+      <ReactECharts 
+        option={option} 
+        style={{ height: '400px', width: '100%' }}
+        theme="dark"
+      />
+    </div>
+  )
+}
+```
+
+### 2.12 `src/components/visualizations/RouteOptimizationMap.jsx`
+```jsx
+import React, { useMemo } from 'react'
+import Plot from 'react-plotly.js'
+
+export default function RouteOptimizationMap({ waypoints, predictions }) {
+  const data = useMemo(() => {
+    // Datos de ejemplo de ruta
+    const routeData = waypoints || [
+      { lat: 29.95, lon: -90.07, bog: 45, fuel: 120, risk: 0.2 },
+      { lat: 28.5, lon: -85.0, bog: 48, fuel: 125, risk: 0.3 },
+      { lat: 26.0, lon: -80.0, bog: 52, fuel: 130, risk: 0.4 },
+      { lat: 24.0, lon: -75.0, bog: 50, fuel: 128, risk: 0.25 },
+      { lat: 22.0, lon: -70.0, bog: 47, fuel: 122, risk: 0.2 },
+      { lat: 20.0, lon: -65.0, bog: 46, fuel: 118, risk: 0.15 },
+      { lat: 18.0, lon: -60.0, bog: 44, fuel: 115, risk: 0.1 },
+      { lat: 16.0, lon: -55.0, bog: 42, fuel: 112, risk: 0.1 },
+      { lat: 14.0, lon: -50.0, bog: 41, fuel: 110, risk: 0.15 },
+      { lat: 12.0, lon: -45.0, bog: 40, fuel: 108, risk: 0.2 }
+    ]
+    
+    const lats = routeData.map(d => d.lat)
+    const lons = routeData.map(d => d.lon)
+    const bogs = routeData.map(d => d.bog)
+    const risks = routeData.map(d => d.risk)
+    
+    return [
+      {
+        type: 'scattergeo',
+        mode: 'lines+markers',
+        lat: lats,
+        lon: lons,
+        marker: {
+          size: 12,
+          color: bogs,
+          colorscale: 'Viridis',
+          showscale: true,
+          colorbar: {
+            title: 'BOG Rate<br>(m³/day)',
+            titleside: 'right'
+          },
+          line: {
+            color: 'white',
+            width: 1
+          }
+        },
+        line: {
+          color: '#06b6d4',
+          width: 3,
+          shape: 'spline'
+        },
+        text: routeData.map((d, i) => 
+          `Waypoint ${i+1}<br>BOG: ${d.bog} m³/day<br>Fuel: ${d.fuel} t/day<br>Risk: ${(d.risk * 100).toFixed(0)}%`
+        ),
+        hoverinfo: 'text',
+        name: 'Optimal Route'
+      },
+      {
+        type: 'scattergeo',
+        mode: 'markers',
+        lat: [29.95, 12.0],
+        lon: [-90.07, -45.0],
+        marker: {
+          size: 20,
+          color: ['#10b981', '#ef4444'],
+          symbol: ['star', 'x']
+        },
+        text: ['Origin: New Orleans', 'Destination: Europe'],
+        hoverinfo: 'text',
+        name: 'Terminals',
+        showlegend: false
+      }
+    ]
+  }, [waypoints])
+  
+  const layout = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    geo: {
+      scope: 'world',
+      projection: {
+        type: 'mercator'
+      },
+      center: {
+        lat: 20,
+        lon: -65
+      },
+      lonaxis: {
+        range: [-100, -30]
+      },
+      lataxis: {
+        range: [5, 35]
+      },
+      showland: true,
+      landcolor: '#1e293b',
+      showocean: true,
+      oceancolor: '#0f172a',
+      showcoastlines: true,
+      coastlinecolor: '#334155',
+      coastlinewidth: 1,
+      showframe: false,
+      bgcolor: 'rgba(0,0,0,0)'
+    },
+    margin: { l: 0, r: 0, t: 30, b: 0 },
+    showlegend: true,
+    legend: {
+      x: 0.02,
+      y: 0.98,
+      bgcolor: 'rgba(15, 23, 42, 0.8)',
+      bordercolor: '#334155',
+      borderwidth: 1,
+      font: { color: '#e2e8f0' }
+    }
+  }
+  
+  const config = {
+    responsive: true,
+    displayModeBar: false
+  }
+  
+  return (
+    <div className="glass-panel p-4 rounded-xl">
+      <h3 className="text-lg font-semibold text-white mb-4">Route Optimization Visualization</h3>
+      <Plot
+        data={data}
+        layout={layout}
+        config={config}
+        style={{ width: '100%', height: '500px' }}
+        useResizeHandler={true}
+      />
+    </div>
+  )
+}
+```
+
+### 2.13 `src/components/visualizations/GraphNetworkView.jsx`
+```jsx
+import React, { useMemo } from 'react'
+import ReactECharts from 'echarts-for-react'
+
+export default function GraphNetworkView({ graphData }) {
+  const option = useMemo(() => {
+    // Generar grafo de ejemplo (nodos de tanques y conexiones térmicas)
+    const nodes = [
+      { id: '0', name: 'Tank 1 (Port)', category: 0, value: 45 },
+      { id: '1', name: 'Tank 2 (Center)', category: 0, value: 48 },
+      { id: '2', name: 'Tank 3 (Starboard)', category: 0, value: 46 },
+      { id: '3', name: 'Tank 4 (Port)', category: 0, value: 44 },
+      { id: '4', name: 'Tank 5 (Center)', category: 0, value: 47 },
+      { id: '5', name: 'Hull Section A', category: 1, value: 25 },
+      { id: '6', name: 'Hull Section B', category: 1, value: 26 },
+      { id: '7', name: 'Hull Section C', category: 1, value: 24 },
+      { id: '8', name: 'Environment', category: 2, value: 30 },
+      { id: '9', name: 'BOG System', category: 3, value: 50 }
+    ]
+    
+    const links = [
+      { source: '0', target: '5', value: 0.8 },
+      { source: '1', target: '5', value: 0.9 },
+      { source: '2', target: '6', value: 0.85 },
+      { source: '3', target: '6', value: 0.75 },
+      { source: '4', target: '7', value: 0.9 },
+      { source: '5', target: '8', value: 0.6 },
+      { source: '6', target: '8', value: 0.7 },
+      { source: '7', target: '8', value: 0.65 },
+      { source: '0', target: '9', value: 0.5 },
+      { source: '1', target: '9', value: 0.6 },
+      { source: '2', target: '9', value: 0.55 },
+      { source: '3', target: '9', value: 0.45 },
+      { source: '4', target: '9', value: 0.5 }
+    ]
+    
+    const categories = [
+      { name: 'LNG Tanks', itemStyle: { color: '#06b6d4' } },
+      { name: 'Hull Sections', itemStyle: { color: '#3b82f6' } },
+      { name: 'Environment', itemStyle: { color: '#10b981' } },
+      { name: 'Processing', itemStyle: { color: '#f59e0b' } }
+    ]
+    
+    return {
+      backgroundColor: 'transparent',
+      title: {
+        text: 'Knowledge Graph: Thermal Network',
+        left: 'center',
+        textStyle: { color: '#e2e8f0' }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+        borderColor: '#334155',
+        textStyle: { color: '#e2e8f0' },
+        formatter: (params) => {
+          if (params.dataType === 'node') {
+            return `${params.name}<br/>Temperature: ${params.value}°C`
+          }
+          return `${params.data.source} → ${params.data.target}<br/>Heat Transfer: ${(params.value * 100).toFixed(0)}%`
+        }
+      },
+      legend: {
+        data: categories.map(c => c.name),
+        bottom: 0,
+        textStyle: { color: '#94a3b8' }
+      },
+      series: [
+        {
+          type: 'graph',
+          layout: 'force',
+          data: nodes.map(n => ({
+            ...n,
+            symbolSize: 30 + n.value,
+            label: {
+              show: true,
+              position: 'bottom',
+              color: '#e2e8f0',
+              fontSize: 10
+            }
+          })),
+          links: links.map(l => ({
+            ...l,
+            lineStyle: {
+              width: l.value * 5,
+              curveness: 0.2,
+              color: 'source',
+              opacity: 0.7
+            }
+          })),
+          categories: categories,
+          roam: true,
+          label: {
+            show: true
+          },
+          force: {
+            repulsion: 300,
+            edgeLength: 100,
+            gravity: 0.1
+          },
+          emphasis: {
+            focus: 'adjacency',
+            lineStyle: {
+              width: 10
+            }
+          }
+        }
+      ]
+    }
+  }, [graphData])
+  
+  return (
+    <div className="glass-panel p-6 rounded-xl">
+      <ReactECharts 
+        option={option} 
+        style={{ height: '500px', width: '100%' }}
+        theme="dark"
+      />
+    </div>
+  )
+}
+```
+
+### 2.14 `src/pages/Dashboard.jsx`
+```jsx
+import React from 'react'
+import { Grid, Typography, Box, Container } from '@mui/material'
+import ProjectCard from '../components/cards/ProjectCard'
+
+const projects = [
+  {
+    id: 'hydrognn-bayes',
+    title: 'HydroGNN-Bayes',
+    description: 'Sistema híbrido de gemelo digital para optimización de BOG y consumo de fuel en transporte LNG usando Graph Neural Networks y redes bayesianas.',
+    status: 'active',
+    metrics: {
+      accuracy: 94.5,
+      uncertainty: 3.2
+    },
+    tags: ['GNN', 'Bayesian', 'Physics-Informed', 'LNG']
+  },
+  {
+    id: 'wave-predictor',
+    title: 'WavePredictor 3D',
+    description: 'Modelo espaciotemporal para predicción de oleaje marítimo usando Transformers y datos satelitales.',
+    status: 'experimental',
+    metrics: {
+      accuracy: 89.2,
+      uncertainty: 8.5
+    },
+    tags: ['Transformers', 'Computer Vision', 'Oceanography']
+  },
+  {
+    id: 'port-optimizer',
+    title: 'PortFlow AI',
+    description: 'Optimización de operaciones portuarias y scheduling de terminales LNG mediante reinforcement learning.',
+    status: 'completed',
+    metrics: {
+      accuracy: 96.8,
+      uncertainty: 2.1
+    },
+    tags: ['Reinforcement Learning', 'Scheduling', 'Operations Research']
+  },
+  {
+    id: 'hull-digital-twin',
+    title: 'Hull Digital Twin',
+    description: 'Gemelo digital estructural para monitoreo de fatiga y corrosión en tiempo real.',
+    status: 'active',
+    metrics: {
+      accuracy: 91.3,
+      uncertainty: 5.7
+    },
+    tags: ['FEM', 'IoT', 'Structural Health']
+  }
+]
+
+export default function Dashboard() {
+  return (
+    <Container maxWidth="xl">
+      <Box className="mb-8">
+        <Typography variant="h3" className="font-bold mb-2">
+          <span className="gradient-text">Research Laboratory</span>
+        </Typography>
+        <Typography variant="subtitle1" className="text-slate-400">
+          Advanced AI systems for maritime and ocean engineering
+        </Typography>
+      </Box>
+      
+      <Grid container spacing={4}>
+        {projects.map((project) => (
+          <Grid item xs={12} md={6} lg={3} key={project.id}>
+            <ProjectCard project={project} />
+          </Grid>
+        ))}
+      </Grid>
+      
+      {/* Stats Overview */}
+      <Box className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        {[
+          { label: 'Active Models', value: '12', color: 'text-cyan-400' },
+          { label: 'Predictions/Day', value: '2.4M', color: 'text-purple-400' },
+          { label: 'Fleet Vessels', value: '156', color: 'text-emerald-400' },
+          { label: 'Avg. Fuel Savings', value: '18%', color: 'text-amber-400' }
+        ].map((stat) => (
+          <Box key={stat.label} className="glass-panel p-6 rounded-xl text-center">
+            <Typography variant="h3" className={`font-bold ${stat.color} mb-1`}>
+              {stat.value}
+            </Typography>
+            <Typography variant="body2" className="text-slate-400">
+              {stat.label}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Container>
+  )
+}
+```
+
+### 2.15 `src/pages/VisualLab.jsx`
+```jsx
+import React, { useState, useEffect } from 'react'
+import { 
+  Grid, 
+  Typography, 
+  Box, 
+  Paper, 
+  Tabs, 
+  Tab,
+  Slider,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button
+} from '@mui/material'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import PauseIcon from '@mui/icons-material/Pause'
+import ShipModel3D from '../components/visualizations/ShipModel3D'
+import BayesianUncertaintyChart from '../components/visualizations/BayesianUncertaintyChart'
+import RouteOptimizationMap from '../components/visualizations/RouteOptimizationMap'
+import GraphNetworkView from '../components/visualizations/GraphNetworkView'
+
+function TabPanel({ children, value, index }) {
+  return value === index && <Box className="mt-4">{children}</Box>
+}
+
+export default function VisualLab() {
+  const [activeTab, setActiveTab] = useState(0)
+  const [isSimulating, setIsSimulating] = useState(false)
+  const [simulationParams, setSimulationParams] = useState({
+    ambientTemp: 25,
+    seaTemp: 20,
+    windSpeed: 10,
+    waveHeight: 2.5,
+    shipSpeed: 15,
+    tankPressure: 1.1
+  })
+  const [liveData, setLiveData] = useState({
+    bogRate: 45.2,
+    fuelConsumption: 118.5,
+    uncertainty: 3.8
+  })
+  
+  // Simulación de datos en tiempo real
+  useEffect(() => {
+    let interval
+    if (isSimulating) {
+      interval = setInterval(() => {
+        setLiveData(prev => ({
+          bogRate: prev.bogRate + (Math.random() - 0.5) * 2,
+          fuelConsumption: prev.fuelConsumption + (Math.random() - 0.5) * 3,
+          uncertainty: Math.max(2, prev.uncertainty + (Math.random() - 0.5) * 0.5)
+        }))
+      }, 1000)
+    }
+    return () => clearInterval(interval)
+  }, [isSimulating])
+  
+  const handleParamChange = (param) => (event, value) => {
+    setSimulationParams(prev => ({
+      ...prev,
+      [param]: value
+    }))
+  }
+  
+  return (
+    <Box className="container mx-auto">
+      <Box className="flex justify-between items-center mb-6">
+        <div>
+          <Typography variant="h4" className="font-bold text-white mb-1">
+            HydroGNN-Bayes Laboratory
+          </Typography>
+          <Typography variant="body2" className="text-slate-400">
+            Real-time simulation and visualization environment
+          </Typography>
+        </div>
+        
+        <Button
+          variant="contained"
+          size="large"
+          startIcon={isSimulating ? <PauseIcon /> : <PlayArrowIcon />}
+          onClick={() => setIsSimulating(!isSimulating)}
+          className={isSimulating 
+            ? 'bg-amber-600 hover:bg-amber-500' 
+            : 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500'
+          }
+        >
+          {isSimulating ? 'Pause Simulation' : 'Start Simulation'}
+        </Button>
+      </Box>
+      
+      <Grid container spacing={3}>
+        {/* Panel de Control */}
+        <Grid item xs={12} lg={3}>
+          <Paper className="glass-panel p-6 rounded-xl h-full">
+            <Typography variant="h6" className="font-semibold mb-4 text-white">
+              Simulation Parameters
+            </Typography>
+            
+            <Box className="space-y-6">
+              <Box>
+                <Typography variant="body2" className="text-slate-400 mb-2">
+                  Ambient Temperature: {simulationParams.ambientTemp}°C
+                </Typography>
+                <Slider
+                  value={simulationParams.ambientTemp}
+                  onChange={handleParamChange('ambientTemp')}
+                  min={-10}
+                  max={45}
+                  className="text-cyan-400"
+                />
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" className="text-slate-400 mb-2">
+                  Sea Temperature: {simulationParams.seaTemp}°C
+                </Typography>
+                <Slider
+                  value={simulationParams.seaTemp}
+                  onChange={handleParamChange('seaTemp')}
+                  min={0}
+                  max={35}
+                  className="text-blue-400"
+                />
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" className="text-slate-400 mb-2">
+                  Wind Speed: {simulationParams.windSpeed} m/s
+                </Typography>
+                <Slider
+                  value={simulationParams.windSpeed}
+                  onChange={handleParamChange('windSpeed')}
+                  min={0}
+                  max={30}
+                  className="text-purple-400"
+                />
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" className="text-slate-400 mb-2">
+                  Wave Height: {simulationParams.waveHeight} m
+                </Typography>
+                <Slider
+                  value={simulationParams.waveHeight}
+                  onChange={handleParamChange('waveHeight')}
+                  min={0}
+                  max={8}
+                  step={0.1}
+                  className="text-emerald-400"
+                />
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" className="text-slate-400 mb-2">
+                  Ship Speed: {simulationParams.shipSpeed} knots
+                </Typography>
+                <Slider
+                  value={simulationParams.shipSpeed}
+                  onChange={handleParamChange('shipSpeed')}
+                  min={5}
+                  max={22}
+                  className="text-amber-400"
+                />
+              </Box>
+              
+              <FormControl fullWidth className="mt-4">
+                <InputLabel className="text-slate-400">Tank Configuration</InputLabel>
+                <Select
+                  defaultValue="standard"
+                  className="text-white"
+                  sx={{
+                    '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' },
+                    '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#475569' }
+                  }}
+                >
+                  <MenuItem value="standard">Standard Moss Spherical</MenuItem>
+                  <MenuItem value="membrane">Membrane GTT No96</MenuItem>
+                  <MenuItem value="membrane_mark3">Membrane GTT Mark III</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </Paper>
+        </Grid>
+        
+        {/* Visualización Principal */}
+        <Grid item xs={12} lg={9}>
+          <Paper className="glass-panel p-2 rounded-xl">
+            <Tabs 
+              value={activeTab} 
+              onChange={(e, v) => setActiveTab(v)}
+              className="border-b border-slate-700"
+              textColor="primary"
+              indicatorColor="primary"
+            >
+              <Tab label="3D Digital Twin" className="text-slate-300" />
+              <Tab label="Uncertainty Analysis" className="text-slate-300" />
+              <Tab label="Route Optimization" className="text-slate-300" />
+              <Tab label="Knowledge Graph" className="text-slate-300" />
+            </Tabs>
+            
+            <TabPanel value={activeTab} index={0}>
+              <ShipModel3D 
+                bogRate={liveData.bogRate} 
+                fuelConsumption={liveData.fuelConsumption}
+              />
+            </TabPanel>
+            
+            <TabPanel value={activeTab} index={1}>
+              <BayesianUncertaintyChart />
+            </TabPanel>
+            
+            <TabPanel value={activeTab} index={2}>
+              <RouteOptimizationMap />
+            </TabPanel>
+            
+            <TabPanel value={activeTab} index={3}>
+              <GraphNetworkView />
+            </TabPanel>
+          </Paper>
+        </Grid>
+        
+        {/* Métricas en Tiempo Real */}
+        <Grid item xs={12}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={3}>
+              <Paper className="glass-panel p-4 rounded-xl">
+                <Typography variant="caption" className="text-slate-400 uppercase tracking-wider">
+                  BOG Rate
+                </Typography>
+                <Typography variant="h4" className="font-mono font-bold text-cyan-400 mt-1">
+                  {liveData.bogRate.toFixed(2)}
+                  <span className="text-sm text-slate-500 ml-1">m³/day</span>
+                </Typography>
+                <Typography variant="caption" className="text-emerald-400">
+                  ↓ 12% vs baseline
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} md={3}>
+              <Paper className="glass-panel p-4 rounded-xl">
+                <Typography variant="caption" className="text-slate-400 uppercase tracking-wider">
+                  Fuel Consumption
+                </Typography>
+                <Typography variant="h4" className="font-mono font-bold text-purple-400 mt-1">
+                  {liveData.fuelConsumption.toFixed(1)}
+                  <span className="text-sm text-slate-500 ml-1">t/day</span>
+                </Typography>
+                <Typography variant="caption" className="text-emerald-400">
+                  ↓ 8% optimized
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} md={3}>
+              <Paper className="glass-panel p-4 rounded-xl">
+                <Typography variant="caption" className="text-slate-400 uppercase tracking-wider">
+                  Prediction Uncertainty
+                </Typography>
+                <Typography variant="h4" className="font-mono font-bold text-amber-400 mt-1">
+                  ±{liveData.uncertainty.toFixed(1)}
+                  <span className="text-sm text-slate-500 ml-1">%</span>
+                </Typography>
+                <Typography variant="caption" className="text-slate-400">
+                  95% confidence
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} md={3}>
+              <Paper className="glass-panel p-4 rounded-xl">
+                <Typography variant="caption" className="text-slate-400 uppercase tracking-wider">
+                  System Status
+                </Typography>
+                <Typography variant="h4" className="font-mono font-bold text-emerald-400 mt-1">
+                  ACTIVE
+                </Typography>
+                <Typography variant="caption" className="text-slate-400">
+                  All sensors online
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+  )
+}
+```
+
+### 2.16 `src/pages/ProjectDetail.jsx`
+```jsx
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { 
+  Typography, 
+  Box, 
+  Paper, 
+  Grid, 
+  Chip,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from '@mui/material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import ArchitectureIcon from '@mui/icons-material/Architecture'
+import StorageIcon from '@mui/icons-material/Storage'
+import ModelTrainingIcon from '@mui/icons-material/ModelTraining'
+
+export default function ProjectDetail() {
+  const { id } = useParams()
+  
+  // Datos del proyecto (en producción: fetch desde API)
+  const project = {
+    id: 'hydrognn-bayes',
+    title: 'HydroGNN-Bayes',
+    fullDescription: `
+      HydroGNN-Bayes es un sistema de gemelo digital de última generación diseñado 
+      para abordar uno de los desafíos más críticos en el transporte marítimo de 
+      Gas Natural Licuado (LNG): la gestión predictiva del Boil-Off Gas (BOG) y la 
+      optimización energética integral de la flota.
+      
+      El sistema integra cuatro paradigmas de Inteligencia Artificial:
+      
+      1. Graph Neural Networks Espaciotemporales (ST-GNN) para modelar las complejas 
+         interacciones entre componentes del buque y variables ambientales.
+         
+      2. Physics-Informed Neural Networks (PINN) que incorporan restricciones 
+         termodinámicas y hidrodinámicas fundamentales.
+         
+      3. Redes Bayesianas profundas para cuantificación rigurosa de la incertidumbre 
+         epistémica y aleatoria.
+         
+      4. Grafos de Conocimiento que integran regulaciones IMO, especificaciones 
+         portuarias y conocimiento experto naval.
+    `,
+    architecture: [
+      'Graph Transformer con 8 cabezas de atención',
+      'Physics-Informed Layers (Navier-Stokes simplificado)',
+      'Bayesian GAT Convolutions con inferencia variacional',
+      'Multi-task Learning: BOG + Fuel + Routing + Risk'
+    ],
+    datasets: [
+      'ERA5 Reanalysis (Copernicus CDS)',
+      'HYCOM Ocean Currents',
+      'AIS Historical Data (MarineCadastre)',
+      'LNG Shipping Database (Clarksons)'
+    ],
+    metrics: {
+      mse_bog: 2.34,
+      mae_fuel: 4.12,
+      coverage_95: 0.94,
+      inference_time: '45ms'
+    }
+  }
+  
+  return (
+    <Box className="container mx-auto max-w-6xl">
+      <Typography variant="h3" className="font-bold mb-2 text-white">
+        {project.title}
+      </Typography>
+      <Typography variant="subtitle1" className="text-slate-400 mb-8">
+        Project ID: {id}
+      </Typography>
+      
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={8}>
+          <Paper className="glass-panel p-8 rounded-xl mb-6">
+            <Typography variant="h5" className="font-semibold mb-4 flex items-center gap-2">
+              <ArchitectureIcon className="text-cyan-400" />
+              Architecture Overview
+            </Typography>
+            <Typography variant="body1" className="text-slate-300 whitespace-pre-line leading-relaxed">
+              {project.fullDescription}
+            </Typography>
+          </Paper>
+          
+          <Paper className="glass-panel p-8 rounded-xl">
+            <Typography variant="h5" className="font-semibold mb-4 flex items-center gap-2">
+              <ModelTrainingIcon className="text-purple-400" />
+              Technical Specifications
+            </Typography>
+            <List>
+              {project.architecture.map((item, idx) => (
+                <ListItem key={idx} className="text-slate-300">
+                  <ListItemIcon>
+                    <CheckCircleIcon className="text-emerald-400" />
+                  </ListItemIcon>
+                  <ListItemText primary={item} />
+                </ListItem>
+              ))}
+            </List>
+          </Paper>
+        </Grid>
+        
+        <Grid item xs={12} md={4}>
+          <Paper className="glass-panel p-6 rounded-xl mb-6">
+            <Typography variant="h6" className="font-semibold mb-4 flex items-center gap-2">
+              <StorageIcon className="text-amber-400" />
+              Datasets
+            </Typography>
+            <Box className="flex flex-wrap gap-2">
+              {project.datasets.map((dataset) => (
+                <Chip 
+                  key={dataset}
+                  label={dataset}
+                  variant="outlined"
+                  className="border-slate-600 text-slate-300"
+                  size="small"
+                />
+              ))}
+            </Box>
+          </Paper>
+          
+          <Paper className="glass-panel p-6 rounded-xl">
+            <Typography variant="h6" className="font-semibold mb-4">
+              Performance Metrics
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <Typography variant="caption" className="text-slate-400">
+                  MSE (BOG)
+                </Typography>
+                <Typography variant="h5" className="font-mono font-bold text-cyan-400">
+                  {project.metrics.mse_bog}
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="caption" className="text-slate-400">
+                  MAE (Fuel)
+                </Typography>
+                <Typography variant="h5" className="font-mono font-bold text-purple-400">
+                  {project.metrics.mae_fuel}
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="caption" className="text-slate-400">
+                  95% Coverage
+                </Typography>
+                <Typography variant="h5" className="font-mono font-bold text-emerald-400">
+                  {(project.metrics.coverage_95 * 100).toFixed(0)}%
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="caption" className="text-slate-400">
+                  Inference Time
+                </Typography>
+                <Typography variant="h5" className="font-mono font-bold text-amber-400">
+                  {project.metrics.inference_time}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Box>
+  )
+}
+```
+
+---
+
+## 3. Instrucciones de Ejecución
+
+### Backend (Python)
+```bash
+# 1. Crear entorno virtual
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# o: venv\Scripts\activate  # Windows
+
+# 2. Instalar dependencias
+pip install -r requirements.txt
+
+# 3. Configurar credenciales Copernicus (para ERA5)
+# Crear archivo ~/.cdsapirc con:
+# url: https://cds.climate.copernicus.eu/api/v2
+# key: {UID}:{API_KEY}
+
+# 4. Entrenar modelo
+python main.py --mode train --config config.yaml
+
+# 5. Ejecutar API de inferencia (para conectar con frontend)
+# (Implementar FastAPI/Flask wrapper para los métodos de predictor.py)
+```
+
+### Frontend (React)
+```bash
+# 1. Instalar dependencias
+npm install
+
+# 2. Iniciar desarrollo
+npm run dev
+
+# 3. Construir para producción
+npm run build
+
+# 4. Previsualizar build
+npm run preview
+```
+
+---
+
+## 4. Características Implementadas
+
+### Visualización 3D (Three.js/React-Three-Fiber)
+- **Modelo de buque LNG** con tanques esféricos tipo Moss
+- **Visualización de BOG** mediante partículas animadas
+- **Efectos térmicos** dinámicos basados en datos de predicción
+- **Controles orbitales** para exploración interactiva
+
+### Dashboards Interactivos (ECharts/Plotly)
+- **Gráficos de incertidumbre bayesiana** con bandas de confianza del 95%
+- **Mapas geoespaciales** de rutas óptimas con waypoints interactivos
+- **Grafos de conocimiento** de red térmica del buque (force-directed graph)
+- **Métricas en tiempo real** con actualización dinámica
+
+### UI/UX
+- **Diseño glassmorphism** con Tailwind CSS
+- **Tema oscuro** optimizado para laboratorios técnicos
+- **Sistema de tarjetas** para navegación entre proyectos
+- **Controles de simulación** en tiempo real
+
+Esta arquitectura proporciona un laboratorio virtual completo para investigación y demostración de sistemas de IA aplicados a ingeniería naval y oceánica, cumpliendo con los más altos estándares de visualización científica y experiencia de usuario.
+

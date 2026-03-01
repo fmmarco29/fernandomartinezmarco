@@ -1,4 +1,6 @@
 'use client'
+import 'next/image'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import InteractiveProjectCard from '@/components/common/InteractiveProjectCard'
 
@@ -52,7 +54,26 @@ const LNGKnowledgeGraphArticle = dynamic(
   { ssr: false }
 )
 
+const HydroGNNBayesDashboard = dynamic(
+  () => import('@/components/features/hydrognn/HydroGNNBayesDashboard'),
+  { ssr: false }
+)
+
 const projects = [
+  {
+    title: "HydroGNN-Bayes: LNG BOG Physics Engine",
+    description: "Real-time PINN thermodynamics engine for LNG Boil-Off Gas (BOG) prediction on GTT Mark-III tanks. By solving Fourier heat conduction and Clapeyron phase-change equations, the model calculates how dynamic environmental factors (SST, wave height, wind) drive thermal ingress (Q) into the cryogenic cargo, accurately simulating the daily evaporation rate. Includes a proposed ST-GNN + Bayesian architecture to predict these non-linear dynamics under route-aware uncertainty.",
+    stack: ["PINN", "ERA5/HYCOM", "GTT Mark-III", "Fourier Heat Eq.", "ST-GNN (proposed)"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#020817', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <Image src="/pinn.png" alt="HydroGNN-Bayes Preview" fill style={{ objectFit: 'cover' }} quality={100} priority />
+        <div style={{ position: 'absolute', bottom: 12, left: 12, fontFamily: 'monospace', fontSize: 10, color: 'rgba(139,92,246,0.9)', fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>ST-GNN · PINN · BAYES</div>
+      </div>
+    ),
+    expandedContent: <HydroGNNBayesDashboard />
+  },
   {
     title: "Deep Learning for Ship Hull Load Prediction",
     description: "Revolutionary implementation of RNNs (LSTM/GRU) and a novel Error Correction Strategy to predict wave-induced hull girder loads in real-time. By leveraging ship motion data instead of physical strain gauges, the system achieves up to 48% accuracy improvement in complex sea states.",
@@ -65,19 +86,6 @@ const projects = [
       </div>
     ),
     expandedContent: <ShipHullLoadArticle />
-  },
-  {
-    title: "AI Research Lab",
-    description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
-    stack: ["Next.js", "React", "Deep Learning", "Research"],
-    link: "https://fmmarco29.github.io/AI/",
-    status: "offline" as const,
-    preview: (
-      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
-        <img src="/rl.png" alt="AI Research Lab Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-      </div>
-    ),
-    expandedContent: <ExplorationArticle />
   },
   {
     title: "Digital Twin for Riser Fatigue Monitoring",
@@ -182,11 +190,24 @@ const projects = [
       </div>
     ),
     expandedContent: <InteractiveSARDashboard />
+  },
+  {
+    title: "AI Research Lab",
+    description: "An architect's exploration into the intersection of naval engineering and artificial intelligence. This lab showcases experimental prototypes, deep learning architectures, and a journey into data-driven maritime solutions.",
+    stack: ["Next.js", "React", "Deep Learning", "Research"],
+    link: "https://fmmarco29.github.io/AI/",
+    status: "offline" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#050a12', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <img src="/rl.png" alt="AI Research Lab Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+    ),
+    expandedContent: <ExplorationArticle />
   }
 ]
 
 const ProjectGrid = () => {
-  const labTitles = ["AI Research Lab", "Ship Grounding Risk Assessment", "Bayesian SAR Orchestrator"];
+  const labTitles = ["HydroGNN-Bayes: LNG BOG Physics Engine", "Ship Grounding Risk Assessment", "Bayesian SAR Orchestrator", "AI Research Lab"];
 
   const labProjects = projects.filter(p => labTitles.includes(p.title));
   const insightProjects = projects.filter(p => !labTitles.includes(p.title));

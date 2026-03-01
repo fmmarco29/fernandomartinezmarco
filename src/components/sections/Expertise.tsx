@@ -4,7 +4,7 @@ import { Cpu, Anchor } from 'lucide-react'
 const expertiseData = [
     {
         title: "Artificial Intelligence",
-        skills: ["LLMs", "Graph-RAG Frameworks", "Deep Learning", "NLP", "Python", "Vector Stores"]
+        skills: ["LLMs", "Graph-RAG Frameworks", "Deep Learning", "NLP", "Dynamic Bayesian Networks", "Python", "Vector Stores"]
     },
     {
         title: "Naval Architecture",
