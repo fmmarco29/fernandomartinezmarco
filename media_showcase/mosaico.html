@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto en Medios | Laboratorio IA Fernando Martínez Marco</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030305;
+            --surface-color: rgba(255, 255, 255, 0.02);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --text-dim: #6b7280;
+            --accent-glow: #ffffff;
+            --accent-blue: #00f0ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.05), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(112, 0, 255, 0.05), transparent 40%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .ambient-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            animation: float 25s infinite alternate ease-in-out;
+            opacity: 0.4;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(0, 119, 255, 0.3));
+            top: -200px;
+            left: -200px;
+        }
+
+        .blob-2 {
+            width: 700px;
+            height: 700px;
+            background: linear-gradient(135deg, rgba(112, 0, 255, 0.2), rgba(255, 0, 128, 0.2));
+            bottom: -300px;
+            right: -200px;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(60px, 60px) scale(1.1);
+            }
+        }
+
+        .main-wrapper {
+            width: 100%;
+            padding: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 5vw;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Tendencias 21 - Full Visibility */
+        .tendencias-feature {
+            display: block;
+            margin: 0 auto 40px;
+            max-width: 400px;
+            text-decoration: none;
+            transition: transform 0.4s ease;
+        }
+
+        .tendencias-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .tendencias-feature img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+            filter: brightness(1.2) contrast(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Grid - 6 columns */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            background-color: var(--border-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .media-card {
+            background-color: var(--bg-color);
+            padding: 30px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+            position: relative;
+            transition: background 0.4s ease;
+            overflow: hidden;
+        }
+
+        .card-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .media-card:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+            z-index: 10;
+        }
+
+        .media-card:hover .card-glow {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .media-card img {
+            max-width: 75%;
+            max-height: 48px;
+            filter: brightness(0) invert(1) opacity(0.4);
+            transition: all 0.4s ease;
+        }
+
+        .media-card:hover img {
+            filter: brightness(0) invert(1) opacity(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+            transform: scale(1.06);
+        }
+
+        /* Fixed: High visibility text on hover */
+        .media-name {
+            font-size: 0.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .media-card:hover .media-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px 5vw;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .media-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .media-card {
+                height: 150px;
+                padding: 30px 15px;
+            }
+
+            .media-card img {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+
+    <div class="main-wrapper">
+        <header>
+            <h1>Visibilidad en Medios</h1>
+            <p class="subtitle">Agradecimiento a <span class="highlight">Tendencias 21</span> Revista Electrónica de
+                Ciencia, Tecnología, Sociedad y Cultura.
+            </p>
+
+            <a href="https://www.tendencias21.es/" target="_blank" class="tendencias-feature"
+                style="margin-top: 30px; margin-bottom: 0;">
+                <img src="logos/tendencias21.es_logo.jpg" alt="Tendencias 21">
+            </a>
+        </header>
+
+        <div class="media-grid">
+            <a href="https://www.laprovincia.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434011.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/laprovincia.es_logo.svg" alt="Laprovincia">
+                    <div class="media-name">Laprovincia</div>
+                </div>
+            </a>
+            <a href="https://www.eldia.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433998.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/eldia.es_logo.svg" alt="Eldia">
+                    <div class="media-name">Eldia</div>
+                </div>
+            </a>
+            <a href="https://www.elperiodico.com/es/tendencias21/20260302/ingeniero-canario-fernando-martinez-marco-127433994"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/elperiodico.com_logo.svg" alt="El Periódico">
+                    <div class="media-name">El Periódico</div>
+                </div>
+            </a>
+            <a href="https://www.epe.es/es/tendencias21/20260302/ingeniero-canario-fernando-martinez-marco-127433991"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/epe.es_logo.svg" alt="Epe" style="max-height: 40px;">
+                    <div class="media-name">EPE España</div>
+                </div>
+            </a>
+            <a href="https://www.farodevigo.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434003.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/farodevigo.es_logo.svg" alt="Farodevigo">
+                    <div class="media-name">Faro de Vigo</div>
+                </div>
+            </a>
+            <a href="https://www.levante-emv.com/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433983.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/levante-emv.com_logo.svg" alt="Levante-EMV">
+                    <div class="media-name">Levante-EMV</div>
+                </div>
+            </a>
+            <a href="https://www.diariocordoba.com/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434014.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/diariocordoba.com_logo.svg" alt="Diariocordoba">
+                    <div class="media-name">Diario Córdoba</div>
+                </div>
+            </a>
+            <a href="https://www.diariodeibiza.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434001.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/diariodeibiza.es_logo.svg" alt="Diariodeibiza">
+                    <div class="media-name">Diario de Ibiza</div>
+                </div>
+            </a>
+            <a href="https://www.elperiodicomediterraneo.com/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433996.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/elperiodicomediterraneo.com_logo.svg" alt="Elperiodicomediterraneo">
+                    <div class="media-name">Mediterráneo</div>
+                </div>
+            </a>
+            <a href="https://www.laopinioncoruna.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433997.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/laopinioncoruna.es_logo.svg" alt="Laopinioncoruna">
+                    <div class="media-name">La Opinión</div>
+                </div>
+            </a>
+            <a href="https://www.elcorreogallego.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434007.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/elcorreogallego.es_logo.svg" alt="Elcorreogallego">
+                    <div class="media-name">Correo Gallego</div>
+                </div>
+            </a>
+            <a href="https://www.laopiniondezamora.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434002.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/laopiniondezamora.es_logo.svg" alt="Laopiniondezamora">
+                    <div class="media-name">Zamora</div>
+                </div>
+            </a>
+            <a href="https://www.elperiodicodearagon.com/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433986.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/elperiodicodearagon.com_logo.svg" alt="Elperiodicodearagon">
+                    <div class="media-name">Aragón</div>
+                </div>
+            </a>
+            <a href="https://www.elperiodicoextremadura.com/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433984.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/elperiodicoextremadura.com_logo.svg" alt="Elperiodicoextremadura">
+                    <div class="media-name">Extremadura</div>
+                </div>
+            </a>
+            <a href="https://www.laopiniondemurcia.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434000.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/laopiniondemurcia.es_logo.svg" alt="Laopiniondemurcia">
+                    <div class="media-name">Murcia</div>
+                </div>
+            </a>
+            <a href="https://www.informacion.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127434012.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/informacion.es_logo.svg" alt="Informacion">
+                    <div class="media-name">Información</div>
+                </div>
+            </a>
+            <a href="https://www.diariodemallorca.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433990.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/diariodemallorca.es_logo.svg" alt="Diariodemallorca">
+                    <div class="media-name">Mallorca</div>
+                </div>
+            </a>
+            <a href="https://www.laopiniondemalaga.es/tendencias21/2026/03/02/ingeniero-canario-fernando-martinez-marco-127433992.html"
+                target="_blank" class="media-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <img src="logos/laopiniondemalaga.es_logo.svg" alt="Laopiniondemalaga">
+                    <div class="media-name">Málaga</div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2026 Fernando Martínez Marco | AI Engineering Lab</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.media-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const glow = card.querySelector('.card-glow');
+                glow.style.left = `${x}px`;
+                glow.style.top = `${y}px`;
+            });
+        });
+    </script>
+</body>
+
+</html>

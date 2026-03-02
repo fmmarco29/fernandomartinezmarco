@@ -758,6 +758,37 @@ export default function HydroGNNBayesDashboard() {
                         ))}
                     </div>
 
+                    {/* ── HIGH VISIBILITY BUSINESS VALUE PANEL ── */}
+                    <Card style={{
+                        background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(59,130,246,0.05) 100%)',
+                        border: '1px solid rgba(16,185,129,0.3)',
+                        marginBottom: 20,
+                        padding: '24px 28px'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                            <Activity size={22} color="#10b981" />
+                            <h3 style={{ margin: 0, fontSize: 14, fontWeight: 800, color: '#f8fafc', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                                Business Value & Operational Utility
+                            </h3>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 24 }}>
+                            <div>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: '#10b981', marginBottom: 6 }}>1. Financial ROI (Cargo Preservation)</div>
+                                <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.6 }}>
+                                    At current $10/MMBtu ($250/m³), the <span style={{ color: '#f8fafc', fontWeight: 600 }}>{totalVol.toFixed(0)} m³</span> of BOG lost in this exact voyage equals <strong style={{ color: '#ef4444' }}>${(totalVol * 250).toLocaleString('en-US', { maximumFractionDigits: 0 })}</strong> in vaporized payload. Reducing the BOG rate by just 0.02% through physics-driven routing saves <strong style={{ color: '#10b981' }}>${((vessel.vol * 0.0002) * voyageDays * 250).toLocaleString('en-US', { maximumFractionDigits: 0 })} direct profit</strong> per trip.
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: '#3b82f6', marginBottom: 6 }}>2. Regulatory Compliance (IMO CII/GHG)</div>
+                                <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.6 }}>Excess BOG must be burned in the Gas Combustion Unit to prevent tank overpressure, skyrocketing the vessel's GHG emissions. Proactive physics-driven routing lowers the ship's Carbon Intensity Indicator (CII), preventing catastrophic commercial penalties.</div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: '#8b5cf6', marginBottom: 6 }}>3. Reliquefaction Plant Optimization</div>
+                                <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.6 }}>For modern LNG vessels, knowing the exact Q (Heat Ingress) 10 days in advance allows the Chief Engineer to optimally schedule the energy-intensive reliquefaction plant, slashing heavy fuel-oil consumption instead of running it reactively.</div>
+                            </div>
+                        </div>
+                    </Card>
+
                     <Card>
                         <div style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', marginBottom: 10 }}>
                             BOG Rate Profile along Route — PINN per-waypoint output

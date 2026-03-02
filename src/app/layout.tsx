@@ -5,6 +5,7 @@ import '../styles/bento-grid.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Particles from '@/components/shared/Particles'
+import Providers from '@/components/layout/Providers'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -47,15 +48,17 @@ export default function RootLayout({
     return (
         <html lang="en" className={inter.className}>
             <body>
-                <div className="bg-mesh">
-                    <div className="orb orb-1"></div>
-                    <div className="orb orb-2"></div>
-                    <div className="orb orb-3"></div>
-                </div>
-                <Particles />
-                <div className="content-layer">
-                    {children}
-                </div>
+                <Providers>
+                    <div className="bg-mesh">
+                        <div className="orb orb-1"></div>
+                        <div className="orb orb-2"></div>
+                        <div className="orb orb-3"></div>
+                    </div>
+                    <Particles />
+                    <div className="content-layer">
+                        {children}
+                    </div>
+                </Providers>
             </body>
         </html>
     )

@@ -1,7 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Hero = () => {
+  const { language } = useLanguage();
+
   return (
     <section className="hero-section">
       <motion.span
@@ -10,7 +13,7 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
         className="hero-pretitle"
       >
-        Engineering Intelligence
+        {language === 'es' ? 'Inteligencia en Ingeniería' : 'Engineering Intelligence'}
       </motion.span>
 
       <motion.h1
@@ -19,7 +22,9 @@ const Hero = () => {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="hero-title"
       >
-        Navigating AI-driven engineering systems
+        {language === 'es'
+          ? 'Navegando sistemas de ingeniería impulsados por IA'
+          : 'Navigating AI-driven engineering systems'}
       </motion.h1>
 
       <motion.p
@@ -28,7 +33,9 @@ const Hero = () => {
         transition={{ duration: 0.7, delay: 0.2 }}
         className="hero-description"
       >
-        Analyzing the emergence of Artificial Intelligence to architect scalable, resilient, and intelligent engineering infrastructures.
+        {language === 'es'
+          ? 'Análisis y desarrollo de Inteligencia Artificial para diseñar infraestructuras de ingeniería escalables, resilientes e inteligentes.'
+          : 'Analyzing the emergence of Artificial Intelligence to architect scalable, resilient, and intelligent engineering infrastructures.'}
       </motion.p>
     </section>
   )

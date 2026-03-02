@@ -1,7 +1,46 @@
 'use client'
 import { Linkedin, Github, Globe, CircleDot, Mail } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+const getGlossary = (language: 'en' | 'es') => [
+  {
+    term: language === 'es' ? 'Redes Neuronales' : 'Neural Networks',
+    def: language === 'es' ? 'Sistemas informáticos inspirados en redes biológicas de cerebros animales.' : 'Computing systems inspired by the biological neural networks that constitute animal brains.'
+  },
+  {
+    term: language === 'es' ? 'Deep Learning' : 'Deep Learning',
+    def: language === 'es' ? 'Subconjunto de machine learning basado en redes neuronales con múltiples capas ocultas.' : 'A subset of machine learning based on artificial neural networks with multiple layers.'
+  },
+  {
+    term: language === 'es' ? 'Redes Bayesianas' : 'Bayesian Networks',
+    def: language === 'es' ? 'Modelos probabilísticos que representan variables y dependencias mediante un Grafo Acíclico Dirigido (DAG).' : 'Probabilistic models that represent variables and dependencies via a Directed Acyclic Graph (DAG).'
+  },
+  {
+    term: language === 'es' ? 'Transformadores' : 'Transformers',
+    def: language === 'es' ? 'Arquitecturas de aprendizaje profundo basadas en auto-atención para procesar secuencias de datos.' : 'Deep learning architectures based on self-attention mechanisms for processing sequential data.'
+  },
+  {
+    term: language === 'es' ? 'Gemelos Digitales' : 'Digital Twins',
+    def: language === 'es' ? 'Réplicas virtuales de sistemas físicos, sincronizadas vía datos en tiempo real para análisis.' : 'Virtual replicas of physical systems, synchronized via real-time data for simulation and analysis.'
+  },
+  {
+    term: language === 'es' ? 'Estabilidad de Buques' : 'Ship Stability',
+    def: language === 'es' ? 'Capacidad de la nave de volver a la posición de equilibrio tras inclinarse por olas o viento.' : "A vessel's ability to return to an upright position after being inclined by external forces like wind or waves."
+  },
+  {
+    term: language === 'es' ? 'Fatiga Estructural' : 'Structural Fatigue',
+    def: language === 'es' ? 'Daño estructural progresivo que ocurre cuando el material es sometido a cargas cíclicas.' : 'Progressive structural damage occurring when a material is subjected to cyclic loading.'
+  },
+  {
+    term: language === 'es' ? 'Arquitectura Naval' : 'Naval Architecture',
+    def: language === 'es' ? 'Ingeniería especializada en diseño, construcción y operatividad de embarcaciones marinas.' : 'Engineering discipline dealing with the design, construction and operation of marine vessels.'
+  }
+];
 
 const Footer = () => {
+  const { language } = useLanguage();
+  const glossary = getGlossary(language);
+
   return (
     <footer id="contact" className="footer">
       <div className="footer-socials">
@@ -22,16 +61,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="glossary-container">
-        {[
-          { term: 'Neural Networks', def: 'Computing systems inspired by the biological neural networks that constitute animal brains.' },
-          { term: 'Deep Learning', def: 'A subset of machine learning based on artificial neural networks with multiple layers.' },
-          { term: 'Bayesian Networks', def: 'Probabilistic models that represent variables and dependencies via a Directed Acyclic Graph (DAG).' },
-          { term: 'Transformers', def: 'Deep learning architectures based on self-attention mechanisms for processing sequential data.' },
-          { term: 'Digital Twins', def: 'Virtual replicas of physical systems, synchronized via real-time data for simulation and analysis.' },
-          { term: 'Ship Stability', def: "A vessel's ability to return to an upright position after being inclined by external forces like wind or waves." },
-          { term: 'Structural Fatigue', def: 'Progressive structural damage occurring when a material is subjected to cyclic loading.' },
-          { term: 'Naval Architecture', def: 'Engineering discipline dealing with the design, construction and operation of marine vessels.' }
-        ].map((item, i) => (
+        {glossary.map((item, i) => (
           <div key={i} className="glossary-item">
             {item.term}
             <div className="glossary-tooltip">{item.def}</div>
@@ -39,7 +69,7 @@ const Footer = () => {
         ))}
       </div>
       <p className="footer-text">
-        © 2026 Fernando Martínez Marco <br /> Engineering & Artificial Intelligence
+        © 2026 Fernando Martínez Marco <br /> {language === 'es' ? 'Ingeniería e Inteligencia Artificial' : 'Engineering & Artificial Intelligence'}
       </p>
     </footer>
   )
