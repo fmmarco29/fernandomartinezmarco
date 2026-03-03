@@ -25,9 +25,8 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
         const savedLang = localStorage.getItem('lang') as Language;
         if (savedLang) {
             setLanguageState(savedLang);
-        } else if (typeof navigator !== 'undefined') {
-            const browserLang = navigator.language.startsWith('es') ? 'es' : 'en';
-            setLanguageState(browserLang);
+        } else {
+            setLanguageState('en');
         }
     }, []);
 
