@@ -54,6 +54,11 @@ const LNGKnowledgeGraphArticle = dynamic(
   { ssr: false }
 )
 
+const ShipTrajectoryArticle = dynamic(
+  () => import('@/components/features/articles/ShipTrajectoryArticle'),
+  { ssr: false }
+)
+
 const HydroGNNBayesDashboard = dynamic(
   () => import('@/components/features/hydrognn/HydroGNNBayesDashboard'),
   { ssr: false }
@@ -77,6 +82,21 @@ const getProjects = (language: 'en' | 'es') => [
       </div>
     ),
     expandedContent: <HydroGNNBayesDashboard />
+  },
+  {
+    title: language === 'es' ? "Grafos Heterogéneos para Trayectorias" : "Heterogeneous GNNs for Ship Trajectory",
+    description: language === 'es'
+      ? "Implementación de la arquitectura de vanguardia HSTDFormer, fundamentada en grafos espaciotemporales heterogéneos y mecanismos de atención de doble eje para el pronóstico de trayectorias marítimas. Mediante la síntesis de dinámicas AIS y atributos estáticos del buque, el modelo alcanza una precisión sin precedentes en horizontes temporales extendidos bajo condiciones de alta congestión."
+      : "Implementation of the state-of-the-art HSTDFormer architecture, orchestrating heterogeneous spatiotemporal graphs and dual-axis attention to master maritime trajectory forecasting. By synthesizing multi-modal AIS dynamics with intrinsic vessel geometries, the model delivers high-fidelity predictions across extended temporal horizons in high-density waterways.",
+    stack: ["HSTDFormer", "Heterogeneous GNN", "iTransformer", "AIS Analytics", "Deep Learning"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#020817', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <Image src="/tr.png" alt="Ship Trajectory Prediction Preview" fill style={{ objectFit: 'cover' }} quality={100} priority />
+      </div>
+    ),
+    expandedContent: <ShipTrajectoryArticle />
   },
   {
     title: "Deep Learning for Ship Hull Load Prediction",
