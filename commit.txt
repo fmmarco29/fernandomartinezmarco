@@ -1,3 +1,3 @@
 git add .
-git commit -m "Update new card tr"
+git commit -m "Update T21 updated"
 git push origin main

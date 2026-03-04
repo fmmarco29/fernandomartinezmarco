@@ -139,7 +139,7 @@ const MediaPage = () => {
                         )}
                     </p>
 
-                    <a href="https://www.tendencias21.es/" target="_blank" rel="noopener noreferrer" className="tendencias-feature">
+                    <a href="https://www.epe.es/es/tendencias21/" target=" _blank" rel="noopener noreferrer" className="tendencias-feature">
                         <img src="/logos/media/tendencias21.es_logo.jpg" alt="Tendencias 21" />
                     </a>
                 </header>
@@ -158,7 +158,7 @@ const MediaPage = () => {
 
                 <Footer />
             </main>
-        </div>
+        </div >
     );
 };
 
