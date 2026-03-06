@@ -64,9 +64,31 @@ const HydroGNNBayesDashboard = dynamic(
   { ssr: false }
 )
 
+const TransformerDigitalTwinArticle = dynamic(
+  () => import('@/components/features/articles/TransformerDigitalTwinArticle'),
+  { ssr: false }
+)
+
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const getProjects = (language: 'en' | 'es') => [
+  {
+    title: language === 'es'
+      ? "Gemelo Digital con Modelos Transformer"
+      : "Transformer-based Maritime Digital Twin",
+    description: language === 'es'
+      ? "Un análisis revolucionario sobre cómo las arquitecturas Transformer están redefiniendo el modelado de la dinámica de buques (3-DOF). Superando los límites de los modelos LSTM tradicionales, este estudio demuestra una precisión sin precedentes en la predicción de trayectorias transoceánicas utilizando datos reales de graneleros Kamsarmax."
+      : "A revolutionary analysis of how Transformer architectures are redefining ship dynamics modeling (3-DOF). By overcoming the limitations of traditional LSTM models, this study demonstrates unprecedented precision in transoceanic trajectory prediction using real-world Kamsarmax bulk carrier data.",
+    stack: ["Transformer Encoder", "Digital Twin", "3-DOF Maneuvering", "Deep Learning", "Transoceanic Big Data"],
+    link: "#",
+    status: "online" as const,
+    preview: (
+      <div style={{ width: '100%', height: '100%', background: '#020817', boxSizing: 'border-box', overflow: 'hidden', position: 'relative' }}>
+        <Image src="/transf_port.png" alt="Transformer Digital Twin Preview" fill style={{ objectFit: 'cover' }} quality={100} priority />
+      </div>
+    ),
+    expandedContent: <TransformerDigitalTwinArticle />
+  },
   {
     title: "HydroGNN-Bayes: LNG BOG Physics Engine",
     description: language === 'es'
